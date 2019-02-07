@@ -1,0 +1,204 @@
+- id: c04bee1d167c4355b9513088c732bfba
+  alias: Exit Home Alert
+  trigger:
+  - below: '20'
+    entity_id: sensor.mqtt_presence_jan_confidence, sensor.mqtt_presence_kathrin_confidence
+    platform: numeric_state
+  action:
+  - data_template:
+      message: '{{ trigger.to_state.attributes.friendly_name }} left home.'
+    service: notify.notify
+- alias: Exit Work Alert
+  trigger:
+  - platform: zone
+    zone: zone.work
+    entity_id: device_tracker.jans_phone
+    event: leave
+  action:
+  - data:
+      entity_id: sensor.jan_to_home
+    service: sensor.google_travel_sensor_update
+  - service: notify.ios_kathrins_phone
+    data_template:
+      message: Jan hat die Zone Arbeit verlassen. Bei aktuellem Verkehr braucht er
+        etwa {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+  - service: notify.ios_jans_phone
+    data_template:
+      message: Jan left work. The drive home will take approximately {{ states.sensor.jan_to_home.state
+        }} minutes.
+  - service: notify.alexa
+    data_template:
+      message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+  id: da15f9f2531443fe82ca9936912da9ec
+- id: 8167c841c5e24d3e8db97fd715059663
+  alias: Drive to work
+  trigger:
+  - at: 07:45:00
+    platform: time
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - service: homeassistant.update_entity
+    entity_id: sensor.time_to_work
+  - data_template:
+      message: The drive to work will take approximately {{ states.sensor.time_to_work.state
+        }} minutes.
+    service: notify.ios_jans_phone
+- id: c38f98dd27fe485a80f8d22a8dcf7e4e
+  alias: Home Assistant started
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data_template:
+      message: Home Assistant started {{now().strftime('%Y-%m-%d - %H:%M:%S')}}
+    service: notify.ios_jans_phone
+  - data:
+      message: Home Assistant ist jetzt aktiv
+    service: notify.ios_jans_ipad
+- id: '1539785773973'
+  alias: HA shutdown
+  trigger:
+  - event: shutdown
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      message: Home assistant shutting down
+    service: notify.ios_jans_phone
+- id: 65e8bf42-8af4-4d07-9a6b-721ddf413ccd
+  alias: Unifi Video - Notify on motion with attachment
+  trigger:
+    platform: state
+    entity_id: sensor.latest_movement_recorded_id
+  action:
+  - service: notify.ios_jans_phone
+    data_template:
+      message: Motion detected at {{ now().strftime('%H:%M:%S') }}
+      data:
+        attachment:
+          url: !secret unifi_video_attachment
+          content-type: MPEG4
+  - service: notify.ios_kathrins_phone
+    data_template:
+      message: Motion detected at {{ now().strftime('%H:%M:%S') }}
+      data:
+        attachment:
+          url: !secret unifi_video_attachment
+          content-type: MPEG4
+- id: trigger_depart_scan
+  alias: trigger depart scan
+  trigger:
+  - entity_id: sensor.fibaro_apartment_door_access_control
+    platform: numeric_state
+    above: 22
+  action:
+  - entity_id: script.mqtt_depart
+    service: script.turn_on
+- id: trigger_depart_scan_cancel
+  alias: trigger depart scan cancel
+  trigger:
+  - entity_id: sensor.fibaro_apartment_door_access_control
+    platform: numeric_state
+    below: 23
+  action:
+  - entity_id: script.mqtt_depart
+    service: script.turn_off
+- id: '1547562144856'
+  alias: Commute - Update morning commute sensor
+  trigger:
+  - minutes: /5
+    seconds: 0
+    platform: time_pattern
+  condition:
+  - after: 07:00:00
+    before: 08:30:00
+    condition: time
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'true'
+  action:
+  - data:
+      entity_id: sensor.time_to_work
+    service: sensor.google_travel_sensor_update
+- id: '1547564016056'
+  alias: Alert on traffic jam
+  trigger:
+  - below: '52'
+    entity_id: sensor.route_to_work_distance
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: Stau auf der Autobahn, Alternative Route nehmen!
+    service: notify.ios_jans_phone
+- id: '1547760131947'
+  alias: Enable Dark Theme
+  trigger:
+  - entity_id: input_select.theme
+    platform: state
+    to: Dark
+  condition: []
+  action:
+  - data:
+      name: slate
+    service: frontend.set_theme
+- id: '1547760422578'
+  alias: Enable Default Theme
+  trigger:
+  - entity_id: input_select.theme
+    platform: state
+    to: Default
+  condition: []
+  action:
+  - data:
+      name: default
+    service: frontend.set_theme
+- id: '1547760131948'
+  alias: Enable OLED Theme
+  trigger:
+  - entity_id: input_select.theme
+    platform: state
+    to: OLED
+  condition: []
+  action:
+  - data:
+      name: oled
+    service: frontend.set_theme
+- id: '1548670413970'
+  alias: Occupancy - Someone is home
+  trigger:
+  - above: '10'
+    entity_id: sensor.home_occupancy_confidence
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.occupancy
+    service: homeassistant.turn_on
+- id: '1548670682348'
+  alias: Rescan occupancy
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition:
+  - condition: state
+    entity_id: sensor.home_occupancy_confidence
+    state: unknown
+  action:
+  - data:
+      entity_id: script.mqtt_depart
+    service: script.turn_on
+- id: '1548670799656'
+  alias: Occupancy - Noone is home
+  trigger:
+  - below: '10'
+    entity_id: sensor.home_occupancy_confidence
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.occupancy
+    service: homeassistant.turn_off

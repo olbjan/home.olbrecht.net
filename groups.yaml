@@ -1,0 +1,24 @@
+# Light Group
+  all_lights:
+    name: Alle Lampen
+    entities:
+      - switch.fibaro_storage_switch_1
+      - light.fibaro_master_bath_level_1
+      - switch.fibaro_balcony_switch_1
+      - switch.fibaro_office_switch_1
+      - switch.fibaro_living_room_1_switch_2
+      - switch.fibaro_living_room_2_switch_1
+      - light.kitchen_fridge
+      - light.kitchen_shelf
+      - switch.fibaro_floor_switch_1
+      - switch.fibaro_kids_room_switch_1
+      - switch.fibaro_living_room_1_switch_1
+      - light.fibaro_master_bedroom_level_1
+      - light.fibaro_wc_level_1
+      - light.schuhschrank
+      - light.couchtisch_oben
+      - light.couchtisch_unten
+      - light.bett
+      - light.hue_bloom    
+      - light.kitchen_shelf
+      - light.kitchen_fridge

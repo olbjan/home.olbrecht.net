@@ -1,0 +1,261 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Berlin
+  customize: !include customize.yaml    
+  # Add an entry for each entity that you want to overwrite.
+  packages: !include_dir_named packages
+# Show links to resources in log and frontend
+#introduction:
+
+
+# Enables the frontend
+frontend:
+  javascript_version: latest
+  #javascript_version: es5
+  themes: !include themes.yaml
+  
+system_log:
+
+# Enables Apple iOS Support
+ios:
+#  push:
+
+# Enable zeroconf
+zeroconf:
+
+# Enables configuration UI
+config:
+
+# Enable Home Assistant Cloud
+cloud:
+
+  
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  base_url: !secret base_url
+  # SSL Configuration for Let'sEncrypt certs
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  trusted_networks:
+    - 127.0.0.1
+    - 192.168.0.0/24
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+#conversation:
+
+# Enables support for tracking state changes over time
+history: !include history.yaml
+
+# Configures recorder component     
+recorder: !include recorder.yaml
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather Component
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+    name: Edenkoben
+    mode: daily
+
+# Sensor configuration
+sensor: !include sensors.yaml
+#tts:
+#  - platform: google
+
+group: !include groups.yaml
+automation: !include automations.yaml
+device_tracker: !include device_tracker.yaml
+history_graph: !include history_graphs.yaml
+script: !include scripts.yaml
+zone: !include zones.yaml
+map:
+notify:
+  - platform: html5
+    name: html5
+    gcm_api_key: !secret google_cloud_messaging_api
+    gcm_sender_id: !secret google_cloud_messaging_id
+  - platform: group
+    name: notify_all
+    services:
+      - service: html5
+      - service: notify
+      - service: living_room_tv
+  - platform: nfandroidtv
+    name: Living Room TV
+    host: 192.168.0.15
+  - platform: rest
+    name: alexa
+    resource: !secret notify_alexa_api
+    method: POST_JSON
+    data:
+      entity_id: 'media_player.sonos_beam'
+    header:
+      x-ha-access: !secret http_password
+      content-type: 'application/json'
+
+# Enable WoL Switch
+wake_on_lan: 
+  - mac: !secret readynas_mac
+    broadcast_address: 192.168.0.255
+
+switch:
+  - platform: wake_on_lan
+    mac_address: !secret readynas_mac
+    name: "ReadyNAS 2304"
+    host: 192.168.0.11
+    
+camera:
+  - platform: uvc
+    nvr: 192.168.0.11
+    key: !secret unifi_video_api
+    name: !secret unifi_video_camera_user
+    password: !secret unifi_video_camera_password
+    
+dyson:
+  username: !secret dyson_user
+  password: !secret dyson_password
+  language: DE
+  devices:
+    - device_id: !secret dyson_device_id # eg: Pure Cool Link device
+      device_ip: 192.168.0.47
+
+hue:
+  bridges:
+    - host: 192.168.0.13
+      allow_unreachable: true
+
+emulated_hue:
+  expose_by_default: false
+  exposed_domains:
+    - light
+    - switch
+
+media_player:
+  - platform: philips_2016
+    name: Philips TV
+    host: 192.168.0.15
+    mac: !secret philips_tv_mac
+    username: !secret philips_tv_user
+    password: !secret philips_tv_password    
+  - platform: alexa
+    email: !secret alexa_user
+    password: !secret alexa_password
+    url: "amazon.de"
+    exclude_devices:
+      - "Jan's Fire TV stick"
+      - "Kathrin's Fire TV stick"
+      - "Jan's Alexa Apps"
+      - "Kathrin's Alexa Apps"
+      - "this_device_2"
+      - "this_device"
+      - "This Device"
+      - "This Device 2"
+      - "Everywhere"
+
+light:
+  - platform: ambilights
+    name: TV Ambilight
+    host: 192.168.0.15
+    username: !secret philips_tv_user
+    password: !secret philips_tv_password    
+
+# Workday binary sensor
+binary_sensor:
+  - platform: workday
+    country: DE
+    province: RP
+   
+  - platform: template
+    sensors:
+      front_door:
+        friendly_name: Apartment Door
+        device_class: door
+        icon_template: >
+          {% if is_state('sensor.fibaro_apartment_door_access_control', '22') %}
+            mdi:door-open
+          {% else %}
+            mdi:door-closed
+          {% endif %}
+        value_template: >
+          {% if is_state('sensor.fibaro_apartment_door_access_control', '22') %}
+            true
+          {% elif is_state('sensor.fibaro_apartment_door_access_control', '23') %}
+            false
+          {% else %}
+            Error
+          {% endif %}    
+    
+input_boolean:
+  dark_mode:
+    name: Dark mode
+    initial: false
+  occupancy:
+    name: home_occupancy
+    initial: true
+
+input_select:
+  theme:
+    name: Theme
+    options:
+      - Default
+      - Dark
+      - OLED
+    initial: Default
+    icon: mdi:target
+
+system_health:
+
+panel_iframe:
+  observium:
+    title: 'Observium'
+    icon: mdi:monitor-multiple
+    url: !secret observium_url
+  configurator:
+    title: 'Configurator'
+    icon: mdi:wrench
+    url: !secret configurator_url
+  logviewer:
+    title: 'Log Viewer'
+    icon: mdi:history
+    url: !secret logviewer_url
+  sqlite:
+    title: 'SQLite'
+    icon: mdi:database
+    url: !secret sqlite_url
+  terminal:
+    title: 'Terminal'
+    icon: mdi:console
+    url: !secret terminal_url
+  mqtt:
+    title: 'MQTT'
+    icon: mdi:code-brackets
+    url: !secret mqtt_url

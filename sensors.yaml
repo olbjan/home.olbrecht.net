@@ -1,0 +1,144 @@
+# Network devices
+# Device tracker values are changed from home to Online/Offline
+  - platform: template
+    sensors:
+      amazon_echo:
+        value_template:  '{% if is_state("device_tracker.amazon_echo", "home") %} Online {% else %} Offline {%- endif %}'
+      amazon_echo_dot:
+        value_template:  '{% if is_state("device_tracker.amazon_echo_dot", "home") %} Online {% else %} Offline {%- endif %}'
+      brother_mfc_l3770cdw:
+        value_template:  '{% if is_state("device_tracker.ping_brother_mfc_l3770cdw", "home") %} Online {% else %} Offline {%- endif %}'
+      bosch_hsg636xs6:
+        value_template:  '{% if is_state("device_tracker.ping_bosch_hsg636xs6", "home") %} Online {% else %} Offline {%- endif %}'
+      dyson_pure_cool_link:
+        value_template:  '{% if is_state("device_tracker.ping_dyson_pure_cool_link", "home") %} Online {% else %} Offline {%- endif %}'
+      firetv_stick_kids_room:
+        value_template:  '{% if is_state("device_tracker.ping_firetv_kidsroom", "home") %} Online {% else %} Offline {%- endif %}'
+      firetv_stick_office:
+        value_template:  '{% if is_state("device_tracker.ping_firetv_office", "home") %} Online {% else %} Offline {%- endif %}'
+      philips_hue_bridge:
+        value_template:  '{% if is_state("device_tracker.ping_philips_hue_bridge", "home") %} Online {% else %} Offline {%- endif %}'
+      living_room_xbox_one:
+        value_template:  '{% if is_state("device_tracker.living_room_xbox_one", "home") %} Online {% else %} Offline {%- endif %}'
+      raspi_observium:
+        value_template:  '{% if is_state("device_tracker.ping_raspi_observium", "home") %} Online {% else %} Offline {%- endif %}'
+      raspi_homeassistant:
+        value_template:  '{% if is_state("device_tracker.ping_raspi_homeassistant", "home") %} Online {% else %} Offline {%- endif %}'
+      raspi_btmonitor:
+        value_template:  '{% if is_state("device_tracker.ping_raspi_btmonitor", "home") %} Online {% else %} Offline {%- endif %}'
+      snom_d765_phone:
+        value_template:  '{% if is_state("device_tracker.ping_snom_d765", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_play1_kids_room:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_kids_room", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_one_bathroom:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_one_bathroom", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_beam_living_room:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_beam_living_room", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_play1_living_room_1:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_1", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_play1_living_room_2:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_2", "home") %} Online {% else %} Offline {%- endif %}'
+      sw01:
+        value_template:  '{% if is_state("device_tracker.ping_sw01", "home") %} Online {% else %} Offline {%- endif %}'
+      sw02:
+        value_template:  '{% if is_state("device_tracker.ping_sw02", "home") %} Online {% else %} Offline {%- endif %}'
+      tv_living_room:
+        value_template:  '{% if is_state("device_tracker.ping_philips_55pos9002_lan", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_security_gateway:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_security_gateway", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_cloud_key:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_cloud_key", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_ap_livingroom:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_livingroom", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_ap_office:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_office", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_ap_master_bedroom:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_master_bedroom", "home") %} Online {% else %} Offline {%- endif %}'
+
+# Cumulative power usage      
+  - platform: template
+    sensors:
+      total_power_usage:
+        value_template: >
+          {{ (states('sensor.fibaro_balcony_power')|float
+            + states('sensor.fibaro_floor_power')|float
+            + states('sensor.fibaro_kids_room_power')|float
+            + states('sensor.fibaro_living_room_1_power_1')|float
+            + states('sensor.fibaro_living_room_1_power_2')|float
+            + states('sensor.fibaro_living_room_2_power_1')|float
+            + states('sensor.fibaro_master_bath_power_1')|float
+            + states('sensor.fibaro_master_bedroom_power_1')|float
+            + states('sensor.fibaro_office_power')|float
+            + states('sensor.fibaro_storage_power')|float
+            + states('sensor.fibaro_wc_power_1')|float)|round(1) }}'
+        friendly_name: 'Current power usage'
+        unit_of_measurement: 'w'
+  - platform: template
+    sensors:
+      total_energy:
+        value_template: >
+          {{ (states('sensor.fibaro_balcony_energy')|float
+            + states('sensor.fibaro_floor_energy')|float
+            + states('sensor.fibaro_kids_room_energy')|float
+            + states('sensor.fibaro_living_room_1_energy_1')|float
+            + states('sensor.fibaro_living_room_1_energy_2')|float
+            + states('sensor.fibaro_living_room_2_energy_1')|float
+            + states('sensor.fibaro_master_bath_energy_1')|float
+            + states('sensor.fibaro_master_bedroom_energy_1')|float
+            + states('sensor.fibaro_office_energy')|float
+            + states('sensor.fibaro_storage_energy')|float
+            + states('sensor.fibaro_wc_energy_1')|float)|round(1) }}'
+        friendly_name: 'Total energy usage'
+        unit_of_measurement: 'kWh'
+
+# Google Travel Time
+  - platform: google_travel_time
+    api_key: !secret google_travel_time_key
+    origin: !secret home_address
+    destination: !secret work_address
+    name: Time to Work
+    scan_interval: 86400
+  - platform: google_travel_time
+    api_key: !secret google_travel_time_key
+    origin: device_tracker.jans_phone
+    destination: !secret home_address
+    name: Jan to Home
+    scan_interval: 86400
+
+# Route to work
+  - platform: template
+    sensors:
+      route_to_work_distance:
+        friendly_name: 'Distance to work'
+#        unit_of_measurement: 'km'
+        value_template: "{{ state_attr('sensor.time_to_work', 'distance') }}"
+    
+# UniFi Video REST API
+  - platform: rest
+    name: Latest movement recorded ID
+    method: GET
+    resource: !secret unifi_video_recording_api
+    value_template: >
+      {% set last = (value_json.data | count) - 1 %}
+      {{ value_json.data[last]['_id'] }}
+
+# MQTT Bluetooth Presence detection
+  - platform: mqtt
+    state_topic: !secret mqtt_tracker_jan
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'mqtt_presence_jan_confidence'
+  - platform: mqtt
+    state_topic: !secret mqtt_tracker_kathrin
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'mqtt_presence_kathrin_confidence'
+    
+# Mean sensor for family presence at home, '100.0' indicates everyone is at home
+  - platform: min_max
+    name: "Home Occupancy Confidence"
+    type: mean
+    round_digits: 0
+    entity_ids:
+      - sensor.mqtt_presence_jan_confidence
+      - sensor.mqtt_presence_kathrin_confidence

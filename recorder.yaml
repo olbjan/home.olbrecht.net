@@ -1,0 +1,37 @@
+  purge_interval: 7
+  purge_keep_days: 31
+  include:
+    domains:
+      - sensor
+    entities:
+      - device_tracker.jans_phone
+      - binary_sensor.front_door
+  exclude:
+    domains:
+      - switch
+      - light
+      - media_player
+    entities:
+      - sun.sun
+      - sensor.raspi_homeassistant
+      - sensor.raspi_observium
+      - sensor.raspi_btmonitor
+      - sensor.snom_d765_phone
+      - sensor.sonos_play1_kids_room
+      - sensor.sonos_beam_living_room
+      - sensor.sonos_play1_living_room_1
+      - sensor.sonos_play1_living_room_2
+      - sensor.sonos_one_bathroom
+      - sensor.unifi_ap_livingroom
+      - sensor.unifi_ap_master_bedroom
+      - sensor.unifi_ap_office
+      - sensor.unifi_ap_nanohd
+      - sensor.unifi_cloud_key
+      - sensor.unifi_security_gateway
+      - sensor.amazon_echo
+      - sensor.amazon_echo_dot
+      - sensor.bosch_hsg636xs6
+      - sensor.sw01
+      - sensor.sw02
+      - sensor.dyson_pure_cool_link
+      - sensor.philips_hue_bridge
