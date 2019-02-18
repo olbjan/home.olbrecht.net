@@ -25,6 +25,17 @@ frontend:
   
 system_log:
 
+custom_updater:
+  track:
+    - cards
+    - components
+  mode: storage
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+    - https://raw.githubusercontent.com/nervetattoo/simple-thermostat/master/tracker.json
+  component_urls:
+    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+    
 # Enables Apple iOS Support
 ios:
 #  push:
@@ -231,6 +242,10 @@ input_select:
       - OLED
     initial: Default
     icon: mdi:target
+
+homeconnect:
+  client_id: !secret homeconnect_id
+  client_secret: !secret homeconnect_secret
 
 system_health:
 

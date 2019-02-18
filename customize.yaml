@@ -198,6 +198,9 @@
     sensor.mqtt_presence_Kathrin_confidence:
       friendly_name: Kathrin
       entity_picture: /local/kathrin_olbrecht.jpg      
+    sensor.mqtt_presence_marita_confidence:
+      friendly_name: Marita
+      entity_picture: /local/marita_olbrecht.jpg      
     zone.home:
       beacon:
         uuid: F7826DA6-4FA2-4E98-8024-BC5B71E0893E

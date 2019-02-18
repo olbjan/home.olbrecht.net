@@ -1,0 +1,6 @@
+binary_sensor:
+  - platform: hue
+device_tracker:
+  - platform: hue
+sensor:
+  - platform: hue

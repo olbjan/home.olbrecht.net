@@ -133,6 +133,11 @@
     value_template: '{{ value_json.confidence }}'
     unit_of_measurement: '%'
     name: 'mqtt_presence_kathrin_confidence'
+  - platform: mqtt
+    state_topic: !secret mqtt_tracker_marita
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'mqtt_presence_marita_confidence'
     
 # Mean sensor for family presence at home, '100.0' indicates everyone is at home
   - platform: min_max
@@ -142,3 +147,4 @@
     entity_ids:
       - sensor.mqtt_presence_jan_confidence
       - sensor.mqtt_presence_kathrin_confidence
+      - sensor.mqtt_presence_marita_confidence
