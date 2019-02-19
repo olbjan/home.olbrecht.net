@@ -25,10 +25,6 @@ frontend:
   
 system_log:
 
-# Enables Apple iOS Support
-ios:
-#  push:
-
 # Enable zeroconf
 zeroconf:
 
@@ -73,14 +69,20 @@ history: !include history.yaml
 
 # Configures recorder component     
 recorder: !include recorder.yaml
+
 # View all events in a logbook
 logbook:
 
 group: !include groups.yaml
+
+# Enable these to have GUI config for scripts and automation
 automation: !include automations.yaml
-device_tracker: !include device_tracker.yaml
 script: !include scripts.yaml
+
+# Zones for known locations
 zone: !include zones.yaml
+
+# Enable Map in Frontend
 map:
 
 # Enable WoL Switch - cannot be merged via Package
@@ -88,12 +90,12 @@ wake_on_lan:
   - mac: !secret readynas_mac
     broadcast_address: 192.168.0.255
 
-
 # Workday binary sensor
 binary_sensor:
   - platform: workday
     country: DE
     province: RP
-   
+
+# Enable host system health   
 system_health:
 

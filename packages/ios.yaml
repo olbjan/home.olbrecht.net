@@ -1,0 +1,17 @@
+# Enables Apple iOS Support
+ios:
+#  push:
+
+script:
+  request_location_update_jan:
+    alias: Request Location Update Jan
+    sequence:
+    - data:
+        message: request_location_update
+      service: notify.ios_jans_phone
+  request_location_update_kathrin:
+    alias: Request Location Update kathrin
+    sequence:
+    - data:
+        message: request_location_update
+      service: notify.ios_kathrins_phone
