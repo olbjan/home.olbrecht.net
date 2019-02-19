@@ -1,0 +1,125 @@
+sensor:
+# MQTT Bluetooth Presence detection
+  - platform: mqtt
+    state_topic: !secret mqtt_tracker_jan
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'mqtt_presence_jan_confidence'
+  - platform: mqtt
+    state_topic: !secret mqtt_tracker_kathrin
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'mqtt_presence_kathrin_confidence'
+  - platform: mqtt
+    state_topic: !secret mqtt_tracker_marita
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'mqtt_presence_marita_confidence'
+    
+# Mean sensor for family presence at home, '100.0' indicates everyone is at home
+  - platform: min_max
+    name: "Home Occupancy Confidence"
+    type: mean
+    round_digits: 0
+    entity_ids:
+      - sensor.mqtt_presence_jan_confidence
+      - sensor.mqtt_presence_kathrin_confidence
+      - sensor.mqtt_presence_marita_confidence
+
+input_boolean:
+  occupancy:
+    name: home_occupancy
+    initial: true
+
+script:
+  mqtt_depart:
+    sequence:
+    - delay: 00:00:10
+    - data_template:
+        topic: location/scan/depart
+      service: mqtt.publish
+    - delay: 00:00:20
+    - data_template:
+        topic: location/scan/depart
+      service: mqtt.publish
+    - delay: 00:00:30
+    - data_template:
+        topic: location/scan/depart
+      service: mqtt.publish
+    - delay: 00:00:40
+    - data_template:
+        topic: location/scan/depart
+      service: mqtt.publish
+    - delay: 00:00:50
+    - data_template:
+        topic: location/scan/depart
+      service: mqtt.publish
+  mqtt_restart:
+    sequence:
+    - data_template:
+        topic: location/scan/restart
+      service: mqtt.publish
+  mqtt_update:
+    sequence:
+    - data_template:
+        topic: location/scan/update
+      service: mqtt.publish
+  
+automation:
+  - alias: trigger depart scan
+    trigger:
+    - entity_id: sensor.fibaro_apartment_door_access_control
+      platform: numeric_state
+      above: 22
+    action:
+    - entity_id: script.mqtt_depart
+      service: script.turn_on
+  - alias: trigger depart scan cancel
+    trigger:
+    - entity_id: sensor.fibaro_apartment_door_access_control
+      platform: numeric_state
+      below: 23
+    action:
+    - entity_id: script.mqtt_depart
+      service: script.turn_off
+  - alias: Occupancy - Someone is home
+    trigger:
+    - above: '10'
+      entity_id: sensor.home_occupancy_confidence
+      platform: numeric_state
+    condition: []
+    action:
+    - data:
+        entity_id: input_boolean.occupancy
+      service: homeassistant.turn_on
+  - alias: Rescan occupancy
+    trigger:
+    - event: start
+      platform: homeassistant
+    condition:
+    - condition: state
+      entity_id: sensor.home_occupancy_confidence
+      state: unknown
+    action:
+    - data:
+        entity_id: script.mqtt_depart
+      service: script.turn_on
+  - alias: Occupancy - Noone is home
+    trigger:
+    - below: '10'
+      entity_id: sensor.home_occupancy_confidence
+      platform: numeric_state
+    condition: []
+    action:
+    - data:
+        entity_id: input_boolean.occupancy
+      service: homeassistant.turn_off
+  - alias: Exit Home Alert
+    trigger:
+    - below: '20'
+      entity_id: sensor.mqtt_presence_jan_confidence, sensor.mqtt_presence_kathrin_confidence
+      platform: numeric_state
+    action:
+    - data_template:
+        message: '{{ trigger.to_state.attributes.friendly_name }} left home.'
+      service: notify.notify

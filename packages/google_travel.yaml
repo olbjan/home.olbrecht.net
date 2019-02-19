@@ -1,0 +1,89 @@
+sensor:
+# Google Travel Time
+  - platform: google_travel_time
+    api_key: !secret google_travel_time_key
+    origin: !secret home_address
+    destination: !secret work_address
+    name: Time to Work
+    scan_interval: 86400
+  - platform: google_travel_time
+    api_key: !secret google_travel_time_key
+    origin: device_tracker.jans_phone
+    destination: !secret home_address
+    name: Jan to Home
+    scan_interval: 86400
+
+# Route to work
+# Used to determine if Google is recommending an alternate route because of traffic indcidents
+  - platform: template
+    sensors:
+      route_to_work_distance:
+        friendly_name: 'Distance to work'
+#        unit_of_measurement: 'km'
+        value_template: "{{ state_attr('sensor.time_to_work', 'distance') }}"
+
+
+automation:
+  - alias: Exit Work Alert
+    trigger:
+    - platform: zone
+      zone: zone.work
+      entity_id: device_tracker.jans_phone
+      event: leave
+    action:
+    - data:
+        entity_id: sensor.jan_to_home
+      service: sensor.google_travel_sensor_update
+    - service: notify.ios_kathrins_phone
+      data_template:
+        message: Jan hat die Zone Arbeit verlassen. Bei aktuellem Verkehr braucht er
+          etwa {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+    - service: notify.ios_jans_phone
+      data_template:
+        message: Jan left work. The drive home will take approximately {{ states.sensor.jan_to_home.state
+          }} minutes.
+    - service: notify.alexa
+      data_template:
+        message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+  - alias: Drive to work
+    trigger:
+    - at: 07:45:00
+      platform: time
+    condition:
+      condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+    action:
+    - service: homeassistant.update_entity
+      entity_id: sensor.time_to_work
+    - data_template:
+        message: The drive to work will take approximately {{ states.sensor.time_to_work.state
+          }} minutes.
+      service: notify.ios_jans_phone
+  - alias: Commute - Update morning commute sensor
+    trigger:
+    - minutes: /5
+      seconds: 0
+      platform: time_pattern
+    condition:
+    - after: 07:00:00
+      before: 08:30:00
+      condition: time
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'true'
+    action:
+    - data:
+        entity_id: sensor.time_to_work
+      service: sensor.google_travel_sensor_update
+  - alias: Alert on traffic jam
+    trigger:
+    - below: '52'
+      entity_id: sensor.route_to_work_distance
+      platform: numeric_state
+    condition: []
+    action:
+    - data:
+        message: Stau auf der Autobahn, Alternative Route nehmen!
+      service: notify.ios_jans_phone
+  

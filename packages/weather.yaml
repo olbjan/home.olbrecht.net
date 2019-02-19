@@ -1,0 +1,9 @@
+# Weather Component
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+    name: Edenkoben
+    mode: daily
+
+# Track the sun
+sun:

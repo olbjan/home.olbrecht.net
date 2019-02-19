@@ -1,0 +1,15 @@
+media_player:
+  - platform: alexa
+    email: !secret alexa_user
+    password: !secret alexa_password
+    url: "amazon.de"
+    exclude_devices:
+      - "Jan's Fire TV stick"
+      - "Kathrin's Fire TV stick"
+      - "Jan's Alexa Apps"
+      - "Kathrin's Alexa Apps"
+      - "this_device_2"
+      - "this_device"
+      - "This Device"
+      - "This Device 2"
+      - "Everywhere"

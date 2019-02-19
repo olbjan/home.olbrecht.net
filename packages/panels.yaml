@@ -1,0 +1,25 @@
+panel_iframe:
+  observium:
+    title: 'Observium'
+    icon: mdi:monitor-multiple
+    url: !secret observium_url
+  configurator:
+    title: 'Configurator'
+    icon: mdi:wrench
+    url: !secret configurator_url
+  logviewer:
+    title: 'Log Viewer'
+    icon: mdi:history
+    url: !secret logviewer_url
+  sqlite:
+    title: 'SQLite'
+    icon: mdi:database
+    url: !secret sqlite_url
+  terminal:
+    title: 'Terminal'
+    icon: mdi:console
+    url: !secret terminal_url
+  mqtt:
+    title: 'MQTT'
+    icon: mdi:code-brackets
+    url: !secret mqtt_url

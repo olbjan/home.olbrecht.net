@@ -1,6 +1,43 @@
+hue:
+  bridges:
+    - host: 192.168.0.13
+      allow_unreachable: true
+
+# Enable custom hue sensor component:
 binary_sensor:
   - platform: hue
 device_tracker:
   - platform: hue
 sensor:
   - platform: hue
+
+# Enable emulated_hue for Alexa / Google Home Integration
+emulated_hue:
+  expose_by_default: false
+  exposed_domains:
+    - light
+    - switch
+
+# Scripts enable Hue Scenes. Scene names are from Hue app.
+script:
+  living_room_read:
+    alias: Living Room "Read"
+    sequence:
+    - data:
+        group_name: Wohnzimmer
+        scene_name: Lesen
+      service: hue.hue_activate_scene
+  living_room_relax:
+    alias: Living Room "Relax"
+    sequence:
+    - data:
+        group_name: Wohnzimmer
+        scene_name: Relax
+      service: hue.hue_activate_scene
+  bedroom_sleep:
+    alias: Bedroom "Sleep"
+    sequence:
+    - data:
+        group_name: Schlafzimmer
+        scene_name: Nachtlicht
+      service: hue.hue_activate_scene

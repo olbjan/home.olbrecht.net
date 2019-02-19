@@ -1,3 +1,4 @@
+sensor:
 # Cumulative power usage      
   - platform: template
     sensors:

@@ -1,0 +1,57 @@
+sensor:
+# Device tracker values are changed from home to Online/Offline
+  - platform: template
+    sensors:
+      amazon_echo:
+        value_template:  '{% if is_state("device_tracker.amazon_echo", "home") %} Online {% else %} Offline {%- endif %}'
+      amazon_echo_dot:
+        value_template:  '{% if is_state("device_tracker.amazon_echo_dot", "home") %} Online {% else %} Offline {%- endif %}'
+      brother_mfc_l3770cdw:
+        value_template:  '{% if is_state("device_tracker.ping_brother_mfc_l3770cdw", "home") %} Online {% else %} Offline {%- endif %}'
+      bosch_hsg636xs6:
+        value_template:  '{% if is_state("device_tracker.ping_bosch_hsg636xs6", "home") %} Online {% else %} Offline {%- endif %}'
+      dyson_pure_cool_link:
+        value_template:  '{% if is_state("device_tracker.ping_dyson_pure_cool_link", "home") %} Online {% else %} Offline {%- endif %}'
+      firetv_stick_kids_room:
+        value_template:  '{% if is_state("device_tracker.ping_firetv_kidsroom", "home") %} Online {% else %} Offline {%- endif %}'
+      firetv_stick_office:
+        value_template:  '{% if is_state("device_tracker.ping_firetv_office", "home") %} Online {% else %} Offline {%- endif %}'
+      philips_hue_bridge:
+        value_template:  '{% if is_state("device_tracker.ping_philips_hue_bridge", "home") %} Online {% else %} Offline {%- endif %}'
+      living_room_xbox_one:
+        value_template:  '{% if is_state("device_tracker.living_room_xbox_one", "home") %} Online {% else %} Offline {%- endif %}'
+      raspi_observium:
+        value_template:  '{% if is_state("device_tracker.ping_raspi_observium", "home") %} Online {% else %} Offline {%- endif %}'
+      raspi_homeassistant:
+        value_template:  '{% if is_state("device_tracker.ping_raspi_homeassistant", "home") %} Online {% else %} Offline {%- endif %}'
+      raspi_btmonitor:
+        value_template:  '{% if is_state("device_tracker.ping_raspi_btmonitor", "home") %} Online {% else %} Offline {%- endif %}'
+      snom_d765_phone:
+        value_template:  '{% if is_state("device_tracker.ping_snom_d765", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_play1_kids_room:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_kids_room", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_one_bathroom:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_one_bathroom", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_beam_living_room:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_beam_living_room", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_play1_living_room_1:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_1", "home") %} Online {% else %} Offline {%- endif %}'
+      sonos_play1_living_room_2:
+        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_2", "home") %} Online {% else %} Offline {%- endif %}'
+      sw01:
+        value_template:  '{% if is_state("device_tracker.ping_sw01", "home") %} Online {% else %} Offline {%- endif %}'
+      sw02:
+        value_template:  '{% if is_state("device_tracker.ping_sw02", "home") %} Online {% else %} Offline {%- endif %}'
+      tv_living_room:
+        value_template:  '{% if is_state("device_tracker.ping_philips_55pos9002_lan", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_security_gateway:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_security_gateway", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_cloud_key:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_cloud_key", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_ap_livingroom:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_livingroom", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_ap_office:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_office", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_ap_master_bedroom:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_master_bedroom", "home") %} Online {% else %} Offline {%- endif %}'
+

@@ -21,21 +21,10 @@ homeassistant:
 frontend:
   javascript_version: latest
   #javascript_version: es5
-  themes: !include themes.yaml
+#  themes: !include themes.yaml
   
 system_log:
 
-custom_updater:
-  track:
-    - cards
-    - components
-  mode: storage
-  card_urls:
-    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
-    - https://raw.githubusercontent.com/nervetattoo/simple-thermostat/master/tracker.json
-  component_urls:
-    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
-    
 # Enables Apple iOS Support
 ios:
 #  push:
@@ -87,21 +76,6 @@ recorder: !include recorder.yaml
 # View all events in a logbook
 logbook:
 
-# Track the sun
-sun:
-
-# Weather Component
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api
-    name: Edenkoben
-    mode: daily
-
-# Sensor configuration
-sensor: !include sensors.yaml
-#tts:
-#  - platform: google
-
 group: !include groups.yaml
 automation: !include automations.yaml
 device_tracker: !include device_tracker.yaml
@@ -109,95 +83,12 @@ history_graph: !include history_graphs.yaml
 script: !include scripts.yaml
 zone: !include zones.yaml
 map:
-notify:
-  - platform: html5
-    name: html5
-    gcm_api_key: !secret google_cloud_messaging_api
-    gcm_sender_id: !secret google_cloud_messaging_id
-  - platform: group
-    name: notify_all
-    services:
-      - service: html5
-      - service: notify
-      - service: living_room_tv
-  - platform: nfandroidtv
-    name: Living Room TV
-    host: 192.168.0.15
-  - platform: rest
-    name: alexa
-    resource: !secret notify_alexa_api
-    method: POST_JSON
-    data:
-      entity_id: 'media_player.sonos_beam'
-    header:
-      x-ha-access: !secret http_password
-      content-type: 'application/json'
 
-# Enable WoL Switch
+# Enable WoL Switch - cannot be merged via Package
 wake_on_lan: 
   - mac: !secret readynas_mac
     broadcast_address: 192.168.0.255
 
-switch:
-  - platform: wake_on_lan
-    mac_address: !secret readynas_mac
-    name: "ReadyNAS 2304"
-    host: 192.168.0.11
-    
-camera:
-  - platform: uvc
-    nvr: 192.168.0.11
-    key: !secret unifi_video_api
-    name: !secret unifi_video_camera_user
-    password: !secret unifi_video_camera_password
-    
-dyson:
-  username: !secret dyson_user
-  password: !secret dyson_password
-  language: DE
-  devices:
-    - device_id: !secret dyson_device_id # eg: Pure Cool Link device
-      device_ip: 192.168.0.47
-
-hue:
-  bridges:
-    - host: 192.168.0.13
-      allow_unreachable: true
-
-emulated_hue:
-  expose_by_default: false
-  exposed_domains:
-    - light
-    - switch
-
-media_player:
-  - platform: philips_2016
-    name: Philips TV
-    host: 192.168.0.15
-    mac: !secret philips_tv_mac
-    username: !secret philips_tv_user
-    password: !secret philips_tv_password    
-  - platform: alexa
-    email: !secret alexa_user
-    password: !secret alexa_password
-    url: "amazon.de"
-    exclude_devices:
-      - "Jan's Fire TV stick"
-      - "Kathrin's Fire TV stick"
-      - "Jan's Alexa Apps"
-      - "Kathrin's Alexa Apps"
-      - "this_device_2"
-      - "this_device"
-      - "This Device"
-      - "This Device 2"
-      - "Everywhere"
-
-light:
-  - platform: ambilights
-    name: TV Ambilight
-    host: 192.168.0.15
-    username: !secret philips_tv_user
-    password: !secret philips_tv_password    
 
 # Workday binary sensor
 binary_sensor:
@@ -205,72 +96,5 @@ binary_sensor:
     country: DE
     province: RP
    
-  - platform: template
-    sensors:
-      front_door:
-        friendly_name: Apartment Door
-        device_class: door
-        icon_template: >
-          {% if is_state('sensor.fibaro_apartment_door_access_control', '22') %}
-            mdi:door-open
-          {% else %}
-            mdi:door-closed
-          {% endif %}
-        value_template: >
-          {% if is_state('sensor.fibaro_apartment_door_access_control', '22') %}
-            true
-          {% elif is_state('sensor.fibaro_apartment_door_access_control', '23') %}
-            false
-          {% else %}
-            Error
-          {% endif %}    
-    
-input_boolean:
-  dark_mode:
-    name: Dark mode
-    initial: false
-  occupancy:
-    name: home_occupancy
-    initial: true
-
-input_select:
-  theme:
-    name: Theme
-    options:
-      - Default
-      - Dark
-      - OLED
-    initial: Default
-    icon: mdi:target
-
-homeconnect:
-  client_id: !secret homeconnect_id
-  client_secret: !secret homeconnect_secret
-
 system_health:
 
-panel_iframe:
-  observium:
-    title: 'Observium'
-    icon: mdi:monitor-multiple
-    url: !secret observium_url
-  configurator:
-    title: 'Configurator'
-    icon: mdi:wrench
-    url: !secret configurator_url
-  logviewer:
-    title: 'Log Viewer'
-    icon: mdi:history
-    url: !secret logviewer_url
-  sqlite:
-    title: 'SQLite'
-    icon: mdi:database
-    url: !secret sqlite_url
-  terminal:
-    title: 'Terminal'
-    icon: mdi:console
-    url: !secret terminal_url
-  mqtt:
-    title: 'MQTT'
-    icon: mdi:code-brackets
-    url: !secret mqtt_url
