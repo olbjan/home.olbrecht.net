@@ -1,0 +1,82 @@
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: !secret alarm_code
+    pending_time: 5
+    delay_time: 20
+    trigger_time: 4
+    disarmed:
+      trigger_time: 0
+    armed_away:
+      pending_time: 0
+      delay_time: 0
+    armed_home:
+      pending_time: 0
+      delay_time: 0
+    armed_night:
+      pending_time: 0
+      delay_time: 0
+
+input_text:
+  alarm_trigger:
+    name: Alarm Trigger
+    initial: ""
+    
+automation:
+  - alias: 'Alarm Triggers'
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.flur_motion_sensor
+      to: 'on'
+    condition:
+    - condition: template
+      value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'disarmed') }}"
+    action:
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.alarm_trigger
+        value: >
+          {% if states.input_text.alarm_trigger.state|length == 0 %}
+            {{ trigger.from_state.attributes.friendly_name }}
+          {% elif (states.input_text.alarm_trigger.state|length + trigger.from_state.attributes.friendly_name|length) < 100 %}
+            {{ states.input_text.alarm_trigger.state }}, {{ trigger.from_state.attributes.friendly_name }}
+          {% else %}
+            {{ states.input_text.alarm_trigger.state }}
+          {% endif %}
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.home_alarm
+  - alias: 'Alarm Triggered Notification'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'triggered'
+    action:
+#    - service: notify.notify
+#      data:
+#        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+#    - service: scene.turn_on
+#      entity_id: scene.lights_downstairs_bright
+# iOS Critical Notification for 2.0 Beta
+    - service: notify.ios_iphonexsolbrechtnet_beta
+      data:
+        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+        data:
+          push:
+            sound:
+              critical: 1
+              name: default
+              volume: 1.0 # 0.0 to 1.0
+  - alias: 'Alarm Disarmed Notification'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'disarmed'
+    action:
+    - service: notify.ios_jans_phone
+      data:
+        message: "Alarm disarmed (resetting trigger: {{ states.input_text.alarm_trigger.state }})"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.alarm_trigger
+        value: ''
+        
