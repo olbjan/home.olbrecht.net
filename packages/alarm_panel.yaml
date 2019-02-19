@@ -17,6 +17,8 @@ alarm_control_panel:
       pending_time: 0
       delay_time: 0
 
+# Automation based on community example by @RezzZ: https://community.home-assistant.io/t/manual-alarm-notification-trigger-variable/23154/11
+
 input_text:
   alarm_trigger:
     name: Alarm Trigger
