@@ -35,3 +35,10 @@ sensor:
         friendly_name: 'Total energy usage'
         unit_of_measurement: 'kWh'
 
+history_graph:  
+  gr1:
+    name: Total Energy Graph
+    entities:
+      - sensor.total_power_usage
+    hours_to_show: 24
+    refresh: 60

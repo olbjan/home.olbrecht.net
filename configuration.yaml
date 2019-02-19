@@ -79,7 +79,6 @@ logbook:
 group: !include groups.yaml
 automation: !include automations.yaml
 device_tracker: !include device_tracker.yaml
-history_graph: !include history_graphs.yaml
 script: !include scripts.yaml
 zone: !include zones.yaml
 map:
