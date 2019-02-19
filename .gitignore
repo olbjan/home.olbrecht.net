@@ -10,6 +10,7 @@
 !custom_components
 !www
 !*.jpg
+!*.png
 
 # Ignore folders.
 .storage
@@ -26,3 +27,4 @@ phue.conf
 zones.yaml
 jan_olbrecht.jpg
 kathrin_olbrecht.jpg
+marita_olbrecht.jpg
