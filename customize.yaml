@@ -1,3 +1,9 @@
+    person.jan:
+      friendly_name: Jan
+      entity_picture: /local/jan_olbrecht.jpg
+    person.kathrin:
+      friendly_name: Kathrin
+      entity_picture: /local/kathrin_olbrecht.jpg
     switch.readynas_2304:
       friendly_name: ReadyNAS 2304
       icon: mdi:server

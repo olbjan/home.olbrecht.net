@@ -23,6 +23,7 @@ frontend:
   #javascript_version: es5
 #  themes: !include themes.yaml
   
+default_config:
 system_log:
 
 # Enable zeroconf
@@ -61,9 +62,6 @@ updater:
 # Discover some devices automatically
 discovery:
 
-# Enable Person component
-person:
-
 # Allows you to issue voice commands from the frontend in enabled browsers
 #conversation:
 
@@ -75,6 +73,9 @@ recorder: !include recorder.yaml
 
 # View all events in a logbook
 logbook:
+
+# Enable Person component
+person: !include family.yaml
 
 group: !include groups.yaml
 
