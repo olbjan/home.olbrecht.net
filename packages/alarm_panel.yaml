@@ -30,6 +30,9 @@ automation:
     - platform: state
       entity_id: binary_sensor.flur_motion_sensor
       to: 'on'
+    - platform: state
+      entity_id: input_boolean.dark_mode
+      to: 'on'
     condition:
     - condition: template
       value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'disarmed') }}"
@@ -64,10 +67,23 @@ automation:
         message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:
           push:
+            category: "alarm"
             sound:
               critical: 1
               name: default
               volume: 1.0 # 0.0 to 1.0
+          action_data:
+            entity_id: light.test
+            my_custom_data: foo_bar
+    - service: notify.ios_iphonexsolbrechtnet_beta
+      data:
+        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+        data:
+          push:
+            category: "alarm"
+          action_data:
+            entity_id: light.test
+            my_custom_data: foo_bar
   - alias: 'Alarm Disarmed Notification'
     trigger:
     - platform: state

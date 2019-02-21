@@ -1,7 +1,24 @@
 # Enables Apple iOS Support
 ios:
-#  push:
-
+  push:
+    categories:
+      - name: Alarm
+        identifier: 'alarm'
+        actions:
+          - identifier: 'SOUND_ALARM'
+            title: 'Sound Alarm'
+            activationMode: 'background'
+            authenticationRequired: true
+            destructive: true
+            behavior: 'default'
+          - identifier: 'SILENCE_ALARM'
+            title: 'Silence Alarm'
+            activationMode: 'background'
+            authenticationRequired: true
+            destructive: false
+            behavior: 'textInput'
+            textInputButtonTitle: 'Silencio!'
+            textInputPlaceholder: 'Placeholder'
 script:
   request_location_update_jan:
     alias: Request Location Update Jan
@@ -24,4 +41,4 @@ automation:
   action:
   - data_template:
       message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
-    service: notify.ios_jans_phone
+    service: notify.ios_iphonexsolbrechtnet_beta

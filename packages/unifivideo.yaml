@@ -2,7 +2,7 @@ camera:
   - platform: uvc
     nvr: 192.168.0.11
     key: !secret unifi_video_api
-    name: !secret unifi_video_camera_user
+#    name: !secret unifi_video_camera_user
     password: !secret unifi_video_camera_password
     
 sensor:
@@ -21,7 +21,7 @@ automation:
     platform: state
     entity_id: sensor.latest_movement_recorded_id
   action:
-  - service: notify.ios_jans_phone
+  - service: notify.ios_iphonexsolbrechtnet_beta
     data_template:
       message: Motion detected at {{ now().strftime('%H:%M:%S') }}
       data:
