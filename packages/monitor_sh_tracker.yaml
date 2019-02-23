@@ -1,35 +1,57 @@
-sensor:
-# MQTT Bluetooth Presence detection
-  - platform: mqtt
-    state_topic: !secret mqtt_tracker_jan
-    value_template: '{{ value_json.confidence }}'
-    unit_of_measurement: '%'
-    name: 'mqtt_presence_jan_confidence'
-  - platform: mqtt
-    state_topic: !secret mqtt_tracker_kathrin
-    value_template: '{{ value_json.confidence }}'
-    unit_of_measurement: '%'
-    name: 'mqtt_presence_kathrin_confidence'
-  - platform: mqtt
-    state_topic: !secret mqtt_tracker_marita
-    value_template: '{{ value_json.confidence }}'
-    unit_of_measurement: '%'
-    name: 'mqtt_presence_marita_confidence'
-    
-# Mean sensor for family presence at home, '100.0' indicates everyone is at home
-  - platform: min_max
-    name: "Home Occupancy Confidence"
-    type: mean
-    round_digits: 0
-    entity_ids:
-      - sensor.mqtt_presence_jan_confidence
-      - sensor.mqtt_presence_kathrin_confidence
-      - sensor.mqtt_presence_marita_confidence
+# This package uses the monitor Bluetooth tracking solution by Andrew J Freyer
+# You can find it at https://github.com/andrewjfreyer/monitor
+# At my place it is running on a single Raspberry Pi Zero W
+# Departure Scans are triggered by a Fibaro Door Sensor covering the apartment
+# entry door.
+#
+# I have found other solutions to be less than optimal for my use case as I
+# usually exit the apartment and take the elevator to the basement. It thus
+# takes quite a while until any other device tracker can reliably and quickly
+# update status to not_home.
+#
+# With monitor I have < 30s latency between exiting the home.
+#
+# Set monitor.sh behavior_preferences to MQTT Device Tracker by adding option:
+# PREF_DEVICE_TRACKER_REPORT=true
 
-input_boolean:
-  occupancy:
-    name: home_occupancy
-    initial: true
+device_tracker:
+  - platform: mqtt
+    devices:
+      mqtt_jan: !secret mqtt_tracker_jan
+      mqtt_kathrin: !secret mqtt_tracker_kathrin
+      mqtt_marita: !secret mqtt_tracker_marita
+    
+#input_boolean:
+#  occupancy:
+#    name: home_occupancy
+#    initial: true
+
+binary_sensor:
+  - platform: 'bayesian'
+    prior: 0.75
+    name: 'Home Occupancy'
+    probability_threshold: 0.95
+    observations:
+      - entity_id: 'device_tracker.mqtt_jan'
+        prob_given_true: 0.99
+        prob_given_false: 0.10
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.mqtt_kathrin'
+        prob_given_true: 0.99
+        prob_given_false: 0.10
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.jans_phone'
+        prob_given_true: 0.80
+        prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.kathrins_phone'
+        prob_given_true: 0.80
+        prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'home'
 
 script:
   mqtt_depart:
@@ -82,44 +104,40 @@ automation:
     action:
     - entity_id: script.mqtt_depart
       service: script.turn_off
-  - alias: Occupancy - Someone is home
-    trigger:
-    - above: '10'
-      entity_id: sensor.home_occupancy_confidence
-      platform: numeric_state
-    condition: []
-    action:
-    - data:
-        entity_id: input_boolean.occupancy
-      service: homeassistant.turn_on
-  - alias: Rescan occupancy
+#  - alias: Occupancy - Someone is home
+#    trigger:
+#    - above: '10'
+#      entity_id: sensor.home_occupancy_confidence
+#      platform: numeric_state
+#    condition: []
+#    action:
+#    - data:
+#        entity_id: input_boolean.occupancy
+#      service: homeassistant.turn_on
+  - alias: Rescan MQTT on HA restart
     trigger:
     - event: start
       platform: homeassistant
-    condition:
-    - condition: state
-      entity_id: sensor.home_occupancy_confidence
-      state: unknown
     action:
     - data:
-        entity_id: script.mqtt_depart
+        entity_id: script.mqtt_restart
       service: script.turn_on
-  - alias: Occupancy - Noone is home
-    trigger:
-    - below: '10'
-      entity_id: sensor.home_occupancy_confidence
-      platform: numeric_state
-    condition: []
-    action:
-    - data:
-        entity_id: input_boolean.occupancy
-      service: homeassistant.turn_off
-  - alias: Exit Home Alert
-    trigger:
-    - below: '20'
-      entity_id: sensor.mqtt_presence_jan_confidence, sensor.mqtt_presence_kathrin_confidence
-      platform: numeric_state
-    action:
-    - data_template:
-        message: '{{ trigger.to_state.attributes.friendly_name }} left home.'
-      service: notify.notify
+#  - alias: Occupancy - Noone is home
+#    trigger:
+#    - below: '10'
+#      entity_id: sensor.home_occupancy_confidence
+#      platform: numeric_state
+#    condition: []
+#    action:
+#    - data:
+#        entity_id: input_boolean.occupancy
+#      service: homeassistant.turn_off
+#  - alias: Exit Home Alert
+#    trigger:
+#    - below: '20'
+#      entity_id: sensor.mqtt_presence_jan_confidence, sensor.mqtt_presence_kathrin_confidence
+#      platform: numeric_state
+#    action:
+#    - data_template:
+#        message: '{{ trigger.to_state.attributes.friendly_name }} left home.'
+#      service: notify.notify

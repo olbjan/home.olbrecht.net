@@ -4,9 +4,11 @@
     device_trackers:
       - device_tracker.jans_phone
       - device_tracker.iphonexsolbrechtnet_beta
+      - device_tracker.mqtt_jan
   - name: Kathrin
     id: kathrina3b0
     user_id: a3b063519bbc4e99bef379addc72cef9
     device_trackers:
       - device_tracker.kathrins_phone
+      - device_tracker.mqtt_kathrin
       

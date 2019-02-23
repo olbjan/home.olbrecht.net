@@ -62,28 +62,28 @@ automation:
 #    - service: scene.turn_on
 #      entity_id: scene.lights_downstairs_bright
 # iOS Critical Notification for 2.0 Beta
-    - service: notify.ios_iphonexsolbrechtnet_beta
+#    - service: notify.ios_iphonexsolbrechtnet_beta
+#      data:
+#        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+#        data:
+#          push:
+#            category: "alarm"
+#            sound:
+#              critical: 1
+#              name: default
+#              volume: 1.0 # 0.0 to 1.0
+#          action_data:
+#            entity_id: light.test
+#            my_custom_data: foo_bar
+    - service: notify.ios_jans_phone
       data:
-        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+        message: Motion detected in the Living Room
         data:
+          attachment:
+            content-type: jpeg
           push:
-            category: "alarm"
-            sound:
-              critical: 1
-              name: default
-              volume: 1.0 # 0.0 to 1.0
-          action_data:
-            entity_id: light.test
-            my_custom_data: foo_bar
-    - service: notify.ios_iphonexsolbrechtnet_beta
-      data:
-        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
-        data:
-          push:
-            category: "alarm"
-          action_data:
-            entity_id: light.test
-            my_custom_data: foo_bar
+            category: camera
+          entity_id: camera.uvc_g3_flex_living_room
   - alias: 'Alarm Disarmed Notification'
     trigger:
     - platform: state
