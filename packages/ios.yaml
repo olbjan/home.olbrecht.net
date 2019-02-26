@@ -44,13 +44,190 @@ script:
         message: request_location_update
       service: notify.ios_kathrins_phone
 
-#automation:
-#  alias: Catch iOS action notification
-#  trigger:
-#  - event_type: ios.action_fired
-#    platform: event
-#  action:
-#  - data_template:
-#      message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
-#    service: notify.ios_iphonexsolbrechtnet_beta
+###### The following from Sean on discord, so props to him!
+sensor:
 
+###### iOS APP PEDOMETER - STEP COUNTER ----------------------------------------
+
+  # This extracts the number_of_steps attribute which is just steps since last update, not a running tally. This won't be used in the frontend.
+  - platform: template
+    sensors:
+      ios_steps_walked_since_last_update:
+        friendly_name: 'Steps Walked Since Last Update'
+        unit_of_measurement: 'steps'
+        icon_template: mdi:walk
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.pedometer.number_of_steps}}"
+
+  # We feed the above sensor to statistics sensor in order to do calculations. This is not used in the frontend either.
+  - platform: statistics
+    entity_id: sensor.ios_steps_walked_since_last_update
+    name: iOS Steps Today Statistics #Total iOS Steps Today
+    max_age:
+      hours: 24
+
+  # THIS is what we use in the frontend, it reads the total number of steps from the statistics sensor and makes a running tally of the last 24 hours.
+  # To do: make it reset at midnight, if possible.
+  - platform: template
+    sensors:
+      ios_total_steps_walked_today:
+        friendly_name: 'Steps Walked Today'
+        unit_of_measurement: 'steps'
+        icon_template: mdi:walk
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.sensor.ios_steps_today_statistics_mean.attributes.total | round(0) }}"
+
+###### DISTANCE WALKED (WIP) ----------------------------------------
+
+  # Work in progress. Want to convert from meters to miles, and have a running tally like the steps solution
+  - platform: template
+    sensors:
+      ios_distance_walked_since_last_update:
+        friendly_name: 'Distance Walked Since Last Update'
+        unit_of_measurement: 'meters'
+        icon_template: mdi:walk
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.pedometer.distance}}"
+
+###### FLOORS CLIMBED UP/DOWN ----------------------------------------
+
+  - platform: template
+    sensors:
+      ios_pedometer_floors_ascended:
+        friendly_name: 'Floors Ascended'
+        icon_template: mdi:stairs
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.pedometer.floors_ascended}}"
+
+  - platform: template
+    sensors:
+      ios_pedometer_floors_descended:
+        friendly_name: 'Floors Descended'
+        icon_template: mdi:stairs
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.pedometer.floors_descended}}"
+
+###### CURRENT ACTIVITY ----------------------------------------
+
+  - platform: template
+    sensors:
+      ios_current_activity:
+        friendly_name: 'iOS Current Activity'
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type}}"
+        icon_template: >-
+          {% if states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Stationary" %}
+            mdi:sofa
+          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Walking" %}
+            mdi:walk
+          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Running" %}
+            mdi:run
+          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Automotive" %}
+            mdi:car
+          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Cycling" %}
+            mdi:bike
+          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Unknown" %}
+            mdi:help-circle
+          {% else %}
+            mdi:help-circle
+          {% endif %}
+
+###### CURRENT ADDRESS ----------------------------------------
+
+  # This provides the current address in a friendly style, for example "123 Flatbush Ave, Brooklyn, NY 11217"
+  - platform: template
+    sensors:
+      ios_current_address:
+        friendly_name: 'Location'
+        icon_template: mdi:map-marker-radius
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.name}}, {{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.locality}}, {{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.administrative_area}}, {{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.postal_code}}"
+        
+        
+
+###### iOS CONNECTION TYPE ----------------------------------------
+
+  # Are you on Wi-Fi or not... find out possible values so i can make an icon_template
+  - platform: template
+    sensors:
+      ios_connection_type:
+        friendly_name: 'Connection Type'
+        icon_template: mdi:wifi
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.connection.type}}"
+        
+  # Track the AP
+  - platform: template
+    sensors:
+      ios_connection_bssid:
+        friendly_name: 'Connected AP'
+        icon_template: mdi:wifi
+        entity_id: device_tracker.iphonexsolbrechtnet_beta
+        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.connection.bssid}}"
+
+  - platform: template
+    sensors:
+      indoor_location:
+        friendly_name: 'Indoor Location'
+        icon_template: mdi:home
+        entity_id: sensor.ios_connection_bssid
+        value_template:  >-
+          {% if is_state('sensor.ios_connection_bssid', '82:2a:a8:d4:cf:d6') %}
+            North East Offices
+          {% elif  is_state('sensor.ios_connection_bssid', '92:2a:a8:d5:cf:d6') %}
+            North East Offices
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:d4:cd:ba') %}
+            Dev Office
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:d5:cd:ba') %}
+            Dev Office
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:d4:c6:6b') %}
+            South West Offices
+          {% elif  is_state('sensor.ios_connection_bssid', '92:2a:a8:d5:c6:6b') %}
+            South West Offices
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:d4:cd:87') %}
+            Meeting Room
+          {% elif  is_state('sensor.ios_connection_bssid', '92:2a:a8:d5:cd:87') %}
+            Meeting Room
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:d4:c5:ed') %}
+            North West Offices
+          {% elif  is_state('sensor.ios_connection_bssid', '92:2a:a8:d5:c5:ed') %}
+            North West Offices
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:5a:1d:2b') %}
+            Living Room
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:5b:1d:2b') %}
+            Living Room
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:9a:71:c8') %}
+            Home Office
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:9b:71:c8') %}
+            Home Office
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:9a:72:59') %}
+            Master Bedroom
+          {% elif  is_state('sensor.ios_connection_bssid', '82:2a:a8:9b:72:59') %}
+            Master Bedroom
+          {% elif  is_state('sensor.ios_connection_bssid', '04:18:d6:a0:bc:02') %}
+            Marita's Living Room
+          {% elif  is_state('sensor.ios_connection_bssid', '04:18:d6:a0:bc:03') %}
+            Marita's Living Room
+          {% elif  is_state('sensor.ios_connection_bssid', '04:18:d6:a0:ba:1f') %}
+            Marita's Floor
+          {% elif  is_state('sensor.ios_connection_bssid', '04:18:d6:a0:ba:20') %}
+            Marita's Floor
+          {% else %}
+            Unknown
+          {% endif %}
+        
+      
+        
+# SENSORS FOR DISPLAYING IN LOVELACE
+
+# - type: entities
+#   show_header_toggle: false
+#   entities:
+#     - sensor.ios_total_steps_walked_today
+#     - sensor.ios_distance_walked_since_last_update
+#     - sensor.ios_pedometer_floors_ascended
+#     - sensor.ios_pedometer_floors_descended
+#     - sensor.ios_current_activity
+#     - sensor.ios_current_address
+#     - sensor.ios_connection_type      
+#     - sensor.ios_connection_bssid

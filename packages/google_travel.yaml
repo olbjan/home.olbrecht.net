@@ -14,7 +14,7 @@ sensor:
     scan_interval: 86400
 
 # Route to work
-# Used to determine if Google is recommending an alternate route because of traffic indcidents
+# Used to determine if Google is recommending an alternate route because of traffic incidents
   - platform: template
     sensors:
       route_to_work_distance:
