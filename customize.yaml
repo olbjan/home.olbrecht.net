@@ -17,12 +17,12 @@
       entity_picture: /local/kathrin_olbrecht.jpg
     switch.fibaro_office_switch_1:
       friendly_name: Büro
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Büro"
       emulated_hue_hidden: false
     switch.fibaro_kids_room_switch_1:
       friendly_name: Kinderzimmer
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Kinderzimmer"
       emulated_hue_hidden: false
     switch.fibaro_balcony_switch_1:
@@ -32,32 +32,32 @@
       emulated_hue_hidden: false
     switch.fibaro_living_room_1_switch_1:
       friendly_name: Kochen
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Kochen"
       emulated_hue_hidden: false
     switch.fibaro_living_room_1_switch_2:
       friendly_name: Couch
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Couch"
       emulated_hue_hidden: false
     switch.fibaro_living_room_2_switch_1:
       friendly_name: Essen
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Essen"
       emulated_hue_hidden: false
     switch.fibaro_floor_switch_1:
       friendly_name: Flur
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Flur"
       emulated_hue_hidden: false
     switch.fibaro_storage_switch_1:
       friendly_name: Abstellraum
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Abstellraum"
       emulated_hue_hidden: false
     light.fibaro_master_bedroom_level_1:
       friendly_name: Schlafzimmer
-      icon: mdi:lightbulb
+      icon: mdi:ceiling-light
       emulated_hue_name: "Schlafzimmer"
       emulated_hue_hidden: false
     light.fibaro_master_bedroom_level_2:
@@ -80,10 +80,12 @@
       friendly_name: Schlafzimmer Bett
       emulated_hue_name: "Bett"
       emulated_hue_hidden: true
+      icon: mdi:wall-sconce-variant
     light.schuhschrank:
       friendly_name: Flur Schuhschrank
       emulated_hue_name: "Schuhschrank"
       emulated_hue_hidden: true
+      icon: mdi:wall-sconce-variant
     light.wohnzimmer:
       friendly_name: Wohnzimmer
       emulated_hue_name: "Wohnzimmer"
@@ -92,10 +94,22 @@
       friendly_name: Wohnzimmer Hugo
       emulated_hue_name: "Hugo"
       emulated_hue_hidden: true
+      icon: mdi:wall-sconce-variant
     light.hue_bloom:
       friendly_name: Büro Hue Bloom
       emulated_hue_name: "Hue Bloom"
       emulated_hue_hidden: true
+      icon: mdi:wall-sconce-variant
+    light.kitchen_fridge:
+      friendly_name: Küche Kühlschrank
+      emulated_hue_name: "Küche Kühlschrank"
+      emulated_hue_hidden: true
+      icon: mdi:track-light
+    light.kitchen_shelf:
+      friendly_name: Küche Oberschrank
+      emulated_hue_name: "Küche Oberschrank"
+      emulated_hue_hidden: true
+      icon: mdi:track-light
     fan.dyson_pure:
       friendly_name: Dyson Pure Cool Link Tower
       icon: mdi:fan

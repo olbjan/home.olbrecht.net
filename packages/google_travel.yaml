@@ -24,7 +24,7 @@ sensor:
 
 
 automation:
-  - alias: Exit Work Alert
+  - alias: 'Notification: Exit Work Alert'
     trigger:
     - platform: zone
       zone: zone.work
@@ -45,7 +45,7 @@ automation:
     - service: notify.alexa
       data_template:
         message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
-  - alias: Drive to work
+  - alias: 'Notification: Travel estimate to work'
     trigger:
     - at: 07:45:00
       platform: time
@@ -60,7 +60,7 @@ automation:
         message: The drive to work will take approximately {{ states.sensor.time_to_work.state
           }} minutes.
       service: notify.ios_jans_phone
-  - alias: Commute - Update morning commute sensor
+  - alias: 'Update morning commute sensor'
     trigger:
     - minutes: /5
       seconds: 0
@@ -76,7 +76,7 @@ automation:
     - data:
         entity_id: sensor.time_to_work
       service: sensor.google_travel_sensor_update
-  - alias: Alert on traffic jam
+  - alias: 'Notification: Alert on traffic jam to work'
     trigger:
     - below: '52'
       entity_id: sensor.route_to_work_distance

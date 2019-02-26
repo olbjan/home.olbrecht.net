@@ -3,35 +3,33 @@ ios:
   push:
     categories:
       - name: Alarm
-        identifier: 'alarm'
+        identifier: 'ALARM'
         actions:
-          - identifier: 'SOUND_ALARM'
-            title: 'Sound Alarm'
+          - identifier: 'DISABLE_ALARM'
+            title: 'Disable Alarm'
             activationMode: 'background'
             authenticationRequired: true
             destructive: true
             behavior: 'default'
-          - identifier: 'SILENCE_ALARM'
-            title: 'Silence Alarm'
+          - identifier: 'IGNORE_ALARM'
+            title: 'Ignore Alarm'
             activationMode: 'background'
-            authenticationRequired: true
+            authenticationRequired: false
             destructive: false
-            behavior: 'textInput'
-            textInputButtonTitle: 'Silencio!'
-            textInputPlaceholder: 'Placeholder'
+            behavior: 'default'
       - name: Camera With Actions
-        identifier: 'camera'
+        identifier: 'CAMERA'
         actions:
-          - identifier: 'OPEN_COVER'
-            title: 'Open Cover'
-            activationMode: 'background'
-            authenticationRequired: true
-            destructive: no
-          - identifier: 'CLOSE_COVER'
-            title: 'Close Cover'
+          - identifier: 'DISABLE_ALARM'
+            title: 'Disable Alarm'
             activationMode: 'background'
             authenticationRequired: true
             destructive: true
+          - identifier: 'IGNORE_ALARM'
+            title: 'Ignore Alarm'
+            activationMode: 'background'
+            authenticationRequired: false
+            destructive: false
 script:
   request_location_update_jan:
     alias: Request Location Update Jan
@@ -46,12 +44,13 @@ script:
         message: request_location_update
       service: notify.ios_kathrins_phone
 
-automation:
-  alias: Catch iOS action notification
-  trigger:
-  - event_type: ios.action_fired
-    platform: event
-  action:
-  - data_template:
-      message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
-    service: notify.ios_iphonexsolbrechtnet_beta
+#automation:
+#  alias: Catch iOS action notification
+#  trigger:
+#  - event_type: ios.action_fired
+#    platform: event
+#  action:
+#  - data_template:
+#      message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
+#    service: notify.ios_iphonexsolbrechtnet_beta
+

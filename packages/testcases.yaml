@@ -1,0 +1,92 @@
+input_boolean:
+  test_alert:
+    name: Test Alert
+    initial: false
+  test_critical_notification:
+    name: Test Critical Notification
+    initial: false
+  test_camera_notification:
+    name: Test Camera Notification
+    initial: false
+
+
+automation:
+  - alias: Catch iOS action notification
+    trigger:
+    - event_type: ios.action_fired
+      platform: event
+    action:
+    - data_template:
+        message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
+      service: notify.ios_iphonexsolbrechtnet_beta
+  - alias: 'Test Alarm Triggers'
+    trigger:
+    - platform: state
+      entity_id: input_boolean.test_alert
+      to: 'on'
+    condition:
+    - condition: template
+      value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'disarmed') }}"
+    action:
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.alarm_trigger
+        value: >
+          {% if states.input_text.alarm_trigger.state|length == 0 %}
+            {{ trigger.from_state.attributes.friendly_name }}
+          {% elif (states.input_text.alarm_trigger.state|length + trigger.from_state.attributes.friendly_name|length) < 100 %}
+            {{ states.input_text.alarm_trigger.state }}, {{ trigger.from_state.attributes.friendly_name }}
+          {% else %}
+            {{ states.input_text.alarm_trigger.state }}
+          {% endif %}
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.home_alarm
+
+# iOS Critical Notification Test
+  - alias: 'Test: iOS Critical Notification'
+    trigger:
+    - platform: state
+      entity_id: input_boolean.test_critical_notification
+      to: 'on'
+    action:
+    - service: notify.ios_iphonexsolbrechtnet_beta
+      data:
+        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+        data:
+          push:
+            category: "alarm"
+            sound:
+              critical: 1
+              name: default
+              volume: 1.0 # 0.0 to 1.0
+          action_data:
+            entity_id: light.test
+            my_custom_data: foo_bar
+
+# iOS Camera Attachment Test
+  - alias: 'Test: iOS Camera Attachment Notification'
+    trigger:
+    - platform: state
+      entity_id: input_boolean.test_camera_notification
+      to: 'on'
+    action:
+    - service: notify.ios_iphonexsolbrechtnet_beta
+      data:
+        message: Motion detected in the Living Room
+        data:
+          attachment:
+            content-type: jpeg
+          push:
+            category: camera
+          entity_id: camera.uvc_g3_flex_living_room
+    - service: notify.ios_jans_phone
+      data:
+        message: Motion detected in the Living Room
+        data:
+          attachment:
+            content-type: jpeg
+          push:
+            category: camera
+          entity_id: camera.uvc_g3_flex_living_room
+
+      

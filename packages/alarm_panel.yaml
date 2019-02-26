@@ -30,9 +30,6 @@ automation:
     - platform: state
       entity_id: binary_sensor.flur_motion_sensor
       to: 'on'
-    - platform: state
-      entity_id: input_boolean.dark_mode
-      to: 'on'
     condition:
     - condition: template
       value_template: "{{ not is_state('alarm_control_panel.home_alarm', 'disarmed') }}"
@@ -56,11 +53,6 @@ automation:
       entity_id: alarm_control_panel.home_alarm
       to: 'triggered'
     action:
-#    - service: notify.notify
-#      data:
-#        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
-#    - service: scene.turn_on
-#      entity_id: scene.lights_downstairs_bright
 # iOS Critical Notification for 2.0 Beta
 #    - service: notify.ios_iphonexsolbrechtnet_beta
 #      data:

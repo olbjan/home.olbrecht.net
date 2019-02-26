@@ -88,7 +88,7 @@ script:
       service: mqtt.publish
   
 automation:
-  - alias: trigger depart scan
+  - alias: 'Depart Scan: Start when front door closes'
     trigger:
     - entity_id: sensor.fibaro_apartment_door_access_control
       platform: numeric_state
@@ -96,7 +96,7 @@ automation:
     action:
     - entity_id: script.mqtt_depart
       service: script.turn_on
-  - alias: trigger depart scan cancel
+  - alias: 'Depart Scan: Cancel when front door opens'
     trigger:
     - entity_id: sensor.fibaro_apartment_door_access_control
       platform: numeric_state
@@ -104,17 +104,7 @@ automation:
     action:
     - entity_id: script.mqtt_depart
       service: script.turn_off
-#  - alias: Occupancy - Someone is home
-#    trigger:
-#    - above: '10'
-#      entity_id: sensor.home_occupancy_confidence
-#      platform: numeric_state
-#    condition: []
-#    action:
-#    - data:
-#        entity_id: input_boolean.occupancy
-#      service: homeassistant.turn_on
-  - alias: Rescan MQTT on HA restart
+  - alias: Restart MQTT Monitor on HA restart
     trigger:
     - event: start
       platform: homeassistant
@@ -122,22 +112,3 @@ automation:
     - data:
         entity_id: script.mqtt_restart
       service: script.turn_on
-#  - alias: Occupancy - Noone is home
-#    trigger:
-#    - below: '10'
-#      entity_id: sensor.home_occupancy_confidence
-#      platform: numeric_state
-#    condition: []
-#    action:
-#    - data:
-#        entity_id: input_boolean.occupancy
-#      service: homeassistant.turn_off
-#  - alias: Exit Home Alert
-#    trigger:
-#    - below: '20'
-#      entity_id: sensor.mqtt_presence_jan_confidence, sensor.mqtt_presence_kathrin_confidence
-#      platform: numeric_state
-#    action:
-#    - data_template:
-#        message: '{{ trigger.to_state.attributes.friendly_name }} left home.'
-#      service: notify.notify
