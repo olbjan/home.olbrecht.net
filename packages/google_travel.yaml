@@ -33,7 +33,7 @@ automation:
     action:
     - data:
         entity_id: sensor.jan_to_home
-      service: sensor.google_travel_sensor_update
+      service: homeassistant.update_entity
     - service: notify.ios_kathrins_phone
       data_template:
         message: Jan hat die Zone Arbeit verlassen. Bei aktuellem Verkehr braucht er
@@ -75,7 +75,7 @@ automation:
     action:
     - data:
         entity_id: sensor.time_to_work
-      service: sensor.google_travel_sensor_update
+      service: homeassistant.update_entity
   - alias: 'Notification: Alert on traffic jam to work'
     trigger:
     - below: '52'
