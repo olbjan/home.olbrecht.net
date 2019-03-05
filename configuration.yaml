@@ -13,6 +13,8 @@ homeassistant:
   customize: !include customize.yaml    
   # Add an entry for each entity that you want to overwrite.
   packages: !include_dir_named packages
+  auth_providers:
+   - type: homeassistant  
 # Show links to resources in log and frontend
 #introduction:
 
@@ -44,9 +46,6 @@ http:
   # SSL Configuration for Let'sEncrypt certs
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-  trusted_networks:
-    - 127.0.0.1
-    - 192.168.0.0/24
   ip_ban_enabled: True
   login_attempts_threshold: 5
 
