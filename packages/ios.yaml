@@ -231,3 +231,55 @@ sensor:
 #     - sensor.ios_current_address
 #     - sensor.ios_connection_type      
 #     - sensor.ios_connection_bssid
+
+#######  Starting here are the automations to catch iOS actionable notifications and do something with them
+
+
+automation:
+  - alias: 'iOS Action: Dismiss Alarm'
+    trigger:
+    - event_data:
+        actionName: IGNORE_ALARM
+      event_type: ios.notification_action_fired
+      platform: event
+    action:
+    - data:
+        message: Alarm dismissed from Phone notification
+        title: Alarm ignored
+      service: persistent_notification.create
+  - alias: 'iOS Action: Disable Alarm'
+    trigger:
+    - event_data:
+        actionName: DISABLE_ALARM
+      event_type: ios.notification_action_fired
+      platform: event
+    action:
+    - data:
+        code: !secret alarm_code
+        entity_id: alarm_control_panel.home_alarm
+      service: alarm_control_panel.alarm_disarm
+  - alias: 'iOS Widget: Arm Alarm'
+    trigger:
+    - event_data:
+        actionName: Arm Alarm
+      event_type: ios.action_fired
+      platform: event
+    condition: []
+    action:
+    - data:
+        code: 1234
+        entity_id: alarm_control_panel.home_alarm
+      service: alarm_control_panel.alarm_arm_away
+  - alias: 'iOS Widget: Disarm Alarm'
+    trigger:
+    - event_data:
+        actionName: Disarm Alarm
+      event_type: ios.action_fired
+      platform: event
+    condition: []
+    action:
+    - data:
+        code: !secret alarm_code
+        entity_id: alarm_control_panel.home_alarm
+      service: alarm_control_panel.alarm_disarm
+  
