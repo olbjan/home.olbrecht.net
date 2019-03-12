@@ -44,42 +44,38 @@ script:
         message: request_location_update
       service: notify.ios_kathrins_phone
 
-###### The following from Sean on discord, so props to him!
+###### The following has been stolen and compiled with the help of people in the Home Assistant Discord channel, especially @7even, @Ludeeus and @Sean!
 sensor:
 
 ###### iOS APP PEDOMETER - STEP COUNTER ----------------------------------------
-
-  # This extracts the number_of_steps attribute which is just steps since last update, not a running tally. This won't be used in the frontend.
+  # Let's take the step counter data from the iOS device tracker payload
   - platform: template
     sensors:
-      ios_steps_walked_since_last_update:
-        friendly_name: 'Steps Walked Since Last Update'
-        unit_of_measurement: 'steps'
+      ios_steps_walked_today:
+        friendly_name: 'Step Counter'
+        unit_of_measurement: 'Steps'
         icon_template: mdi:walk
         entity_id: device_tracker.iphonexsolbrechtnet_beta
-        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.pedometer.number_of_steps}}"
+        value_template: "{% set ped = state_attr('device_tracker.iphonexsolbrechtnet_beta', 'pedometer') %}{{ ped['number_of_steps'] | default(0) }}"
 
-  # We feed the above sensor to statistics sensor in order to do calculations. This is not used in the frontend either.
+  # We need a statistics sensor to add up all the pedometer data
   - platform: statistics
-    entity_id: sensor.ios_steps_walked_since_last_update
+    entity_id: sensor.ios_steps_walked_today
     name: iOS Steps Today Statistics #Total iOS Steps Today
     max_age:
       hours: 24
 
-  # THIS is what we use in the frontend, it reads the total number of steps from the statistics sensor and makes a running tally of the last 24 hours.
-  # To do: make it reset at midnight, if possible.
+  # Let's take the statistics sensor and get the total number of steps.
   - platform: template
     sensors:
       ios_total_steps_walked_today:
         friendly_name: 'Steps Walked Today'
-        unit_of_measurement: 'steps'
+        unit_of_measurement: 'Steps'
         icon_template: mdi:walk
         entity_id: device_tracker.iphonexsolbrechtnet_beta
-        value_template: "{{states.sensor.ios_steps_today_statistics_mean.attributes.total | round(0) }}"
+        value_template: "{{ state_attr('sensor.ios_steps_today_statistics_mean', 'total') | round(0) }}"
 
-###### DISTANCE WALKED (WIP) ----------------------------------------
-
-  # Work in progress. Want to convert from meters to miles, and have a running tally like the steps solution
+  # This takes the pedometer data and converts it to something more meaningful and metric :-)
   - platform: template
     sensors:
       ios_distance_walked_since_last_update:
@@ -87,7 +83,7 @@ sensor:
         unit_of_measurement: 'meters'
         icon_template: mdi:walk
         entity_id: device_tracker.iphonexsolbrechtnet_beta
-        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.pedometer.distance}}"
+        value_template: "{% set ped = state_attr('device_tracker.iphonexsolbrechtnet_beta', 'pedometer') %}{{ ped['distance'] | default(0) }}"
 
 ###### FLOORS CLIMBED UP/DOWN ----------------------------------------
 
@@ -114,23 +110,29 @@ sensor:
       ios_current_activity:
         friendly_name: 'iOS Current Activity'
         entity_id: device_tracker.iphonexsolbrechtnet_beta
-        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type}}"
+        value_template: >-
+          {% set act = state_attr('device_tracker.iphonexsolbrechtnet_beta', 'activity') %}
+          {% set map = {
+          "Stationary": "Stationary",
+          "Walking": "Walking",
+          "Running": "Running",
+          "Automotive": "Automotive",
+          "Cycling": "Cycling",
+          "Unknown": "Unknown"
+          } %}
+          {{ map[act['types'][0]] if act['types'] else map['Unknown'] }}
         icon_template: >-
-          {% if states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Stationary" %}
-            mdi:sofa
-          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Walking" %}
-            mdi:walk
-          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Running" %}
-            mdi:run
-          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Automotive" %}
-            mdi:car
-          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Cycling" %}
-            mdi:bike
-          {% elif states.device_tracker.iphonexsolbrechtnet_beta.attributes.activity.type == "Unknown" %}
-            mdi:help-circle
-          {% else %}
-            mdi:help-circle
-          {% endif %}
+          {% set act = state_attr('device_tracker.iphonexsolbrechtnet_beta', 'activity') %}
+          {% set map = {
+          "Stationary": "mdi:sofa",
+          "Walking": "mdi:walk",
+          "Running": "mdi:run",
+          "Automotive": "mdi:car",
+          "Cycling": "mdi:bike",
+          "Unknown": "mdi:help-circle"
+          } %}
+          {{ map[act['types'][0]] if act['types'] else map['Unknown'] }}
+
 
 ###### CURRENT ADDRESS ----------------------------------------
 
@@ -141,21 +143,21 @@ sensor:
         friendly_name: 'Location'
         icon_template: mdi:map-marker-radius
         entity_id: device_tracker.iphonexsolbrechtnet_beta
-        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.name}}, {{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.locality}}, {{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.administrative_area}}, {{states.device_tracker.iphonexsolbrechtnet_beta.attributes.location.postal_code}}"
+        value_template: "{% set loc = state_attr('device_tracker.iphonexsolbrechtnet_beta', 'location') %}{{ loc ['name'] }}, {{ loc ['locality'] }}, {{ loc ['postal_code'] }}, {{ loc ['administrative_area'] }}"
         
         
 
 ###### iOS CONNECTION TYPE ----------------------------------------
 
-  # Are you on Wi-Fi or not... find out possible values so i can make an icon_template
+  # Are you on Wi-Fi or Cellular network?
   - platform: template
     sensors:
       ios_connection_type:
         friendly_name: 'Connection Type'
         icon_template: mdi:wifi
         entity_id: device_tracker.iphonexsolbrechtnet_beta
-        value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.connection.type}}"
-        
+        value_template: "{% set conn = state_attr('device_tracker.iphonexsolbrechtnet_beta', 'connection') %}{{ '4G' if conn['type'] == 'Cellular' else 'Wi-Fi' }}"        
+
   # Track the AP
   - platform: template
     sensors:
@@ -165,6 +167,9 @@ sensor:
         entity_id: device_tracker.iphonexsolbrechtnet_beta
         value_template: "{{states.device_tracker.iphonexsolbrechtnet_beta.attributes.connection.bssid}}"
 
+  # This converts known access point BSSID MAC addresses to rough indoor locations.
+  # Note that we have multiple BSSIDs for every location, as AP radios have different
+  # BSSIDs for 2.4 and 5GHz radios.
   - platform: template
     sensors:
       indoor_location:
@@ -223,6 +228,8 @@ sensor:
 # - type: entities
 #   show_header_toggle: false
 #   entities:
+#     - sensor.ios_steps_walked_today
+#     - sensor.ios_steps_today_statistics
 #     - sensor.ios_total_steps_walked_today
 #     - sensor.ios_distance_walked_since_last_update
 #     - sensor.ios_pedometer_floors_ascended
