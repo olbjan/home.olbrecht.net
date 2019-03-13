@@ -10,5 +10,5 @@ custom_updater:
     - https://raw.githubusercontent.com/atomic7777/atomic_calendar/master/tracker.json
   component_urls:
     - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
-    - https://raw.githubusercontent.com/keatontaylor/custom_components/master/custom_components.json
+    - https://raw.githubusercontent.com/keatontaylor/alexa_media_player/master/custom_components.json
     

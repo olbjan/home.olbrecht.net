@@ -1,0 +1,27 @@
+##### Latest HA installed version
+sensor:
+  - platform: version
+    name: HA Installed Version
+    scan_interval: 86400
+
+# Makes a backup of hassio every Sunday at 3:00 am so that I can store it on my NAS.
+#
+automation:
+  - alias: System - Make weekly Hassio backup
+    initial_state: true
+    trigger:
+      - platform: time
+        at: '03:00:00'
+    condition:
+      - condition: time
+        weekday:
+          - sun
+    action:
+      - service: hassio.snapshot_full
+        data_template:
+          name: Backup {{ now().strftime('%Y-%m-%d') }} running HA version {{ states('sensor.ha_installed_version') }}
+      - service: notify.ios_jans_phone
+        data_template:
+          title: Hass.io Backup!
+          message: >-
+            'Snapshot taken: Backup {{ now().strftime('%Y-%m-%d') }} running HA version {{ states('sensor.ha_installed_version') }}'

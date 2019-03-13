@@ -42,9 +42,12 @@ automation:
       data_template:
         message: Jan left work. The drive home will take approximately {{ states.sensor.jan_to_home.state
           }} minutes.
-    - service: notify.alexa
+    - service: notify.alexa_media
       data_template:
         message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+        data:
+          type: tts
+        target: media_player.sonos_beam
   - alias: 'Notification: Travel estimate to work'
     trigger:
     - at: 07:45:00

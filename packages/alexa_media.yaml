@@ -14,13 +14,18 @@ alexa_media:
         - "This Device 2"
         - "Everywhere"
 
+# Depracated in alexa_media component version 1.20
+#notify:
+#  - platform: rest
+#    name: alexa
+#    resource: !secret notify_alexa_api
+#    method: POST_JSON
+#    data:
+#      entity_id: 'media_player.sonos_beam'
+#    header:
+#      x-ha-access: !secret http_password
+#      content-type: 'application/json'
+
 notify:
-  - platform: rest
-    name: alexa
-    resource: !secret notify_alexa_api
-    method: POST_JSON
-    data:
-      entity_id: 'media_player.sonos_beam'
-    header:
-      x-ha-access: !secret http_password
-      content-type: 'application/json'
+  - platform: alexa_media
+    name: alexa_media
