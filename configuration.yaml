@@ -40,7 +40,7 @@ cloud:
   
 http:
   # Uncomment this to add a password (recommended!)
-  api_password: !secret http_password
+  # api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
   # SSL Configuration for Let'sEncrypt certs

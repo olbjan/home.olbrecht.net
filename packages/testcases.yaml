@@ -12,6 +12,7 @@ input_boolean:
 
 automation:
   - alias: Catch iOS action notification
+    initial_state: 'true'
     trigger:
     - event_type: ios.action_fired
       platform: event
@@ -20,6 +21,7 @@ automation:
         message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
       service: notify.ios_iphonexsolbrechtnet_beta
   - alias: 'Test Alarm Triggers'
+    initial_state: 'true'
     trigger:
     - platform: state
       entity_id: input_boolean.test_alert
@@ -44,6 +46,7 @@ automation:
 
 # iOS Critical Notification Test
   - alias: 'Test: iOS Critical Notification'
+    initial_state: 'true'
     trigger:
     - platform: state
       entity_id: input_boolean.test_critical_notification
@@ -65,6 +68,7 @@ automation:
 
 # iOS Camera Attachment Test
   - alias: 'Test: iOS Camera Attachment Notification'
+    initial_state: 'true'
     trigger:
     - platform: state
       entity_id: input_boolean.test_camera_notification
@@ -75,10 +79,10 @@ automation:
         message: Motion detected in the Living Room
         data:
           attachment:
-            content-type: jpeg
+            content-type: MPEG4
           push:
             category: camera
-          entity_id: camera.uvc_g3_flex_living_room
+          entity_id: camera.ffmpeg
     - service: notify.ios_jans_phone
       data:
         message: Motion detected in the Living Room

@@ -2,7 +2,6 @@ camera:
   - platform: uvc
     nvr: 192.168.0.11
     key: !secret unifi_video_api
-#    name: !secret unifi_video_camera_user
     password: !secret unifi_video_camera_password
     
 sensor:
@@ -17,6 +16,7 @@ sensor:
 
 automation:
 - alias: Unifi Video - Notify on motion with attachment
+  initial_state: 'false'
   trigger:
     platform: state
     entity_id: sensor.latest_movement_recorded_id

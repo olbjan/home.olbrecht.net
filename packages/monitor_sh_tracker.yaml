@@ -89,6 +89,7 @@ script:
   
 automation:
   - alias: 'Depart Scan: Start when front door closes'
+    initial_state: 'true'
     trigger:
     - entity_id: sensor.fibaro_apartment_door_access_control
       platform: numeric_state
@@ -97,6 +98,7 @@ automation:
     - entity_id: script.mqtt_depart
       service: script.turn_on
   - alias: 'Depart Scan: Cancel when front door opens'
+    initial_state: 'true'
     trigger:
     - entity_id: sensor.fibaro_apartment_door_access_control
       platform: numeric_state
@@ -105,6 +107,7 @@ automation:
     - entity_id: script.mqtt_depart
       service: script.turn_off
   - alias: Restart MQTT Monitor on HA restart
+    initial_state: 'true'
     trigger:
     - event: start
       platform: homeassistant

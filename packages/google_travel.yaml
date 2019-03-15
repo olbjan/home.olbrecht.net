@@ -25,6 +25,7 @@ sensor:
 
 automation:
   - alias: 'Notification: Exit Work Alert'
+    initial_state: 'true'
     trigger:
     - platform: zone
       zone: zone.work
@@ -49,6 +50,7 @@ automation:
           type: tts
         target: media_player.sonos_beam
   - alias: 'Notification: Travel estimate to work'
+    initial_state: 'true'
     trigger:
     - at: 07:45:00
       platform: time
@@ -64,6 +66,7 @@ automation:
           }} minutes.
       service: notify.ios_jans_phone
   - alias: 'Update morning commute sensor'
+    initial_state: 'true'
     trigger:
     - minutes: /5
       seconds: 0
@@ -80,6 +83,7 @@ automation:
         entity_id: sensor.time_to_work
       service: homeassistant.update_entity
   - alias: 'Notification: Alert on traffic jam to work'
+    initial_state: 'true'
     trigger:
     - below: '52'
       entity_id: sensor.route_to_work_distance

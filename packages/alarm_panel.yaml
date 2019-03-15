@@ -26,6 +26,7 @@ input_text:
     
 automation:
   - alias: 'Alarm Triggers'
+    initial_state: 'true'
     trigger:
     - platform: state
       entity_id: binary_sensor.flur_motion_sensor
@@ -48,6 +49,7 @@ automation:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
   - alias: 'Alarm Triggered Notification'
+    initial_state: 'true'
     trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
@@ -77,6 +79,7 @@ automation:
             category: camera
           entity_id: camera.uvc_g3_flex_living_room
   - alias: 'Alarm Disarmed Notification'
+    initial_state: 'true'
     trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm

@@ -10,6 +10,7 @@ input_select:
 
 automation:
   - alias: 'Themes: Enable Slate Theme'
+    initial_state: 'true'
     trigger:
     - entity_id: input_select.theme
       platform: state
@@ -20,6 +21,7 @@ automation:
         name: slate
       service: frontend.set_theme
   - alias: 'Themes: Enable Default Theme'
+    initial_state: 'true'
     trigger:
     - entity_id: input_select.theme
       platform: state
@@ -30,6 +32,7 @@ automation:
         name: default
       service: frontend.set_theme
   - alias: 'Themes: Enable OLED Theme'
+    initial_state: 'true'
     trigger:
     - entity_id: input_select.theme
       platform: state
