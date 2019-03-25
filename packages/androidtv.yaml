@@ -1,4 +1,5 @@
-# Package to add the Fire TV stick to Home Assistant. Note that this requires the ADB add-on.
+# Package to add the Fire TV stick to Home Assistant. Note that this requires 
+# the ADB - Android Debug Bridge hass.io add-on.
 
 media_player:
   - platform: androidtv
@@ -7,5 +8,5 @@ media_player:
     host: 192.168.0.26
     adb_server_ip: localhost
     adb_server_port: 5037
-    get_sources: true
+    get_sources: false
     

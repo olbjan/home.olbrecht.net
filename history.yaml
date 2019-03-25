@@ -3,7 +3,6 @@
     entities:
       - binary_sensor.front_door
       - sensor.fibaro_apartment_door_temperature
-#      - sensor.thermofloor_as_heatit_thermostat_tf_033_internal_sensor
       - device_tracker.jans_phone
       - sensor.fibaro_balcony_power
       - sensor.fibaro_floor_power

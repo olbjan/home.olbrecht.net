@@ -2,9 +2,7 @@
   purge_keep_days: 10
   include:
     entities:
-#      - device_tracker.jans_phone
       - binary_sensor.front_door
-#      - sensor.thermofloor_as_heatit_thermostat_tf_033_internal_sensor
       - sensor.total_power_usage 
       - sensor.total_energy 
   exclude:

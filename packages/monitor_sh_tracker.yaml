@@ -21,10 +21,8 @@ device_tracker:
       mqtt_kathrin: !secret mqtt_tracker_kathrin
       mqtt_marita: !secret mqtt_tracker_marita
     
-#input_boolean:
-#  occupancy:
-#    name: home_occupancy
-#    initial: true
+# This binary sensor is supposed to determine if the family is at home or away,
+# used in a conditional view to show the map on the frontend. Still WIP.
 
 binary_sensor:
   - platform: 'bayesian'
@@ -88,6 +86,8 @@ script:
       service: mqtt.publish
   
 automation:
+
+# This starts the BT Monitor scan when the apartment front door closes
   - alias: 'Depart Scan: Start when front door closes'
     initial_state: 'true'
     trigger:
@@ -97,6 +97,8 @@ automation:
     action:
     - entity_id: script.mqtt_depart
       service: script.turn_on
+
+# This cancels any runnign scans when the apartment door opens
   - alias: 'Depart Scan: Cancel when front door opens'
     initial_state: 'true'
     trigger:
@@ -106,6 +108,9 @@ automation:
     action:
     - entity_id: script.mqtt_depart
       service: script.turn_off
+
+# To avoid unknown device_tracker states after HA restart we always tell 
+# Monitor to restart as well.
   - alias: Restart MQTT Monitor on HA restart
     initial_state: 'true'
     trigger:

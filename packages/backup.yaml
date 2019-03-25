@@ -4,8 +4,9 @@ sensor:
     name: HA Installed Version
     scan_interval: 86400
 
-# Makes a backup of hassio every Sunday at 3:00 am so that I can store it on my NAS.
-#
+# Makes a backup of hassio every Sunday at 3:00 am so that I can store it on my 
+# NAS.
+
 automation:
   - alias: System - Make weekly Hassio backup
     initial_state: true

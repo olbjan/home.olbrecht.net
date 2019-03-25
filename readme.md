@@ -4,7 +4,8 @@
 
 This is my personal Home Assistant configuration, running my home automations.
 
-I've set up this repository to help others to find working examples and inspiration.
+I've set up this repository to help others to find working examples and 
+inspiration.
 
 Follow me on my journey and be sure to hit the GitHub :star2:
 

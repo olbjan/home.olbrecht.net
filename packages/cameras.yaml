@@ -1,3 +1,12 @@
+# This package adds my UniFi Video G3 Flex cameras via their RTSP streams
+# as generic cameras.
+#
+# The UniFi NVR software is set to 15 FPS and 500Kbps for each camera's
+# 640x360 stream. This has so far turned out to be the most stable on my
+# Raspberry Pi 3b. Choosing higher resolutions leads to green video fragments,
+# likely caused either by dropped UDP packets or simply over-taxation of Pi
+# system resources.
+
 camera:
   - platform: generic
     name: Living Room
@@ -7,5 +16,15 @@ camera:
     name: Kids Room
     still_image_url: !secret unifi_video_kids_room_still
     stream_source: rtsp://192.168.0.11:7447/5b0da394e4b0daadece21e37_2
+
+# The following enables the Stream component which enables streaming the 
+# camera H.264 stream data to a Google Cast device (e.g. Android TV or Google
+# Home Hub).
+#
+# When opening the stream from a picture entity in Lovelace, it is common that
+# the stream will not load on first try. This is because the stream component
+# requires buffering three full B-frames before sending out data to the 
+# endpoint. Depending on source camera this can take between 2 to 30 seconds.
+# A stream pre-load will likely be possible with Home Assistant 0.91
 
 stream:

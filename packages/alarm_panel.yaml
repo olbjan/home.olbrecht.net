@@ -17,7 +17,8 @@ alarm_control_panel:
       pending_time: 0
       delay_time: 0
 
-# Automation based on community example by @RezzZ: https://community.home-assistant.io/t/manual-alarm-notification-trigger-variable/23154/11
+# Automation based on community example by @RezzZ: 
+# https://community.home-assistant.io/t/manual-alarm-notification-trigger-variable/23154/11
 
 input_text:
   alarm_trigger:
@@ -56,19 +57,19 @@ automation:
       to: 'triggered'
     action:
 # iOS Critical Notification for 2.0 Beta
-#    - service: notify.ios_iphonexsolbrechtnet_beta
-#      data:
-#        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
-#        data:
-#          push:
-#            category: "alarm"
-#            sound:
-#              critical: 1
-#              name: default
-#              volume: 1.0 # 0.0 to 1.0
-#          action_data:
-#            entity_id: light.test
-#            my_custom_data: foo_bar
+    - service: notify.ios_iphonexsolbrechtnet_beta
+      data:
+        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+        data:
+          push:
+            category: "alarm"
+            sound:
+              critical: 1
+              name: default
+              volume: 1.0 # 0.0 to 1.0
+          action_data:
+            entity_id: light.test
+            my_custom_data: foo_bar
     - service: notify.ios_jans_phone
       data:
         message: Motion detected in the Living Room

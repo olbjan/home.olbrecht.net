@@ -8,23 +8,33 @@ homeassistant:
   elevation: !secret elevation
   # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # Pick yours from here: 
+  # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Berlin
   customize: !include customize.yaml    
   # Add an entry for each entity that you want to overwrite.
   packages: !include_dir_named packages
+  # Enable Home Assistant auth providers
+  # Only required if using more than the default auth_provider
   auth_providers:
    - type: homeassistant  
+   # - type: trusted_networks
+   #   trusted_networks:
+   #     - 192.168.0.0/24
 # Show links to resources in log and frontend
-#introduction:
+# introduction:
 
 
 # Enables the frontend
 frontend:
   javascript_version: latest
-  
+
+# Enable Home Assistant Default Configuration  
 default_config:
+
+# Enable the System log
 system_log:
+  # max_entries: 50 # Default Value 50
 
 # Enable zeroconf
 zeroconf:
@@ -58,7 +68,7 @@ updater:
 discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-#conversation:
+# conversation:
 
 # Enables support for tracking state changes over time
 history: !include history.yaml
