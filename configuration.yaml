@@ -22,8 +22,6 @@ homeassistant:
 # Enables the frontend
 frontend:
   javascript_version: latest
-  #javascript_version: es5
-#  themes: !include themes.yaml
   
 default_config:
 system_log:
@@ -39,8 +37,6 @@ cloud:
 
   
 http:
-  # Uncomment this to add a password (recommended!)
-  # api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
   # SSL Configuration for Let'sEncrypt certs
@@ -56,7 +52,7 @@ http:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
+  include_used_components: true
 
 # Discover some devices automatically
 discovery:

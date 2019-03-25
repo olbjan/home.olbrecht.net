@@ -82,7 +82,7 @@ automation:
             content-type: MPEG4
           push:
             category: camera
-          entity_id: camera.ffmpeg
+          entity_id: camera.generic_640
     - service: notify.ios_jans_phone
       data:
         message: Motion detected in the Living Room

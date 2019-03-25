@@ -1,7 +1,11 @@
-ffmpeg:
-
 camera:
-  - platform: ffmpeg
-    input: rtsp://192.168.0.11:7447/5b0c41d8e4b01eb859f05913_2
-    
+  - platform: generic
+    name: Living Room
+    still_image_url: !secret unifi_video_living_room_still
+    stream_source: rtsp://192.168.0.11:7447/5b0c41d8e4b01eb859f05913_2
+  - platform: generic
+    name: Kids Room
+    still_image_url: !secret unifi_video_kids_room_still
+    stream_source: rtsp://192.168.0.11:7447/5b0da394e4b0daadece21e37_2
+
 stream:

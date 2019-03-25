@@ -169,9 +169,6 @@
     sensor.sw02:
       friendly_name: Cisco SG300-10PP
       icon: mdi:bridge
-    sensor.firetv_stick_kids_room:
-      friendly_name: Fernseher Kinderzimmer
-      icon: mdi:television
     sensor.firetv_stick_office:
       friendly_name: Amazon FireTV Office
       icon: mdi:amazon

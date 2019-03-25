@@ -33,7 +33,6 @@ device_tracker:
       Ping_Dyson_Pure_Cool_Link: 192.168.0.47
       Ping_RasPi_BTMonitor: 192.168.0.18
       Ping_FireTV_Office: 192.168.0.26
-      Ping_FireTV_KidsRoom: 192.168.0.27
       Ping_Brother_MFC_L3770CDW: 192.168.0.17
       
       
@@ -51,8 +50,6 @@ sensor:
         value_template:  '{% if is_state("device_tracker.ping_bosch_hsg636xs6", "home") %} Online {% else %} Offline {%- endif %}'
       dyson_pure_cool_link:
         value_template:  '{% if is_state("device_tracker.ping_dyson_pure_cool_link", "home") %} Online {% else %} Offline {%- endif %}'
-      firetv_stick_kids_room:
-        value_template:  '{% if is_state("device_tracker.ping_firetv_kidsroom", "home") %} Online {% else %} Offline {%- endif %}'
       firetv_stick_office:
         value_template:  '{% if is_state("device_tracker.ping_firetv_office", "home") %} Online {% else %} Offline {%- endif %}'
       philips_hue_bridge:
