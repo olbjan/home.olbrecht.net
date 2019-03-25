@@ -79,10 +79,10 @@ automation:
         message: Motion detected in the Living Room
         data:
           attachment:
-            content-type: MPEG4
+            content-type: jpeg
           push:
             category: camera
-          entity_id: camera.generic_640
+          entity_id: camera.uvc_g3_flex_living_room
     - service: notify.ios_jans_phone
       data:
         message: Motion detected in the Living Room
