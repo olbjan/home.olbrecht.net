@@ -8,5 +8,7 @@ media_player:
     host: 192.168.0.26
     adb_server_ip: localhost
     adb_server_port: 5037
-    get_sources: false
-    
+    get_sources: true
+    apps:
+      com.amazon.tv.launcher: "Fire TV"
+      com.netflix.ninja: "Netflix"
