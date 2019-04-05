@@ -1,0 +1,6 @@
+notify:
+  - platform: html5
+    name: html5
+    vapid_pub_key: !secret google_firebase_public_key
+    vapid_prv_key: !secret google_firebase_private_key
+    vapid_email: !secret google_firebase_email

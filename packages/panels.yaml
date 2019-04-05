@@ -1,8 +1,8 @@
 panel_iframe:
-  observium:
-    title: 'Observium'
-    icon: mdi:monitor-multiple
-    url: !secret observium_url
+#  observium:
+#    title: 'Observium'
+#    icon: mdi:monitor-multiple
+#    url: !secret observium_url
   configurator:
     title: 'Configurator'
     icon: mdi:wrench

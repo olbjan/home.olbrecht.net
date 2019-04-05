@@ -1,5 +1,0 @@
-notify:
-  - platform: html5
-    name: html5
-    gcm_api_key: !secret google_cloud_messaging_api
-    gcm_sender_id: !secret google_cloud_messaging_id

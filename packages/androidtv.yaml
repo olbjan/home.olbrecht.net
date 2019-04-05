@@ -12,3 +12,83 @@ media_player:
     apps:
       com.amazon.tv.launcher: "Fire TV"
       com.netflix.ninja: "Netflix"
+
+  - platform: androidtv
+    name: Android TV
+    device_class: firetv
+    host: 192.168.0.15
+    adb_server_ip: localhost
+    adb_server_port: 5037
+    get_sources: true
+    apps:
+      com.netflix.ninja: "Netflix"
+      org.droidtv.tvsystemui: "Home"
+      com.amazon.amazonvideo.livingroom: "Amazon Prime Video"
+      org.droidtv.playtv: "TV"
+      org.droidtv.channels: "Channels"
+
+# Lovelace Example:
+#  - entity: input_boolean.androidtv
+#    image: /local/RemoteButtonClear.png
+#    style:
+#      height: 22%
+#      left: 17%
+#      top: 15%
+#      width: 10%
+#    tap_action:
+#      action: call-service
+#      service: media_player.androidtv_key
+#      service_data:
+#        entity_id: media_player.android_tv
+#        key: KEYCODE_DPAD_UP
+#    type: image
+
+# Automation example:
+#action:
+#  service: androidtv.adb_command
+#  data:
+#    entity_id: media_player.android_tv
+#    command: "HOME"
+
+# Possible commands:
+# BACK
+# BLUE
+# CENTER
+# COMPONENT1
+# COMPONENT2
+# COMPOSITE1
+# COMPOSITE2
+# DOWN
+# END
+# ENTER
+# GREEN
+# HDMI1
+# HDMI2
+# HDMI3
+# HDMI4
+# HOME
+# INPUT
+# LEFT
+# MENU
+# MOVE_HOME
+# MUTE
+# PAIRING
+# POWER
+# RESUME
+# RIGHT
+# SAT
+# SEARCH
+# SETTINGS
+# SLEEP
+# SUSPEND
+# SYSDOWN
+# SYSLEFT
+# SYSRIGHT
+# SYSUP
+# TEXT
+# TOP
+# UP
+# VGA
+# VOLUME_DOWN
+# VOLUME_UP
+# YELLOW

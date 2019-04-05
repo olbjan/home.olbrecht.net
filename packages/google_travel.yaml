@@ -57,7 +57,7 @@ automation:
         message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
         data:
           type: tts
-        target: media_player.sonos_beam
+        target: media_player.alexa_sonos_beam
 
 # This automation sends me a notification with the estimated travel time to work
 # every workday, using the workday binary sensor.

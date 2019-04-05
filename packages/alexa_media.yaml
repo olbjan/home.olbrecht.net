@@ -13,6 +13,9 @@ alexa_media:
         - "This Device"
         - "This Device 2"
         - "Everywhere"
+        - "Wohnzimmer"
+        - "Kinderzimmer"
+        - "Badezimmer"
 
 notify:
   - platform: alexa_media

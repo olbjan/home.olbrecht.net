@@ -16,6 +16,8 @@
 .storage
 .cloud
 .google.token
+snapshots
+www/snapshots
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml

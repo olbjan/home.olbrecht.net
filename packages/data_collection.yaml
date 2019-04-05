@@ -1,0 +1,69 @@
+# View all events in a logbook
+logbook:
+  include:
+    domains:
+      - alarm_control_panel
+      - alert
+      - light
+      - switch
+      - media_player
+  exclude:
+    domains:
+      - alexa
+      - automation 
+      - binary_sensor
+      - climate
+      - cover
+      - device_tracker
+      - fan
+      - group
+      - input_boolean
+      - input_select
+      - lock
+      - remote 
+      - script
+      - sensor
+      - weather
+      - zone
+      - zwave
+
+# Enables support for tracking state changes over time
+history:
+  include:
+    entities:
+      - binary_sensor.front_door
+      - sensor.fibaro_apartment_door_temperature
+      - device_tracker.jans_phone
+      - sensor.fibaro_balcony_power
+      - sensor.fibaro_floor_power
+      - sensor.fibaro_kids_room_power
+      - sensor.fibaro_living_room_1_power_1
+      - sensor.fibaro_living_room_1_power_2
+      - sensor.fibaro_living_room_2_power_1
+      - sensor.fibaro_master_bath_power_1
+      - sensor.fibaro_master_bedroom_power_1
+      - sensor.fibaro_office_power
+      - sensor.fibaro_storage_power
+      - sensor.fibaro_wc_power_1
+
+# Configures recorder component     
+recorder:
+  purge_interval: 1
+  purge_keep_days: 10
+  include:
+    entities:
+      - binary_sensor.front_door
+      - sensor.total_power_usage 
+      - sensor.total_energy 
+  exclude:
+    domains:
+      - device_tracker
+      - climate
+      - zwave
+      - switch
+      - light
+      - media_player
+      - sensor
+    entities:
+      - sun.sun
+      

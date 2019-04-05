@@ -21,6 +21,8 @@ homeassistant:
    # - type: trusted_networks
    #   trusted_networks:
    #     - 192.168.0.0/24
+  whitelist_external_dirs:
+    - /config/www/snapshots
 # Show links to resources in log and frontend
 # introduction:
 
@@ -69,15 +71,6 @@ discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
-
-# Enables support for tracking state changes over time
-history: !include history.yaml
-
-# Configures recorder component     
-recorder: !include recorder.yaml
-
-# View all events in a logbook
-logbook:
 
 # Enable Person component
 person: !include family.yaml

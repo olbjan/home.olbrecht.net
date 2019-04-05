@@ -4,6 +4,9 @@
     person.kathrin:
       friendly_name: Kathrin
       entity_picture: /local/kathrin_olbrecht.jpg
+    person.marita:
+      friendly_name: Marita
+      entity_picture: /local/marita_olbrecht.jpg      
     switch.readynas_2304:
       friendly_name: ReadyNAS 2304
       icon: mdi:server
@@ -89,7 +92,7 @@
     light.wohnzimmer:
       friendly_name: Wohnzimmer
       emulated_hue_name: "Wohnzimmer"
-      emulated_hue_hidden: false
+      emulated_hue_hidden: true
     light.hugo:
       friendly_name: Wohnzimmer Hugo
       emulated_hue_name: "Hugo"
@@ -202,22 +205,10 @@
     sensor.dyson_pure_cool_link:
       friendly_name: Dyson Pure Cool Link Tower
       icon: mdi:fan
-    script.sonos_group_speakers:
-      friendly_name: Group / ungroup speakers
-      icon: mdi:group
     sensor.total_power_usage:
       icon: mdi:speedometer
     sensor.total_energy:
       entity_picture: /local/electricity_meter.png
-    sensor.mqtt_presence_jan_confidence:
-      friendly_name: Jan
-      entity_picture: /local/jan_olbrecht.jpg
-    sensor.mqtt_presence_Kathrin_confidence:
-      friendly_name: Kathrin
-      entity_picture: /local/kathrin_olbrecht.jpg      
-    sensor.mqtt_presence_marita_confidence:
-      friendly_name: Marita
-      entity_picture: /local/marita_olbrecht.jpg      
     zone.home:
       beacon:
         uuid: F7826DA6-4FA2-4E98-8024-BC5B71E0893E

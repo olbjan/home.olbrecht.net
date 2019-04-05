@@ -72,13 +72,13 @@ automation:
             my_custom_data: foo_bar
     - service: notify.ios_jans_phone
       data:
-        message: Motion detected in the Living Room
+        message: Alarm triggered at home
         data:
           attachment:
             content-type: jpeg
           push:
             category: camera
-          entity_id: camera.uvc_g3_flex_living_room
+          entity_id: camera.living_room
   - alias: 'Alarm Disarmed Notification'
     initial_state: 'true'
     trigger:
