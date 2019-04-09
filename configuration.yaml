@@ -73,7 +73,7 @@ discovery:
 # conversation:
 
 # Enable Person component
-person: !include family.yaml
+person:
 
 group: !include groups.yaml
 
@@ -101,3 +101,7 @@ binary_sensor:
 # Enable host system health   
 system_health:
 
+zwave: 
+#  usb_path: /dev/ttyAMA0
+#  network_key: !secret zwave_network_key
+  device_config: !include zwave_device_config.yaml

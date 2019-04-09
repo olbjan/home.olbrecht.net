@@ -5,9 +5,9 @@
 #
 # It is running with a Bosch HSG636XS6 Home Connect enabled oven set up.
 
-homeconnect:
-  client_id: !secret homeconnect_id
-  client_secret: !secret homeconnect_secret
+#homeconnect:
+#  client_id: !secret homeconnect_id
+#  client_secret: !secret homeconnect_secret
 
 # Lovelace Entity List example
 #

@@ -57,7 +57,7 @@ automation:
       to: 'triggered'
     action:
 # iOS Critical Notification for 2.0 Beta
-    - service: notify.ios_iphonexsolbrechtnet_beta
+    - service: notify.mobile_app_iphonexs_olbrecht_net
       data:
         message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:

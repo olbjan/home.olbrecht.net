@@ -1,0 +1,21 @@
+sensor:
+  - platform: rest
+    resource: https://registry.hub.docker.com/v2/repositories/homeassistant/raspberrypi3-homeassistant/tags/
+    name: hassio_docker_available
+    scan_interval: 00:05:00
+    value_template: "{{ value_json.results[1]['name'] }}"
+  - platform: version
+    name: Current Version
+    source: local
+  - platform: version
+    name: Latest Version
+    source: docker
+    
+#rest_command:
+#  update_ha_docker:
+#    url: https://yourHAinstance:8123/api/hassio/homeassistant/update
+#    method: POST
+#    headers: 
+#      authorization: 'Bearer put here a long-lived access token'
+#      content-type: 'application/json'
+#    payload: '{"version":"{{states.sensor.hassio_docker_available.state}}"}

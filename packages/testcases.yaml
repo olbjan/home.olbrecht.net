@@ -2,12 +2,15 @@ input_boolean:
   test_alert:
     name: Test Alert
     initial: false
+    icon: mdi:alert-outline
   test_critical_notification:
     name: Test Critical Notification
     initial: false
+    icon: mdi:account-badge-alert
   test_camera_notification:
     name: Test Camera Notification
     initial: false
+    icon: mdi:home-alert
 
 
 automation:
@@ -19,7 +22,7 @@ automation:
     action:
     - data_template:
         message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
-      service: notify.ios_iphonexsolbrechtnet_beta
+      service: notify.mobile_app_iphonexs_olbrecht_net
   - alias: 'Test Alarm Triggers'
     initial_state: 'true'
     trigger:
@@ -52,7 +55,7 @@ automation:
       entity_id: input_boolean.test_critical_notification
       to: 'on'
     action:
-    - service: notify.ios_iphonexsolbrechtnet_beta
+    - service: notify.mobile_app_iphonexs_olbrecht_net
       data:
         message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:
@@ -74,7 +77,7 @@ automation:
       entity_id: input_boolean.test_camera_notification
       to: 'on'
     action:
-    - service: notify.ios_iphonexsolbrechtnet_beta
+    - service: notify.mobile_app_iphonexs_olbrecht_net
       data:
         message: Motion detected in the Living Room
         data:

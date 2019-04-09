@@ -17,6 +17,6 @@ alexa_media:
         - "Kinderzimmer"
         - "Badezimmer"
 
-notify:
-  - platform: alexa_media
-    name: alexa_media
+#notify:
+#  - platform: alexa_media
+#    name: alexa_media
