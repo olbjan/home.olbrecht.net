@@ -11,11 +11,11 @@ sensor:
     name: Latest Version
     source: docker
     
-#rest_command:
-#  update_ha_docker:
-#    url: https://yourHAinstance:8123/api/hassio/homeassistant/update
-#    method: POST
-#    headers: 
-#      authorization: 'Bearer put here a long-lived access token'
-#      content-type: 'application/json'
-#    payload: '{"version":"{{states.sensor.hassio_docker_available.state}}"}
+rest_command:
+  update_ha_docker:
+    url: !secret ha_docker_update_url
+    method: POST
+    headers: 
+      authorization: !secret ha_docker_update_token
+      content-type: 'application/json'
+    payload: '{"version":"{{states.sensor.hassio_docker_available.state}}"}'

@@ -35,8 +35,8 @@ automation:
     to: 'on'
   condition: []
   action:
-  - data:
-      'entity_id:': camera.kids_room
+  - data_template:
+      entity_id: camera.kids_room
       media_player: media_player.55pos9002
     service: camera.play_stream
 - alias: Stop Baby Monitor
@@ -48,5 +48,5 @@ automation:
   condition: []
   action:
   - data:
-      entity_id: media_player.55pos9002
+      entity_id: media_player.android_tv
     service: media_player.turn_off

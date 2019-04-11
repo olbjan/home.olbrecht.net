@@ -20,8 +20,8 @@ sensor:
     sensors:
       route_to_work_distance:
         friendly_name: 'Distance to work'
-        unit_of_measurement: 'km'
-        value_template: "{{ state_attr('sensor.time_to_work', 'distance') }}"
+        #unit_of_measurement: 'km'
+        value_template: "{{ state_attr('sensor.time_to_work','distance') }}"
 
 
 automation:

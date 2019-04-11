@@ -223,3 +223,9 @@ sensor.fibaro_balcony_alarm_level:
 sensor.fibaro_balcony_alarm_type:
   ignored: true
   polling_intensity: 0
+sensor.fibaro_balcony_previous_reading:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_balcony_previous_reading_2:
+  ignored: true
+  polling_intensity: 0

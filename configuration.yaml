@@ -72,6 +72,16 @@ discovery:
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
 
+# Enable debug logging:
+#logger:
+#  default: info
+#  logs:
+#    homeassistant.components.http.view: debug
+#    homeassistant.components.websocket_api: debug
+#    homeassistant.components.http.ban: debug
+#    homeassistant.components.http: debug
+    
+
 # Enable Person component
 person:
 
@@ -82,7 +92,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 
 # Zones for known locations
-zone: !include zones.yaml
+zone:
 
 # Enable Map in Frontend
 map:

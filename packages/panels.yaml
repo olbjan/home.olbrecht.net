@@ -1,12 +1,4 @@
 panel_iframe:
-#  observium:
-#    title: 'Observium'
-#    icon: mdi:monitor-multiple
-#    url: !secret observium_url
-  configurator:
-    title: 'Configurator'
-    icon: mdi:wrench
-    url: !secret configurator_url
   logviewer:
     title: 'Log Viewer'
     icon: mdi:history

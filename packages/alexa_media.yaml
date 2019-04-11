@@ -1,3 +1,6 @@
+# This package loads the custom component Alexa Media. It also has a TTS 
+# component that works via the notify service and is auto-loaded.
+
 alexa_media:
   accounts:
     - email: !secret alexa_user
@@ -16,7 +19,3 @@ alexa_media:
         - "Wohnzimmer"
         - "Kinderzimmer"
         - "Badezimmer"
-
-#notify:
-#  - platform: alexa_media
-#    name: alexa_media
