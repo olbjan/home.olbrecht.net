@@ -12,6 +12,7 @@
 !www
 !*.jpg
 !*.png
+!ios.conf
 
 # Ignore folders.
 .storage

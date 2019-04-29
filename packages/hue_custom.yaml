@@ -4,12 +4,12 @@ hue:
       allow_unreachable: true
 
 # Enable custom hue sensor component:
-binary_sensor:
-  - platform: hue_custom
-device_tracker:
-  - platform: hue_custom
-sensor:
-  - platform: hue_custom
+#binary_sensor:
+#  - platform: hue_custom
+#device_tracker:
+#  - platform: hue_custom
+#sensor:
+#  - platform: hue_custom
 
 # Enable emulated_hue for Alexa / Google Home Integration
 emulated_hue:

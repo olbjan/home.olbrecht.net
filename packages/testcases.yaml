@@ -60,10 +60,10 @@ automation:
         message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:
           push:
-            category: "alarm"
+            category: alarm
             sound:
               critical: 1
-              name: default
+              name: Telegraph.caf
               volume: 1.0 # 0.0 to 1.0
           action_data:
             entity_id: light.test
@@ -85,6 +85,9 @@ automation:
             content-type: jpeg
           push:
             category: camera
+            sound:
+              name: Telegraph.caf
+              volume: 1.0 # 0.0 to 1.0
           entity_id: camera.living_room
     - service: notify.ios_jans_phone
       data:
@@ -94,6 +97,6 @@ automation:
             content-type: jpeg
           push:
             category: camera
-          entity_id: camera.uvc_g3_flex_living_room
+          entity_id: camera.living_room
 
       

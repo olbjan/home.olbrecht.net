@@ -91,3 +91,76 @@ sensor:
       unifi_ap_master_bedroom:
         value_template:  '{% if is_state("device_tracker.ping_unifi_ap_master_bedroom", "home") %} Online {% else %} Offline {%- endif %}'
 
+
+
+input_text:
+  network_monitoring_trigger:
+    name: Network Monitoring Trigger
+    initial: ""
+    
+automation:
+  - alias: 'Network Monitoring Triggers'
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id: sensor.sonos_one_bathroom
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.sonos_play1_kids_room
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.sonos_play1_living_room_1
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.sonos_play1_living_room_2
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.sonos_beam_living_room
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.snom_d765_phone
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.philips_hue_bridge
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.brother_mfc_l3770cdw
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.amazon_echo
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.amazon_echo_dot
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.unifi_security_gateway
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.raspi_btmonitor
+      to: 'Offline'
+    - platform: state
+      entity_id: sensor.raspi_observium
+      to: 'Offline'
+    action:
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.network_monitoring_trigger
+        value: >
+          {% if states.input_text.network_monitoring_trigger.state|length == 0 %}
+            {{ trigger.from_state.attributes.friendly_name }}
+          {% elif (states.input_text.network_monitoring_trigger.state|length + trigger.from_state.attributes.friendly_name|length) < 100 %}
+            {{ states.input_text.network_monitoring_trigger.state }}, {{ trigger.from_state.attributes.friendly_name }}
+          {% else %}
+            {{ states.input_text.network_monitoring_trigger.state }}
+          {% endif %}
+    - service: notify.mobile_app_iphonexs_olbrecht_net
+      data:
+        title: "Network Monitoring Alert"
+        message: "The device {{ states.input_text.network_monitoring_trigger.state }} is offline"
+        data:
+          push:
+            category: monitoring
+            sound:
+              name: default
+            thread-id: "monitoring"
+            

@@ -1,7 +1,7 @@
 sensor:
   - platform: rest
     resource: https://registry.hub.docker.com/v2/repositories/homeassistant/raspberrypi3-homeassistant/tags/
-    name: hassio_docker_available
+    name: Latest Docker Version
     scan_interval: 00:05:00
     value_template: "{{ value_json.results[1]['name'] }}"
   - platform: version

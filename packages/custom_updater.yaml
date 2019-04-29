@@ -11,4 +11,5 @@ custom_updater:
   component_urls:
     - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
     - https://raw.githubusercontent.com/keatontaylor/alexa_media_player/master/custom_components.json
+    - https://raw.githubusercontent.com/olbjan/ha_philips_2016/master/custom_components.json
     

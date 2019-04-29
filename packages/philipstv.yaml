@@ -4,9 +4,10 @@ notify:
     host: 192.168.0.15
 
 media_player:
-  - platform: philips_2016
+  - platform: philips_android_tv
     name: Philips TV
     host: 192.168.0.15
     mac: !secret philips_tv_mac
     username: !secret philips_tv_user
     password: !secret philips_tv_password    
+    favorite_channels_only: true

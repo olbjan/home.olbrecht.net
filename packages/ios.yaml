@@ -30,6 +30,20 @@ ios:
             activationMode: 'background'
             authenticationRequired: false
             destructive: false
+      - name: Monitoring
+        identifier: 'MONITORING'
+        actions:
+          - identifier: 'ACK_MONITORING'
+            title: 'Acknowledge Alert'
+            activationMode: 'background'
+            authenticationRequired: false
+            destructive: false
+          - identifier: 'RESET_MONITORING'
+            title: 'Reset Alert'
+            activationMode: 'background'
+            authenticationRequired: false
+            destructive: true
+
 script:
   request_location_update_jan:
     alias: Request Location Update Jan
@@ -96,4 +110,16 @@ automation:
         code: !secret alarm_code
         entity_id: alarm_control_panel.home_alarm
       service: alarm_control_panel.alarm_disarm
+  - alias: 'iOS Action: Reset Monitoring'
+    initial_state: 'true'
+    trigger:
+    - event_data:
+        actionName: RESET_MONITORING
+      event_type: ios.notification_action_fired
+      platform: event
+    action:
+    - data:
+        value: ''
+        entity_id: input_text.network_monitoring_trigger
+      service: input_text.set_value
   

@@ -30,7 +30,7 @@ automation:
     initial_state: 'true'
     trigger:
     - platform: state
-      entity_id: binary_sensor.flur_motion_sensor
+      entity_id: binary_sensor.flur_sensor_motion
       to: 'on'
     condition:
     - condition: template

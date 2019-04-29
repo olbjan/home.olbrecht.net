@@ -54,8 +54,8 @@ http:
   # SSL Configuration for Let'sEncrypt certs
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-  ip_ban_enabled: True
-  login_attempts_threshold: 5
+  #ip_ban_enabled: False
+  #login_attempts_threshold: 5
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -71,16 +71,6 @@ discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
-
-# Enable debug logging:
-#logger:
-#  default: info
-#  logs:
-#    homeassistant.components.http.view: debug
-#    homeassistant.components.websocket_api: debug
-#    homeassistant.components.http.ban: debug
-#    homeassistant.components.http: debug
-    
 
 # Enable Person component
 person:
