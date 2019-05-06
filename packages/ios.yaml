@@ -122,4 +122,66 @@ automation:
         value: ''
         entity_id: input_text.network_monitoring_trigger
       service: input_text.set_value
+  - alias: 'Mobile App Action: Dismiss Alarm'
+    initial_state: 'true'
+    trigger:
+    - event_data:
+        actionName: IGNORE_ALARM
+      event_type: mobile_app.notification_action_fired
+      platform: event
+    action:
+    - data:
+        message: Alarm dismissed from Phone notification
+        title: Alarm ignored
+      service: persistent_notification.create
+  - alias: 'Mobile App Action: Disable Alarm'
+    initial_state: 'true'
+    trigger:
+    - event_data:
+        actionName: DISABLE_ALARM
+      event_type: mobile_app.notification_action_fired
+      platform: event
+    action:
+    - data:
+        code: !secret alarm_code
+        entity_id: alarm_control_panel.home_alarm
+      service: alarm_control_panel.alarm_disarm
+  - alias: 'Mobile App Widget: Arm Alarm'
+    initial_state: 'true'
+    trigger:
+    - event_data:
+        actionName: Arm Alarm
+      event_type: mobile_app.action_fired
+      platform: event
+    condition: []
+    action:
+    - data:
+        code: !secret alarm_code
+        entity_id: alarm_control_panel.home_alarm
+      service: alarm_control_panel.alarm_arm_away
+  - alias: 'Mobile App Widget: Disarm Alarm'
+    initial_state: 'true'
+    trigger:
+    - event_data:
+        actionName: Disarm Alarm
+      event_type: mobile_app.action_fired
+      platform: event
+    condition: []
+    action:
+    - data:
+        code: !secret alarm_code
+        entity_id: alarm_control_panel.home_alarm
+      service: alarm_control_panel.alarm_disarm
+  - alias: 'Mobile App Action: Reset Monitoring'
+    initial_state: 'true'
+    trigger:
+    - event_data:
+        actionName: RESET_MONITORING
+      event_type: mobile_app.notification_action_fired
+      platform: event
+    action:
+    - data:
+        value: ''
+        entity_id: input_text.network_monitoring_trigger
+      service: input_text.set_value
   

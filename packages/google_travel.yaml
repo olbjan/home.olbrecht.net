@@ -20,9 +20,16 @@ sensor:
     sensors:
       route_to_work_distance:
         friendly_name: 'Distance to work'
-        #unit_of_measurement: 'km'
-        value_template: "{{ state_attr('sensor.time_to_work','distance') }}"
-
+        unit_of_measurement: 'km'
+        value_template: "{{ state_attr('sensor.time_to_work','distance').replace('km','')|float }}"
+#        value_template: >-
+#          {% if state_attr('sensor.time_to_work', 'distance')|float > 50 %}
+#            Autobahn
+#          {% elif state_attr('sensor.time_to_work', 'distance')|float < 50 %}
+#            B271
+#          {% else %}
+#            failed
+#          {% endif %}
 
 automation:
 
@@ -40,6 +47,10 @@ automation:
       zone: zone.work
       entity_id: device_tracker.jans_phone
       event: leave
+    condition:
+        condition: time
+        after: '14:00:00'
+        before: '22:00:00'
     action:
     - data:
         entity_id: sensor.jan_to_home
