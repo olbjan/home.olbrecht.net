@@ -65,9 +65,6 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
-# Zones for known locations
-zone:
-
 # Enable Map in Frontend
 map:
 
