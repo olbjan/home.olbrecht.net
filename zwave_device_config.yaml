@@ -208,9 +208,6 @@ sensor.thermostat_living_room_floor_sensor:
 sensor.thermostat_living_room_interval:
   ignored: true
   polling_intensity: 0
-sensor.thermofloor_as_heatit_thermostat_tf_033_power:
-  ignored: true
-  polling_intensity: 0
 sensor.thermostat_living_room_previous_reading:
   ignored: true
   polling_intensity: 0
@@ -244,114 +241,6 @@ sensor.fibaro_balcony_heat:
 sensor.fibaro_balcony_exporting:
   ignored: true
   polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_exporting_3:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_heat_3:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_power_management_3:
-  ignored: true
-  polling_intensity: 0
-switch.fibaro_system_fgs213_switch_switch_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_exporting_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_heat_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_power_management_2:
-  ignored: true
-  polling_intensity: 0
-switch.fibaro_system_fgs213_switch_switch:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_exporting:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_exporting_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_heat:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_power_management:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_exporting_3:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_exporting_4:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_heat_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs223_double_relay_power_management_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_exporting_3:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_heat_3:
-  ignored: true
-  polling_intensity: 0
-light.fibaro_system_fgd212_dimmer_2_level_3:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_power_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_power_management_3:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_exporting_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_heat_2:
-  ignored: true
-  polling_intensity: 0
-light.fibaro_system_fgd212_dimmer_2_level_2:
-  ignored: true
-  polling_intensity: 0
 sensor.fibaro_master_bedroom_power_1:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_power_management_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_exporting:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_heat:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_power_management:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_exporting_4:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_heat_4:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgs213_switch_power_management_4:
-  ignored: true
-  polling_intensity: 0
-switch.fibaro_system_fgs213_switch_switch_3:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_exporting:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_heat:
-  ignored: true
-  polling_intensity: 0
-light.fibaro_system_fgd212_dimmer_2_level:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_system_fgd212_dimmer_2_power:
   ignored: true
   polling_intensity: 0

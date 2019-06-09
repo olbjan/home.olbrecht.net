@@ -1,0 +1,62 @@
+automation:
+
+  - alias: 'Notification: Exit Studio Alert'
+    initial_state: 'true'
+    trigger:
+    - platform: zone
+      zone: zone.fitnesstudio
+      entity_id: device_tracker.kathrins_phone
+      event: leave
+    action:
+    - service: notify.mobile_app_iphonexs_olbrecht_net
+      data_template:
+        message: Kathrin hat das Fitnesstudio verlassen.
+    - condition: state
+      state: 'on'
+      entity_id: 'binary_sensor.someone_home'
+    - service: notify.alexa_media
+      data_template:
+        message: Kathrin hat das Fitnesstudio verlassen.
+        data:
+          type: tts
+        target: media_player.alexa_sonos_beam
+
+# This automation triggers on a zone "work" exit, it then:
+# - updates the Google Travel Distance
+# - sends a notification to people in my household with the estimated travel
+#   time
+# - Tells the estimated travel time via the Alexa Media TTS component on my 
+#   living room Sonos system.
+
+  - alias: 'Notification: Exit Work Alert'
+    initial_state: 'true'
+    trigger:
+    - platform: zone
+      zone: zone.work
+      entity_id: device_tracker.jans_phone
+      event: leave
+    condition:
+      - condition: time
+        after: '14:00:00'
+        before: '22:00:00'
+    action:
+    - data:
+        entity_id: sensor.jan_to_home
+      service: homeassistant.update_entity
+    - service: notify.ios_kathrins_phone
+      data_template:
+        message: Jan hat die Zone Arbeit verlassen. Bei aktuellem Verkehr braucht er
+          etwa {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+    - service: notify.ios_jans_phone
+      data_template:
+        message: Jan left work. The drive home will take approximately {{ states.sensor.jan_to_home.state
+          }} minutes.
+    - condition: state
+      state: 'on'
+      entity_id: 'binary_sensor.someone_home'
+    - service: notify.alexa_media
+      data_template:
+        message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+        data:
+          type: tts
+        target: media_player.alexa_sonos_beam

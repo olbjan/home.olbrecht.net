@@ -1,16 +1,4 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
-  name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: !secret latitude
-  longitude: !secret longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: !secret elevation
-  # metric for Metric, imperial for Imperial
-  unit_system: metric
-  # Pick yours from here: 
-  # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: Europe/Berlin
   customize: !include customize.yaml    
   # Add an entry for each entity that you want to overwrite.
   packages: !include_dir_named packages
@@ -23,13 +11,9 @@ homeassistant:
    #     - 192.168.0.0/24
   whitelist_external_dirs:
     - /config/www/snapshots
-# Show links to resources in log and frontend
-# introduction:
-
 
 # Enables the frontend
 frontend:
-  javascript_version: latest
 
 # Enable Home Assistant Default Configuration  
 default_config:
@@ -102,6 +86,6 @@ binary_sensor:
 system_health:
 
 zwave: 
-#  usb_path: /dev/ttyAMA0
+  usb_path: /dev/ttyAMA0
 #  network_key: !secret zwave_network_key
   device_config: !include zwave_device_config.yaml

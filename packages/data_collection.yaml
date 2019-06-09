@@ -33,6 +33,10 @@ history:
     entities:
       - binary_sensor.front_door
       - sensor.fibaro_apartment_door_temperature
+      - sensor.fibaro_living_room_balcony_temperature
+      - sensor.fibaro_office_balcony_temperature
+      - sensor.fibaro_kids_room_window_temperature
+      - sensor.fibaro_master_bedroom_window_temperature
       - device_tracker.jans_phone
       - sensor.fibaro_balcony_power
       - sensor.fibaro_floor_power
@@ -50,20 +54,20 @@ history:
 recorder:
   purge_interval: 1
   purge_keep_days: 10
-  include:
-    entities:
-      - binary_sensor.front_door
-      - sensor.total_power_usage 
-      - sensor.total_energy 
-  exclude:
-    domains:
-      - device_tracker
-      - climate
-      - zwave
-      - switch
-      - light
-      - media_player
-      - sensor
-    entities:
-      - sun.sun
+#  include:
+#    entities:
+#      - binary_sensor.front_door
+#      - sensor.total_power_usage 
+#      - sensor.total_energy 
+#  exclude:
+#    domains:
+#      - device_tracker
+#      - climate
+#      - zwave
+#      - switch
+#      - light
+#      - media_player
+#      - sensor
+#    entities:
+#      - sun.sun
       
