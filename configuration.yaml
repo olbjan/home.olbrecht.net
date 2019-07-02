@@ -73,6 +73,10 @@ wake_on_lan:
   - mac: !secret readynas_mac
     broadcast_address: 192.168.0.255
 
+# Enable Home Assistant Community Store
+hacs:
+  token: !secret hacs
+
 # Workday binary sensor
 binary_sensor:
   - platform: workday

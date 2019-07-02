@@ -9,6 +9,61 @@ emulated_hue:
   exposed_domains:
     - light
     - switch
+  entities:
+    switch.fibaro_office_switch_1:
+      name: "Büro"
+      hidden: false
+    switch.fibaro_kids_room_switch_1:
+      name: "Kinderzimmer"
+      hidden: false
+    switch.fibaro_balcony_switch_1:
+      name: "Balkon"
+      hidden: false
+    switch.fibaro_living_room_1_switch_1:
+      name: "Kochen"
+      hidden: false
+    switch.fibaro_living_room_1_switch_2:
+      name: "Couch"
+      hidden: false
+    switch.fibaro_living_room_2_switch_1:
+      name: "Essen"
+      hidden: false
+    switch.fibaro_floor_switch_1:
+      name: "Flur"
+      hidden: false
+    switch.fibaro_storage_switch_1:
+      name: "Abstellraum"
+      hidden: false
+    light.fibaro_master_bedroom_level_1:
+      name: "Schlafzimmer"
+      hidden: false
+    light.fibaro_master_bedroom_level_2:
+      hidden: true
+    light.fibaro_master_bath_level_1:
+      name: "Badezimmer"
+      hidden: false
+    light.fibaro_master_bath_level_2:
+      hidden: true
+    light.fibaro_wc_level_1:
+      name: "WC"
+      hidden: false
+    light.fibaro_wc_level_2:
+      hidden: true    
+    light.bett:
+      hidden: true
+    light.schuhschrank:
+      hidden: true
+    light.wohnzimmer:
+      hidden: true
+    light.hugo:
+      hidden: true
+    light.hue_bloom:
+      hidden: true
+    light.kitchen_fridge:
+      hidden: true
+    light.kitchen_shelf:
+      hidden: true
+
 
 # Scripts enable Hue Scenes. Scene names are from Hue app.
 script:

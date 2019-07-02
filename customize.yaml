@@ -10,8 +10,6 @@
     switch.readynas_2304:
       friendly_name: ReadyNAS 2304
       icon: mdi:server
-      emulated_hue_name: "Datengrab"
-      emulated_hue_hidden: false
     device_tracker.jans_phone:
       friendly_name: Jan
       entity_picture: /local/jan_olbrecht.jpg
@@ -21,103 +19,63 @@
     switch.fibaro_office_switch_1:
       friendly_name: Büro
       icon: mdi:ceiling-light
-      emulated_hue_name: "Büro"
-      emulated_hue_hidden: false
     switch.fibaro_kids_room_switch_1:
       friendly_name: Kinderzimmer
       icon: mdi:ceiling-light
-      emulated_hue_name: "Kinderzimmer"
-      emulated_hue_hidden: false
     switch.fibaro_balcony_switch_1:
       friendly_name: Balkon
       icon: mdi:lightbulb
-      emulated_hue_name: "Balkon"
-      emulated_hue_hidden: false
     switch.fibaro_living_room_1_switch_1:
       friendly_name: Kochen
       icon: mdi:ceiling-light
-      emulated_hue_name: "Kochen"
-      emulated_hue_hidden: false
     switch.fibaro_living_room_1_switch_2:
       friendly_name: Couch
       icon: mdi:ceiling-light
-      emulated_hue_name: "Couch"
-      emulated_hue_hidden: false
     switch.fibaro_living_room_2_switch_1:
       friendly_name: Essen
       icon: mdi:ceiling-light
-      emulated_hue_name: "Essen"
-      emulated_hue_hidden: false
     switch.fibaro_floor_switch_1:
       friendly_name: Flur
       icon: mdi:ceiling-light
-      emulated_hue_name: "Flur"
-      emulated_hue_hidden: false
     switch.fibaro_storage_switch_1:
       friendly_name: Abstellraum
       icon: mdi:ceiling-light
-      emulated_hue_name: "Abstellraum"
-      emulated_hue_hidden: false
     light.fibaro_master_bedroom_level_1:
       friendly_name: Schlafzimmer
       icon: mdi:ceiling-light
-      emulated_hue_name: "Schlafzimmer"
-      emulated_hue_hidden: false
     light.fibaro_master_bedroom_level_2:
       emulated_hue_hidden: true
     light.fibaro_master_bath_level_1:
       friendly_name: Badezimmer
       icon: mdi:lightbulb
-      emulated_hue_name: "Badezimmer"
-      emulated_hue_hidden: false
-    light.fibaro_master_bath_level_2:
-      emulated_hue_hidden: true
     light.fibaro_wc_level_1:
       friendly_name: WC
       icon: mdi:lightbulb
-      emulated_hue_name: "WC"
-      emulated_hue_hidden: false
     light.fibaro_wc_level_2:
       emulated_hue_hidden: true    
     light.bett:
       friendly_name: Schlafzimmer Bett
-      emulated_hue_name: "Bett"
-      emulated_hue_hidden: true
       icon: mdi:wall-sconce-variant
     light.schuhschrank:
       friendly_name: Flur Schuhschrank
-      emulated_hue_name: "Schuhschrank"
-      emulated_hue_hidden: true
       icon: mdi:wall-sconce-variant
     light.wohnzimmer:
       friendly_name: Wohnzimmer
-      emulated_hue_name: "Wohnzimmer"
-      emulated_hue_hidden: true
     light.hugo:
       friendly_name: Wohnzimmer Hugo
-      emulated_hue_name: "Hugo"
-      emulated_hue_hidden: true
       icon: mdi:wall-sconce-variant
     light.hue_bloom:
       friendly_name: Büro Hue Bloom
-      emulated_hue_name: "Hue Bloom"
-      emulated_hue_hidden: true
       icon: mdi:wall-sconce-variant
     light.kitchen_fridge:
       friendly_name: Küche Kühlschrank
-      emulated_hue_name: "Küche Kühlschrank"
-      emulated_hue_hidden: true
       icon: mdi:track-light
     light.kitchen_shelf:
       friendly_name: Küche Oberschrank
-      emulated_hue_name: "Küche Oberschrank"
-      emulated_hue_hidden: true
       icon: mdi:track-light
     fan.dyson_pure:
       friendly_name: Dyson Pure Cool Link Tower
       icon: mdi:fan
-      emulated_hue_name: "Dyson"
-      emulated_hue_hidden: true
     media_player.kinderzimmer:
       friendly_name: Sonos Kinderzimmer
       icon: mdi:speaker-wireless

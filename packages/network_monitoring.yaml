@@ -1,12 +1,12 @@
 device_tracker:
-  - platform: unifi
-    username: !secret unifi_user
-    password: !secret unifi_password
-    host: unifi.olbrecht.net
-    track_new_devices: no
-    detection_time: 180
-    ssid_filter:
-      - 'olbrecht.net'
+#  - platform: unifi
+#    username: !secret unifi_user
+#    password: !secret unifi_password
+#    host: unifi.olbrecht.net
+#    track_new_devices: no
+#    detection_time: 180
+#    ssid_filter:
+#      - 'olbrecht.net'
   - platform: ping
     interval_seconds: 10
     hosts:
@@ -34,16 +34,12 @@ device_tracker:
       Ping_RasPi_BTMonitor: 192.168.0.18
       Ping_FireTV_Office: 192.168.0.26
       Ping_Brother_MFC_L3770CDW: 192.168.0.17
-      
+      Ping_Living_Room_Xbox_One: 192.168.0.14
       
 sensor:
 # Device tracker values are changed from home to Online/Offline
   - platform: template
     sensors:
-      amazon_echo:
-        value_template:  '{% if is_state("device_tracker.amazon_echo", "home") %} Online {% else %} Offline {%- endif %}'
-      amazon_echo_dot:
-        value_template:  '{% if is_state("device_tracker.amazon_echo_dot", "home") %} Online {% else %} Offline {%- endif %}'
       brother_mfc_l3770cdw:
         value_template:  '{% if is_state("device_tracker.ping_brother_mfc_l3770cdw", "home") %} Online {% else %} Offline {%- endif %}'
       bosch_hsg636xs6:
@@ -55,7 +51,7 @@ sensor:
       philips_hue_bridge:
         value_template:  '{% if is_state("device_tracker.ping_philips_hue_bridge", "home") %} Online {% else %} Offline {%- endif %}'
       living_room_xbox_one:
-        value_template:  '{% if is_state("device_tracker.living_room_xbox_one", "home") %} Online {% else %} Offline {%- endif %}'
+        value_template:  '{% if is_state("device_tracker.ping_living_room_xbox_one", "home") %} Online {% else %} Offline {%- endif %}'
       raspi_observium:
         value_template:  '{% if is_state("device_tracker.ping_raspi_observium", "home") %} Online {% else %} Offline {%- endif %}'
       raspi_homeassistant:
@@ -125,12 +121,6 @@ automation:
       to: 'Offline'
     - platform: state
       entity_id: sensor.brother_mfc_l3770cdw
-      to: 'Offline'
-    - platform: state
-      entity_id: sensor.amazon_echo
-      to: 'Offline'
-    - platform: state
-      entity_id: sensor.amazon_echo_dot
       to: 'Offline'
     - platform: state
       entity_id: sensor.unifi_security_gateway
