@@ -16,7 +16,7 @@ homeassistant:
 frontend:
 
 # Enable Home Assistant Default Configuration  
-default_config:
+# default_config:
 
 # Enable the System log
 system_log:
@@ -30,6 +30,15 @@ config:
 
 # Enable Home Assistant Cloud
 cloud:
+
+# Enable the Mobile App Integration
+mobile_app:
+
+# Enable SSDP for discovery
+ssdp:
+
+# Track the Sun
+sun:
 
   
 http:
@@ -66,7 +75,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 
 # Enable Map in Frontend
-map:
+#map:
 
 # Enable WoL Switch - cannot be merged via Package
 wake_on_lan: 

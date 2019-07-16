@@ -1,0 +1,913 @@
+excluded_entities: null
+resources:
+  - type: module
+    url: /local/community/mini-media-player/mini-media-player.js?track=true
+  - type: module
+    url: /local/community/simple-thermostat/simple-thermostat.js?track=true
+  - type: module
+    url: /local/community/mini-graph-card/mini-graph-card-bundle.js?track=true
+  - type: js
+    url: /local/custom-lovelace/card-tools/card-tools.js?track=true
+  - type: js
+    url: /local/custom-lovelace/card-modder/card-modder.js?track=true
+  - type: js
+    url: /local/custom-lovelace/popup-card/popup-card.js?track=true
+  - type: module
+    url: /community_plugin/atomic_calendar/atomic_calendar.js
+  - type: module
+    url: /local/community/swipe-card/swipe-card.js?track=true
+title: home.olbrecht.net
+views:
+  - badges: []
+    cards:
+      - card:
+          elements:
+            - entity: sensor.fibaro_living_room_balcony_temperature
+              style:
+                left: 30%
+                top: 40%
+              type: state-label
+            - entity: sensor.fibaro_office_balcony_temperature
+              style:
+                left: 30%
+                top: 76%
+              type: state-label
+            - entity: sensor.fibaro_master_bedroom_window_temperature
+              style:
+                left: 85%
+                top: 23%
+              type: state-label
+            - entity: sensor.fibaro_kids_room_window_temperature
+              style:
+                left: 65%
+                top: 87%
+              type: state-label
+            - entity: alarm_control_panel.home_alarm
+              prefix: 'Alarm: '
+              style:
+                left: 75%
+                top: 3%
+              type: state-label
+            - entity: alarm_control_panel.home_alarm
+              prefix: 'Alarm: '
+              style:
+                left: 95%
+                top: 3%
+              type: state-icon
+            - entity: sensor.fibaro_apartment_door_temperature
+              style:
+                left: 82%
+                top: 56%
+              type: state-label
+            - entity: binary_sensor.front_door
+              style:
+                '--iron-icon-height': 26px
+                '--iron-icon-width': 26px
+                left: 72%
+                top: 56%
+              type: state-icon
+            - entity: binary_sensor.office_balcony_door
+              style:
+                '--iron-icon-height': 26px
+                '--iron-icon-width': 26px
+                left: 21%
+                top: 73%
+              type: state-icon
+            - entity: binary_sensor.kids_room_window
+              style:
+                '--iron-icon-height': 26px
+                '--iron-icon-width': 26px
+                left: 61%
+                top: 96%
+              type: state-icon
+            - entity: binary_sensor.living_room_balcony_door
+              style:
+                '--iron-icon-height': 26px
+                '--iron-icon-width': 26px
+                left: 21%
+                top: 37%
+              type: state-icon
+            - entity: binary_sensor.master_bedroom_window
+              style:
+                '--iron-icon-height': 26px
+                '--iron-icon-width': 26px
+                left: 89%
+                top: 16%
+              type: state-icon
+            - entity: light.fibaro_master_bedroom_level_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 87%
+                top: 32%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: fan.dyson_pure
+              style:
+                left: 95%
+                top: 22%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_storage_switch_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 61%
+                top: 45%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.fibaro_master_bath_level_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 62%
+                top: 29%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_balcony_switch_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 11%
+                top: 55%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_office_switch_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 33%
+                top: 81%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_living_room_1_switch_2
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 33%
+                top: 24%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_living_room_2_switch_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 33%
+                top: 50%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_floor_switch_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 50%
+                top: 63%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_kids_room_switch_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 64%
+                top: 80%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: switch.fibaro_living_room_1_switch_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 47%
+                top: 29%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.fibaro_wc_level_1
+              style:
+                '--iron-icon-height': 30px
+                '--iron-icon-width': 30px
+                left: 50%
+                top: 87%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.schuhschrank
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 60%
+                top: 59%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: binary_sensor.flur_sensor_motion
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 65%
+                top: 57%
+              type: state-icon
+            - entity: light.wohnzimmer
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 40%
+                top: 10%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.hugo
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 36%
+                top: 64%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.bett
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 87%
+                top: 42%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.hue_bloom
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 28%
+                top: 70%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.kitchen_fridge
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 53%
+                top: 34%
+              tap_action:
+                action: toggle
+              type: state-icon
+            - entity: light.kitchen_shelf
+              style:
+                '--iron-icon-height': 20px
+                '--iron-icon-width': 20px
+                left: 53%
+                top: 22%
+              tap_action:
+                action: toggle
+              type: state-icon
+          entity: input_select.theme
+          image: /local/floorplan.jpg
+          state_image:
+            OLED: /local/floorplan_black.jpg
+            Slate: /local/floorplan_dark.jpg
+          style: null
+          title: Floorplan
+          type: picture-elements
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+      - cards:
+          - cards:
+              - card:
+                  entity: light.wohnzimmer
+                  hold_action:
+                    action: call-service
+                    service: light.turn_off
+                    service_data:
+                      entity_id: light.wohnzimmer
+                  icon: 'mdi:lightbulb'
+                  name: Lesen
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.living_room_read
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+              - card:
+                  entity: light.wohnzimmer
+                  hold_action:
+                    action: call-service
+                    service: light.turn_off
+                    service_data:
+                      entity_id: light.wohnzimmer
+                  icon: 'mdi:lightbulb'
+                  name: Relax
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.living_room_relax
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+              - card:
+                  entity: light.bett
+                  hold_action:
+                    action: call-service
+                    service: light.turn_off
+                    service_data:
+                      entity_id: light.bett
+                  icon: 'mdi:weather-night'
+                  name: Sleep
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.bedroom_sleep
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+              - card:
+                  entity: group.all_lights
+                  icon: 'mdi:power-plug-off'
+                  name: All off
+                  tap_action:
+                    action: call-service
+                    service: light.turn_off
+                    service_data:
+                      entity_id: group.all_lights
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+            type: horizontal-stack
+          - cards:
+              - card:
+                  entity: media_player.sonos_living_room
+                  hold_action:
+                    action: none
+                  icon: 'mdi:play-pause'
+                  name: Play
+                  tap_action:
+                    action: call-service
+                    service: media_player.media_play_pause
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+              - card:
+                  entity: media_player.sonos_living_room
+                  hold_action:
+                    action: none
+                  icon: 'mdi:skip-previous'
+                  name: Last
+                  tap_action:
+                    action: call-service
+                    service: media_player.media_previous_track
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+              - card:
+                  entity: media_player.sonos_living_room
+                  hold_action:
+                    action: none
+                  icon: 'mdi:skip-next'
+                  name: Next
+                  tap_action:
+                    action: call-service
+                    service: media_player.media_next_track
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+              - card:
+                  entity: media_player.sonos_living_room
+                  hold_action:
+                    action: none
+                  icon: 'mdi:speaker-off'
+                  name: Stop
+                  tap_action:
+                    action: call-service
+                    service: media_player.media_stop
+                    service_data: null
+                  type: entity-button
+                style:
+                  border-radius: 10px
+                type: 'custom:card-modder'
+            type: horizontal-stack
+        type: vertical-stack
+      - card:
+          entity: weather.edenkoben
+          title: Weather
+          type: weather-forecast
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+      - cards:
+          - card:
+              camera_view: live
+              entity: camera.living_room
+              show_info: false
+              tap_action:
+                action: more-info
+              type: picture-entity
+            style:
+              border-radius: 10px
+            type: 'custom:card-modder'
+          - card:
+              camera_view: live
+              entity: camera.kids_room
+              show_info: false
+              tap_action:
+                action: more-info
+              type: picture-entity
+            style:
+              border-radius: 10px
+            type: 'custom:card-modder'
+        type: vertical-stack
+      - card:
+          cards:
+            - card:
+                card:
+                  aspect_ratio: 16x9
+                  dark_mode: true
+                  default_zoom: 15
+                  entities:
+                    - person.jan
+                    - person.kathrin
+                    - zone.home
+                  title: Map
+                  type: map
+                conditions:
+                  - entity: input_select.theme
+                    state_not: Default
+                type: conditional
+              conditions:
+                - entity: binary_sensor.everyone_home
+                  state_not: 'on'
+              type: conditional
+            - card:
+                card:
+                  aspect_ratio: 16x9
+                  dark_mode: false
+                  default_zoom: 15
+                  entities:
+                    - person.jan
+                    - person.kathrin
+                    - zone.home
+                  title: Map
+                  type: map
+                conditions:
+                  - entity: input_select.theme
+                    state: Default
+                type: conditional
+              conditions:
+                - entity: binary_sensor.everyone_home
+                  state_not: 'on'
+              type: conditional
+          type: vertical-stack
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+      - card:
+          cards:
+            - card:
+                title: Who's where?
+                type: glance
+              entities:
+                - person.jan
+                - person.kathrin
+                - person.marita
+              state_filter:
+                - home
+                - Work
+                - Marita
+                - Claus
+                - Lukas
+                - Fitnessstudio
+                - kita_kugelstern
+                - spielplatz
+                - alla_hopp
+              type: entity-filter
+          type: vertical-stack
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+      - card:
+          entities:
+            - entity: calendar.jan
+          title: Calendar
+          type: 'custom:atomic-calendar'
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+    icon: 'mdi:home-assistant'
+    id: 0
+    popup_cards:
+      alarm_control_panel.home_alarm:
+        card:
+          entity: alarm_control_panel.home_alarm
+          states:
+            - arm_away
+            - arm_home
+          type: alarm-panel
+        title: Home Alarm
+      sensor.thermostat_living_room_internal_sensor:
+        card:
+          entity: climate.thermostat_living_room_heat
+          modes:
+            cool:
+              include: false
+          name: Wohnzimmer
+          sensors:
+            - entity: sensor.fibaro_apartment_door_temperature
+              name: Flur
+          step_size: 0.5
+          type: 'custom:simple-thermostat'
+    title: Home view
+  - cards:
+      - cards:
+          - entity: media_player.sonos_living_room
+            hide:
+              icon: true
+              power: true
+              source: true
+            shortcuts:
+              buttons:
+                - id: Deutschlandfunk
+                  name: Deutschlandfunk
+                  type: source
+                - id: 1
+                  name: Beatles - One
+                  type: source
+                - id: ANTENNE BAYERN Hits fuer Kids
+                  name: Hits für Kids
+                  type: source
+                - id: SWR1 Rheinland-Pfalz
+                  name: SWR1
+                  type: source
+                - id: SWR3
+                  name: SWR3
+                  type: source
+                - id: Rock für den Flug
+                  name: Rock für den Flug
+                  type: source
+              columns: 2
+            speaker_group:
+              entities:
+                - entity_id: media_player.sonos_living_room
+                  name: Sonos Wohnzimmer
+                - entity_id: media_player.sonos_kids_room
+                  name: Sonos Kinderzimmer
+                - entity_id: media_player.sonos_bathroom
+                  name: Sonos Badezimmer
+              expanded: false
+              show_group_count: true
+            tts:
+              entity_id: media_player.alexa_sonos_beam
+              platform: alexa
+              type: tts
+            type: 'custom:mini-media-player'
+          - entity: media_player.sonos_kids_room
+            hide:
+              icon: true
+              power: true
+              source: true
+            speaker_group:
+              entities:
+                - entity_id: media_player.sonos_living_room
+                  name: Sonos Wohnzimmer
+                - entity_id: media_player.sonos_bathroom
+                  name: Sonos Badezimmer
+              show_group_count: true
+            type: 'custom:mini-media-player'
+          - entity: media_player.sonos_bathroom
+            hide:
+              icon: true
+              power: true
+              source: true
+            speaker_group:
+              entities:
+                - entity_id: media_player.sonos_living_room
+                  name: Sonos Wohnzimmer
+                - entity_id: media_player.sonos_kids_room
+                  name: Sonos Kinderzimmer
+              show_group_count: true
+            tts:
+              entity_id: media_player.alexa_sonos_one
+              platform: alexa
+              type: tts
+            type: 'custom:mini-media-player'
+          - entity: media_player.alexa_echo_dot
+            hide:
+              icon: true
+              power: true
+              source: true
+            tts:
+              entity_id: media_player.alexa_echo_dot
+              platform: alexa
+              type: tts
+            type: 'custom:mini-media-player'
+          - entity: media_player.alexa_echo
+            hide:
+              icon: true
+              power: true
+              source: true
+            tts:
+              entity_id: media_player.alexa_echo
+              platform: alexa
+              type: tts
+            type: 'custom:mini-media-player'
+        parameters:
+          scrollbar:
+            draggable: true
+            hide: false
+            snapOnRelease: true
+          spaceBetween: 8
+        type: 'custom:swipe-card'
+      - cards:
+          - entity: media_player.philips_tv
+            type: media-control
+          - entity: media_player.android_tv
+            type: media-control
+          - entity: media_player.55pos9002
+            type: media-control
+        parameters:
+          scrollbar:
+            draggable: true
+            hide: false
+            snapOnRelease: true
+          spaceBetween: 8
+        type: 'custom:swipe-card'
+      - entity: media_player.fire_tv
+        type: media-control
+    icon: 'mdi:theater'
+    id: 2
+    title: Media
+  - badges: []
+    cards:
+      - entities:
+          - entity: input_boolean.baby_monitor
+          - entity: input_boolean.test_alert
+          - entity: input_boolean.test_camera_notification
+          - entity: input_boolean.test_critical_notification
+          - entity: automation.test_ios_camera_attachment_notification
+          - entity: automation.test_ios_critical_notification
+        show_header_toggle: false
+        title: Testcases
+        type: entities
+      - entities:
+          - entity: sensor.iphonexs_olbrecht_net_beta_last_update_trigger
+          - entity: sensor.iphonexs_olbrecht_net_beta_connection_type
+          - entity: sensor.iphonexs_olbrecht_net_beta_battery_level
+          - entity: sensor.iphonexs_olbrecht_net_beta_battery_state
+          - entity: sensor.iphonexs_olbrecht_net_beta_ssid
+          - entity: sensor.iphonexs_olbrecht_net_beta_bssid
+          - entity: sensor.iphonexs_olbrecht_net_beta_sim_1
+          - entity: sensor.iphonexs_olbrecht_net_beta_sim_2
+          - entity: sensor.iphonexs_olbrecht_net_beta_average_active_pace
+          - entity: sensor.iphonexs_olbrecht_net_beta_activity
+          - entity: sensor.iphonexs_olbrecht_net_beta_floors_ascended
+          - entity: sensor.iphonexs_olbrecht_net_beta_floors_descended
+          - entity: sensor.iphonexs_olbrecht_net_beta_steps
+          - entity: sensor.iphonexs_olbrecht_net_beta_distance
+          - entity: sensor.iphonexs_olbrecht_net_beta_geocoded_location
+        show_header_toggle: false
+        title: Jan's Phone
+        type: entities
+      - entities:
+          - entity: sensor.ipad_last_update_trigger
+          - entity: sensor.ipad_connection_type
+          - entity: sensor.ipad_battery_level
+          - entity: sensor.ipad_battery_state
+          - entity: sensor.ipad_ssid
+          - entity: sensor.ipad_bssid
+          - entity: sensor.ipad_geocoded_location
+        show_header_toggle: false
+        title: Jan's iPad
+        type: entities
+    icon: 'mdi:test-tube'
+    title: Testing
+  - cards:
+      - entities:
+          - sensor.dyson_pure_temperature
+          - sensor.dyson_pure_humidity
+          - sensor.dyson_pure_aqi
+          - sensor.dyson_pure_dust
+          - sensor.dyson_pure_filter_life
+          - fan.dyson_pure
+        id: 885b84e1454d41c6a749e3471b2db1ce
+        show_header_toggle: false
+        title: Ventilator
+        type: entities
+      - cards:
+          - cards:
+              - entities:
+                  - sensor.total_power_usage
+                  - sensor.total_energy
+                show_header_toggle: false
+                title: Total usage
+                type: entities
+              - entities:
+                  - sensor.total_power_usage
+                hours_to_show: 24
+                refresh_interval: 60
+                type: history-graph
+            type: vertical-stack
+          - entities:
+              - zwave.fibaro_apartment_door
+              - zwave.fibaro_balcony
+              - zwave.fibaro_floor
+              - zwave.fibaro_keyfob
+              - zwave.fibaro_system_fgpb101_button
+              - zwave.fibaro_kids_room
+              - zwave.fibaro_living_room_1
+              - zwave.fibaro_living_room_2
+              - zwave.fibaro_master_bath
+              - zwave.fibaro_master_bedroom
+              - zwave.fibaro_office
+              - zwave.fibaro_storage
+              - zwave.fibaro_wc
+              - zwave.thermostat_living_room
+            show_header_toggle: false
+            title: Z-Wave Devices
+            type: entities
+          - entities:
+              - sensor.fibaro_apartment_door_temperature
+              - binary_sensor.front_door
+              - sensor.fibaro_balcony_energy
+              - sensor.fibaro_balcony_power
+              - sensor.fibaro_floor_energy
+              - sensor.fibaro_floor_power
+              - sensor.fibaro_kids_room_energy
+              - sensor.fibaro_kids_room_power
+              - sensor.fibaro_living_room_1_energy_1
+              - sensor.fibaro_living_room_1_power_1
+              - sensor.fibaro_living_room_1_energy_2
+              - sensor.fibaro_living_room_1_power_2
+              - sensor.fibaro_living_room_2_energy_1
+              - sensor.fibaro_living_room_2_power_1
+              - sensor.fibaro_master_bath_energy
+              - sensor.fibaro_master_bath_power_1
+              - sensor.fibaro_master_bedroom_energy
+              - sensor.fibaro_master_bedroom_power
+              - sensor.fibaro_office_energy
+              - sensor.fibaro_office_power
+              - sensor.fibaro_storage_energy
+              - sensor.fibaro_storage_power
+              - sensor.fibaro_wc_energy
+              - sensor.fibaro_wc_power_1
+              - climate.thermostat_living_room_heat
+            show_header_toggle: false
+            title: Z-Wave Sensors
+            type: entities
+        type: 'custom:swipe-card'
+    icon: 'mdi:z-wave'
+    id: 6
+    title: Z-Wave
+  - badges: []
+    cards:
+      - card:
+          entities:
+            - entity: input_select.theme
+          show_header_toggle: false
+          title: Theme
+          type: entities
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+      - cards:
+          - card:
+              entity: script.mqtt_restart
+              hold_action:
+                action: none
+              icon: 'mdi:bluetooth'
+              name: Restart Bluetooth Monitor
+              tap_action:
+                action: call-service
+                service: mqtt.publish
+                service_data:
+                  topic: location/scan/restart
+              type: entity-button
+            style:
+              border-radius: 10px
+            type: 'custom:card-modder'
+          - card:
+              entity: script.mqtt_update
+              hold_action:
+                action: none
+              icon: 'mdi:bluetooth'
+              name: Update Bluetooth Monitor
+              tap_action:
+                action: call-service
+                service: mqtt.publish
+                service_data:
+                  topic: location/scan/update
+              type: entity-button
+            style:
+              border-radius: 10px
+            type: 'custom:card-modder'
+          - card:
+              entity: device_tracker.jans_phone
+              hold_action:
+                action: none
+              name: Request Location Jan
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.request_location_update_jan
+              type: entity-button
+            style:
+              border-radius: 10px
+            type: 'custom:card-modder'
+          - card:
+              entity: device_tracker.kathrins_phone
+              hold_action:
+                action: none
+              name: Request Location Kathrin
+              tap_action:
+                action: call-service
+                service: script.request_location_update_kathrin
+              type: entity-button
+            style:
+              border-radius: 10px
+            type: 'custom:card-modder'
+        type: horizontal-stack
+      - card:
+          entities:
+            - entity: sensor.current_version
+              tap_action:
+                action: none
+            - entity: sensor.latest_version
+              tap_action:
+                action: none
+            - entity: sensor.latest_docker_version
+              icon: 'mdi:update'
+              tap_action:
+                action: call-service
+                service: rest_command.update_ha_docker
+            - entity: sensor.hacs
+          title: Home Assistant
+          type: glance
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+      - card:
+          card:
+            show_header_toggle: false
+            title: Offline Devices
+            type: entities
+          entities:
+            - sensor.amazon_echo
+            - sensor.amazon_echo_dot
+            - sensor.firetv_stick_office
+            - sensor.bosch_hsg636xs6
+            - sensor.brother_mfc_l3770cdw
+            - sensor.sw01
+            - sensor.sw02
+            - sensor.dyson_pure_cool_link
+            - sensor.tv_living_room
+            - sensor.philips_hue_bridge
+            - sensor.snom_d765_phone
+            - sensor.raspi_homeassistant
+            - sensor.raspi_observium
+            - sensor.raspi_btmonitor
+            - sensor.sonos_one_bathroom
+            - sensor.sonos_play1_kids_room
+            - sensor.sonos_play1_living_room_1
+            - sensor.sonos_play1_living_room_2
+            - sensor.sonos_beam_living_room
+            - sensor.unifi_cloud_key
+            - sensor.unifi_security_gateway
+            - sensor.unifi_ap_livingroom
+            - sensor.unifi_ap_office
+            - sensor.unifi_ap_master_bedroom
+            - sensor.living_room_xbox_one
+            - switch.readynas_2304
+          state_filter:
+            - Offline
+            - 'off'
+          type: entity-filter
+        style:
+          border-radius: 10px
+        type: 'custom:card-modder'
+    icon: 'mdi:settings'
+    title: Settings

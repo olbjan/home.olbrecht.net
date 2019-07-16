@@ -1,34 +1,6 @@
-panel_iframe:
-  sqlite:
-    title: 'SQLite'
-    icon: mdi:database
-    url: !secret sqlite_url
-    
-#panel_custom:
-#  - name: hassio-main
-#    sidebar_title: Configurator
-#    sidebar_icon: hass:settings
-#    js_url: /api/hassio/app/entrypoint.js
-#    url_path: configurator
-#    embed_iframe: true
+#panel_iframe:
+#  sqlite:
+#    title: 'SQLite'
+#    icon: mdi:database
+#    url: !secret sqlite_url
 #    require_admin: true
-#    config:
-#      ingress: core_configurator
-#  - name: hassio-main
-#    sidebar_title: Terminal
-#    sidebar_icon: mdi:console-line
-#    js_url: /api/hassio/app/entrypoint.js
-#    url_path: terminal
-#    embed_iframe: true
-#    require_admin: true
-#    config:
-#      ingress: a0d7b954_ssh      
-#  - name: hassio-main
-#    sidebar_title: LogViewer
-#    sidebar_icon: mdi:history
-#    js_url: /api/hassio/app/entrypoint.js
-#    url_path: logviewer
-#    embed_iframe: true
-#    require_admin: true
-#    config:
-#      ingress: a0d7b954_logviewer

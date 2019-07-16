@@ -244,3 +244,153 @@ sensor.fibaro_balcony_exporting:
 sensor.fibaro_master_bedroom_power_1:
   ignored: true
   polling_intensity: 0
+sensor.fibaro_balcony_interval:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_balcony_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.fibaro_apartment_door:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_apartment_door_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_apartment_door_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_apartment_door_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_apartment_door_heat:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_apartment_door_power_management:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_apartment_door_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_floor_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_kids_room_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_kids_room_window_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_kids_room_window_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_kids_room_window_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_kids_room_window_heat:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_kids_room_window_power_management:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.fibaro_kids_room_window_sensor:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_kids_room_window_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_1_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_2_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_balcony_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_balcony_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_balcony_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_balcony_heat:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_balcony_power_management:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.fibaro_living_room_balcony_sensor:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_living_room_balcony_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bath_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bedroom_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bedroom_window_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bedroom_window_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bedroom_window_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bedroom_window_heat:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bedroom_window_power_management:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.fibaro_master_bedroom_window_sensor:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_master_bedroom_window_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_office_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_office_balcony_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_office_balcony_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_office_balcony_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_office_balcony_heat:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_office_balcony_power_management:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.fibaro_office_balcony_sensor:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_office_balcony_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_storage_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_system_fgpb101_button_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_system_fgpb101_button_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_system_fgpb101_button_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_system_fgpb101_button_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_wc_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
