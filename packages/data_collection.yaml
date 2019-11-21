@@ -7,25 +7,19 @@ logbook:
       - light
       - switch
       - media_player
-  exclude:
-    domains:
-      - alexa
-      - automation 
-      - binary_sensor
-      - climate
-      - cover
       - device_tracker
-      - fan
-      - group
+      - person
+      - binary_sensor
       - input_boolean
       - input_select
-      - lock
-      - remote 
-      - script
-      - sensor
-      - weather
-      - zone
+  exclude:
+    domains:
+      - group
       - zwave
+      - weather
+      - sensor
+      - sun
+      
 
 # Enables support for tracking state changes over time
 history:
@@ -38,6 +32,7 @@ history:
       - sensor.fibaro_kids_room_window_temperature
       - sensor.fibaro_master_bedroom_window_temperature
       - device_tracker.jans_phone
+      - device_tracker.iphonexs_olbrecht_net_beta
       - sensor.fibaro_balcony_power
       - sensor.fibaro_floor_power
       - sensor.fibaro_kids_room_power
@@ -49,11 +44,18 @@ history:
       - sensor.fibaro_office_power
       - sensor.fibaro_storage_power
       - sensor.fibaro_wc_power_1
+      - sensor.fibaro_plug_power
+      - sensor.total_power_usage
+      - sensor.total_energy
+    domains:
+      - media_player
+      - person
 
 # Configures recorder component     
 recorder:
+  db_url: mysql://hass:mariadb@core-mariadb/homeassistant?charset=utf8
   purge_interval: 1
-  purge_keep_days: 10
+  purge_keep_days: 367
 #  include:
 #    entities:
 #      - binary_sensor.front_door

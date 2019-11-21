@@ -1,0 +1,12 @@
+sensor:
+  - platform: min_max
+    name: Avg. home temperature
+    type: mean
+    entity_ids:
+      - sensor.fibaro_apartment_door_temperature
+      - sensor.fibaro_kids_room_window_temperature
+      - sensor.fibaro_living_room_balcony_temperature
+      - sensor.fibaro_master_bedroom_window_temperature
+      - sensor.fibaro_office_balcony_temperature
+      - sensor.flur_sensor_temperature
+    round_digits: 2

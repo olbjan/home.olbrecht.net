@@ -1,11 +1,31 @@
 automation:
+  - alias: 'Notification: Enter Studio Alert'
+    initial_state: 'true'
+    trigger:
+    - platform: zone
+      zone: zone.fitnessstudio
+      entity_id: person.kathrin
+      event: enter
+    action:
+    - service: notify.mobile_app_iphonexs_olbrecht_net
+      data_template:
+        message: Kathrin ist im Fitnessstudio angekommen.
+    - condition: state
+      state: 'on'
+      entity_id: 'binary_sensor.someone_home'
+    - service: notify.alexa_media
+      data_template:
+        message: Kathrin ist im Fitnessstudio angekommen.
+        data:
+          type: tts
+        target: media_player.alexa_sonos_beam
 
   - alias: 'Notification: Exit Studio Alert'
     initial_state: 'true'
     trigger:
     - platform: zone
-      zone: zone.fitnesstudio
-      entity_id: device_tracker.kathrins_phone
+      zone: zone.fitnessstudio
+      entity_id: person.kathrin
       event: leave
     action:
     - service: notify.mobile_app_iphonexs_olbrecht_net
@@ -16,7 +36,7 @@ automation:
       entity_id: 'binary_sensor.someone_home'
     - service: notify.alexa_media
       data_template:
-        message: Kathrin hat das Fitnesstudio verlassen.
+        message: Kathrin hat das Fitnessstudio verlassen.
         data:
           type: tts
         target: media_player.alexa_sonos_beam
@@ -33,7 +53,7 @@ automation:
     trigger:
     - platform: zone
       zone: zone.work
-      entity_id: device_tracker.jans_phone
+      entity_id: person.jan
       event: leave
     condition:
       - condition: time

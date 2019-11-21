@@ -394,3 +394,30 @@ sensor.fibaro_system_fgpb101_button_sourcenodeid:
 sensor.fibaro_wc_sourcenodeid:
   ignored: true
   polling_intensity: 0
+sensor.fibaro_plug_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_plug_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_plug_exporting:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_plug_power_management:
+  ignored: true
+  polling_intensity: 0
+sensor.fibaro_plug_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+climate.thermostat_kids_room_cooling:
+  ignored: true
+  polling_intensity: 0
+sensor.thermostat_kids_room_exporting:
+  ignored: false
+  polling_intensity: 0
+sensor.thermostat_kids_room_voltage:
+  ignored: true
+  polling_intensity: 0
+sensor.thermostat_kids_room_energy:
+  ignored: true
+  polling_intensity: 0

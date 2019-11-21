@@ -20,3 +20,16 @@
   - data:
       message: Home assistant shutting down
     service: notify.ios_jans_phone
+- id: '1572215956106'
+  alias: Arm alarm when no-one is home
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.someone_home
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      code: 1234
+      entity_id: alarm_control_panel.hone_alrm
+    service: alarm_control_panel.alarm_arm_away

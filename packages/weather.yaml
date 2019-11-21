@@ -5,5 +5,13 @@ weather:
     name: Edenkoben
     mode: daily
 
+sensor:
+  - platform: darksky
+    api_key: !secret darksky_api
+    forecast:
+      - 0
+    monitored_conditions:
+      - temperature
+
 # Track the sun
 sun:

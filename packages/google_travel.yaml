@@ -13,24 +13,6 @@ sensor:
     name: Jan to Home
     scan_interval: 86400
 
-# Route to work
-# Used to determine if Google is recommending an alternate route because of 
-# traffic incidents
-  - platform: template
-    sensors:
-      route_to_work_distance:
-        friendly_name: 'Distance to work'
-        unit_of_measurement: 'km'
-        value_template: "{{ state_attr('sensor.time_to_work','distance').replace('km','')|float }}"
-#        value_template: >-
-#          {% if state_attr('sensor.time_to_work', 'distance')|float > 50 %}
-#            Autobahn
-#          {% elif state_attr('sensor.time_to_work', 'distance')|float < 50 %}
-#            B271
-#          {% else %}
-#            failed
-#          {% endif %}
-
 automation:
 
 # This automation sends me a notification with the estimated travel time to work
@@ -73,20 +55,3 @@ automation:
     - data:
         entity_id: sensor.time_to_work
       service: homeassistant.update_entity
-
-# This automation will alert me to the Google Travel Distance changing the 
-# recommended route because of traffic conditions. In my case the usual route 
-# is slightly longer then 52km
-
-  - alias: 'Notification: Alert on traffic jam to work'
-    initial_state: 'true'
-    trigger:
-    - below: '52'
-      entity_id: sensor.route_to_work_distance
-      platform: numeric_state
-    condition: []
-    action:
-    - data:
-        message: Stau auf der Autobahn, Alternative Route nehmen!
-      service: notify.ios_jans_phone
-  

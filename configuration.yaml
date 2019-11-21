@@ -14,7 +14,7 @@ homeassistant:
 
 # Enables the frontend
 frontend:
-
+  themes: !include_dir_merge_named themes
 # Enable Home Assistant Default Configuration  
 # default_config:
 
@@ -73,7 +73,7 @@ group: !include groups.yaml
 # Enable these to have GUI config for scripts and automation
 automation: !include automations.yaml
 script: !include scripts.yaml
-
+scene: !include scenes.yaml
 # Enable Map in Frontend
 #map:
 
@@ -85,7 +85,8 @@ wake_on_lan:
 # Enable Home Assistant Community Store
 hacs:
   token: !secret hacs
-
+  theme: true
+  
 # Workday binary sensor
 binary_sensor:
   - platform: workday
@@ -96,6 +97,13 @@ binary_sensor:
 system_health:
 
 zwave: 
-  usb_path: /dev/ttyAMA0
+  usb_path: /dev/ttyACM0
 #  network_key: !secret zwave_network_key
   device_config: !include zwave_device_config.yaml
+  
+# Enable debug logging
+#logger:
+#  default: warning
+#  logs:
+#    homeassistant.components.sonos: debug
+#    pysonos.discovery: debug

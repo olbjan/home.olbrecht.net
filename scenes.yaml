@@ -1,0 +1,20 @@
+- id: '1574113594912'
+  name: Gute Nacht
+  entities:
+    fan.dyson_pure:
+      speed: 3
+      state: 'on'
+    light.bett:
+      state: 'off'
+- id: '1574113748274'
+  name: Guten Morgen
+  entities:
+    fan.dyson_pure:
+      speed: 3
+      state: 'on'
+    light.fibaro_wc_level_1:
+      state: 'off'
+    light.schuhschrank:
+      state: 'off'
+    zwave.fibaro_wc:
+      state: ready
