@@ -6,10 +6,10 @@
   action:
   - data_template:
       message: Home Assistant started {{now().strftime('%Y-%m-%d - %H:%M:%S')}}
-    service: notify.ios_jans_phone
+    service: notify.mobile_app_iphonexs_olbrecht_net
   - data:
       message: Home Assistant ist jetzt aktiv
-    service: notify.ios_jans_ipad
+    service: notify.mobile_app_ipad_olbrecht_net
 - id: '1539785773973'
   alias: HA shutdown
   trigger:
@@ -19,7 +19,7 @@
   action:
   - data:
       message: Home assistant shutting down
-    service: notify.ios_jans_phone
+    service: notify.mobile_app_iphonexs_olbrecht_net
 - id: '1572215956106'
   alias: Arm alarm when no-one is home
   description: ''
@@ -30,6 +30,168 @@
   condition: []
   action:
   - data:
-      code: 1234
-      entity_id: alarm_control_panel.hone_alrm
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
+- id: '1572215956107'
+  alias: Disarm alarm when someone is home
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.someone_home
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_disarm
+- id: '1574464249876'
+  alias: Notify on ssl expiry within 30 days
+  description: ''
+  trigger:
+  - below: '30'
+    entity_id: sensor.ssl_datengrab
+    platform: numeric_state
+  - below: '30'
+    entity_id: sensor.ssl_home_assistant
+    platform: numeric_state
+  - below: '30'
+    entity_id: sensor.ssl_unifi_controller
+    platform: numeric_state
+  - below: '30'
+    entity_id: sensor.ssl_unifi_video
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: SSL certificate expires soon
+    service: notify.mobile_app_iphonexs_olbrecht_net
+- id: '1574619325241'
+  alias: Turn off fan at 0600
+  description: ''
+  trigger:
+  - at: 06:00
+    platform: time
+  condition: []
+  action:
+  - alias: ''
+    data:
+      entity_id: fan.dyson_pure
+    service: fan.turn_off
+- id: '1574619944757'
+  alias: Notify those at home when windows are open longer than 30 minutes
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.kids_room_window
+    for:
+      minutes: 30
+    platform: state
+    to: 'on'
+  condition:
+  - below: '8'
+    condition: numeric_state
+    entity_id: sensor.dark_sky_temperature
+  action:
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexs_olbrecht_net
+  - data:
+      message: Fenster im Kinderzimmer schliessen.
+    service: notify.mobile_app_iphonexs_olbrecht_net
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexr_olbrecht_net
+  - data:
+      message: Fenster im Kinderzimmer schliessen.
+    service: notify.mobile_app_iphonexr_olbrecht_net
+- id: '1574619944758'
+  alias: Notify those at home when office windows are open longer than 30 minutes
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.office_balcony_door
+    for:
+      minutes: 30
+    platform: state
+    to: 'on'
+  condition:
+  - below: '8'
+    condition: numeric_state
+    entity_id: sensor.dark_sky_temperature
+  action:
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexs_olbrecht_net
+  - data:
+      message: Fenster im Büro schliessen.
+    service: notify.mobile_app_iphonexs_olbrecht_net
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexr_olbrecht_net
+  - data:
+      message: Fenster im Büro schliessen.
+    service: notify.mobile_app_iphonexr_olbrecht_net
+- id: '1574619944759'
+  alias: Notify those at home when living room windows are open longer than 30 minutes
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.living_room_balcony_door
+    for:
+      minutes: 30
+    platform: state
+    to: 'on'
+  condition:
+  - below: '8'
+    condition: numeric_state
+    entity_id: sensor.dark_sky_temperature
+  action:
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexs_olbrecht_net
+  - data:
+      message: Fenster im Wohnzimmer schliessen.
+    service: notify.mobile_app_iphonexs_olbrecht_net
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexr_olbrecht_net
+  - data:
+      message: Fenster im Wohnzimmer schliessen.
+    service: notify.mobile_app_iphonexr_olbrecht_net
+- id: '1574619944760'
+  alias: Notify those at home when bedroom windows are open longer than 30 minutes
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.master_bedroom_window
+    for:
+      minutes: 30
+    platform: state
+    to: 'on'
+  condition:
+  - below: '8'
+    condition: numeric_state
+    entity_id: sensor.dark_sky_temperature
+  action:
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexs_olbrecht_net
+  - data:
+      message: Fenster im Schlafzimmer schliessen.
+    service: notify.mobile_app_iphonexs_olbrecht_net
+  - condition: state
+    state: home
+    entity_id: device_tracker.iphonexr_olbrecht_net
+  - data:
+      message: Fenster im Schlafzimmer schliessen.
+    service: notify.mobile_app_iphonexr_olbrecht_net
+- id: '1574711251941'
+  alias: Switch off christmas lights at 11pm
+  description: ''
+  trigger:
+  - at: '23:00'
+    platform: time
+  condition: []
+  action:
+  - device_id: 952231df76c14da782cbc755912f5b9e
+    domain: switch
+    entity_id: switch.fibaro_plug_switch
+    type: turn_off

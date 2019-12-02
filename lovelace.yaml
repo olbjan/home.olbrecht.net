@@ -825,7 +825,7 @@ views:
               border-radius: 10px
             type: 'custom:card-modder'
           - card:
-              entity: device_tracker.jans_phone
+              entity: device_tracker.iphonexs_olbrecht_net
               hold_action:
                 action: none
               name: Request Location Jan
@@ -839,7 +839,7 @@ views:
               border-radius: 10px
             type: 'custom:card-modder'
           - card:
-              entity: device_tracker.kathrins_phone
+              entity: device_tracker.iphonexr_olbrecht_net
               hold_action:
                 action: none
               name: Request Location Kathrin

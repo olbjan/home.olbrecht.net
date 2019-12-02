@@ -31,7 +31,7 @@ history:
       - sensor.fibaro_office_balcony_temperature
       - sensor.fibaro_kids_room_window_temperature
       - sensor.fibaro_master_bedroom_window_temperature
-      - device_tracker.jans_phone
+      - device_tracker.iphonexs_olbrecht_net
       - device_tracker.iphonexs_olbrecht_net_beta
       - sensor.fibaro_balcony_power
       - sensor.fibaro_floor_power

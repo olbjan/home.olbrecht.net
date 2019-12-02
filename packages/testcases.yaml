@@ -89,14 +89,5 @@ automation:
               name: Telegraph.caf
               volume: 1.0 # 0.0 to 1.0
           entity_id: camera.living_room
-    - service: notify.ios_jans_phone
-      data:
-        message: Motion detected in the Living Room
-        data:
-          attachment:
-            content-type: jpeg
-          push:
-            category: camera
-          entity_id: camera.living_room
 
       

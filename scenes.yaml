@@ -5,16 +5,33 @@
       speed: 3
       state: 'on'
     light.bett:
-      state: 'off'
+      brightness: 25
+      effect: none
+      hs_color:
+      - 33.767
+      - 84.314
+      rgb_color:
+      - 255
+      - 160
+      - 39
+      state: 'on'
+      xy_color:
+      - 0.561
+      - 0.404
 - id: '1574113748274'
   name: Guten Morgen
   entities:
     fan.dyson_pure:
       speed: 3
-      state: 'on'
-    light.fibaro_wc_level_1:
       state: 'off'
-    light.schuhschrank:
+    light.bett:
       state: 'off'
-    zwave.fibaro_wc:
-      state: ready
+- id: '1574463729376'
+  name: Heizung aus
+  entities:
+    climate.thermostat_kids_room_energy_heat:
+      preset_mode: none
+      state: 'off'
+    climate.thermostat_living_room_energy_heat:
+      preset_mode: none
+      state: 'off'

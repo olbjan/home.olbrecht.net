@@ -8,7 +8,7 @@ sensor:
     scan_interval: 86400
   - platform: google_travel_time
     api_key: !secret google_travel_time_key
-    origin: device_tracker.jans_phone
+    origin: device_tracker.iphonexs_olbrecht_net
     destination: !secret home_address
     name: Jan to Home
     scan_interval: 86400
@@ -33,25 +33,4 @@ automation:
     - data_template:
         message: The drive to work will take approximately {{ states.sensor.time_to_work.state
           }} minutes.
-      service: notify.ios_jans_phone
-
-# This automation updates the morning commute sensor every 5 minutes each 
-# morning
-
-  - alias: 'Update morning commute sensor'
-    initial_state: 'true'
-    trigger:
-    - minutes: /5
-      seconds: 0
-      platform: time_pattern
-    condition:
-    - after: 07:00:00
-      before: 08:30:00
-      condition: time
-    - condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'true'
-    action:
-    - data:
-        entity_id: sensor.time_to_work
-      service: homeassistant.update_entity
+      service: notify.mobile_app_iphonexs_olbrecht_net
