@@ -1,0 +1,8 @@
+'1575467752863':
+  alias: Flatley
+  sequence:
+  - data:
+      entity_id: media_player.55pos9002
+      media_content_id: https://youtu.be/7FrKOzhtwfM
+      media_content_type: video
+    service: media_extractor.play_media

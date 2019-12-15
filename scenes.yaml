@@ -35,3 +35,153 @@
     climate.thermostat_living_room_energy_heat:
       preset_mode: none
       state: 'off'
+- id: '1575710863940'
+  name: Weihnachtslicht
+  entities:
+    light.couchtisch_oben:
+      brightness: 254
+      effect: none
+      effect_list:
+      - random
+      friendly_name: Couchtisch (oben)
+      hs_color:
+      - 38.88
+      - 49.02
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    light.couchtisch_unten:
+      brightness: 254
+      effect: none
+      effect_list:
+      - random
+      friendly_name: Couchtisch (unten)
+      hs_color:
+      - 38.88
+      - 49.02
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    light.hugo:
+      brightness: 254
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Wohnzimmer Hugo
+      hs_color:
+      - 38.88
+      - 49.02
+      icon: mdi:wall-sconce-variant
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    light.kitchen_fridge:
+      brightness: 254
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Küche Kühlschrank
+      hs_color:
+      - 38.88
+      - 49.02
+      icon: mdi:track-light
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    light.kitchen_shelf:
+      brightness: 254
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Küche Oberschrank
+      hs_color:
+      - 38.88
+      - 49.02
+      icon: mdi:track-light
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    switch.fibaro_plug_switch:
+      friendly_name: FIBARO Plug Switch
+      icon: mdi:pine-tree
+      node_id: 22
+      power_consumption: 3.9
+      state: 'on'
+      value_id: '72057594411827200'
+      value_index: 0
+      value_instance: 1
+    zwave.fibaro_plug:
+      application_version: '3.02'
+      averageRequestRTT: 280
+      averageResponseRTT: 337
+      capabilities:
+      - zwave_plus
+      - routing
+      - beaming
+      - listening
+      friendly_name: FIBARO Plug
+      is_awake: true
+      is_failed: false
+      is_info_received: true
+      is_ready: true
+      is_zwave_plus: true
+      lastRequestRTT: 382
+      lastResponseRTT: 519
+      manufacturer_name: FIBARO System
+      max_baud_rate: 40000
+      node_id: 22
+      node_name: FIBARO Plug
+      product_name: FGWPE/F Wall Plug Gen5
+      query_stage: Complete
+      receivedCnt: 23
+      receivedDups: 1
+      receivedTS: '2019-12-07 11:17:32:853 '
+      receivedUnsolicited: 4
+      retries: 0
+      sentCnt: 21
+      sentFailed: 0
+      sentTS: '2019-12-07 11:17:31:616 '
+      state: ready
