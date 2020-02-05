@@ -11,11 +11,9 @@ switch.readynas_2304:
   friendly_name: ReadyNAS 2304
   icon: mdi:server
 device_tracker.iphonexs_olbrecht_net:
-  friendly_name: Jan
-  entity_picture: /local/jan_olbrecht.jpg
+  friendly_name: Jan's Phone
 device_tracker.iphonexr_olbrecht_net:
-  friendly_name: Kathrin
-  entity_picture: /local/kathrin_olbrecht.jpg
+  friendly_name: Kathrin's Phone
 switch.fibaro_office_switch_1:
   friendly_name: Büro
   icon: mdi:ceiling-light
@@ -67,10 +65,10 @@ light.hugo:
 light.hue_bloom:
   friendly_name: Büro Hue Bloom
   icon: mdi:wall-sconce-variant
-light.kitchen_fridge:
+light.kueche_kuehlschrank:
   friendly_name: Küche Kühlschrank
   icon: mdi:track-light
-light.kitchen_shelf:
+light.kueche_oberschrank:
   friendly_name: Küche Oberschrank
   icon: mdi:track-light
 fan.dyson_pure:

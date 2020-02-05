@@ -5,6 +5,8 @@ input_select:
       - Default
       - Slate
       - OLED
+      - Google Dark Theme
+      - Google Light Theme
     initial: Default
     icon: mdi:target
 
@@ -41,4 +43,26 @@ automation:
     action:
     - data:
         name: amoled
+      service: frontend.set_theme
+  - alias: 'Themes: Enable Google Dark Theme'
+    initial_state: 'true'
+    trigger:
+    - entity_id: input_select.theme
+      platform: state
+      to: Google Dark Theme
+    condition: []
+    action:
+    - data:
+        name: Google Dark Theme
+      service: frontend.set_theme
+  - alias: 'Themes: Enable Google Light Theme'
+    initial_state: 'true'
+    trigger:
+    - entity_id: input_select.theme
+      platform: state
+      to: Google Light Theme
+    condition: []
+    action:
+    - data:
+        name: Google Light Theme
       service: frontend.set_theme

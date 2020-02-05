@@ -73,9 +73,6 @@ sensor.fibaro_living_room_2_interval:
 sensor.fibaro_living_room_2_interval_2:
   ignored: true
   polling_intensity: 0
-sensor.fibaro_living_room_2_interval_3:
-  ignored: true
-  polling_intensity: 0
 sensor.fibaro_living_room_2_power_management:
   ignored: true
   polling_intensity: 0
@@ -83,9 +80,6 @@ sensor.fibaro_living_room_2_previous_reading:
   ignored: true
   polling_intensity: 0
 sensor.fibaro_living_room_2_previous_reading_2:
-  ignored: true
-  polling_intensity: 0
-sensor.fibaro_living_room_2_previous_reading_3:
   ignored: true
   polling_intensity: 0
 sensor.fibaro_master_bath_alarm_level:
@@ -419,5 +413,8 @@ sensor.thermostat_kids_room_voltage:
   ignored: true
   polling_intensity: 0
 sensor.thermostat_kids_room_energy:
+  ignored: true
+  polling_intensity: 0
+sensor.thermostat_master_bedroom_exporting:
   ignored: true
   polling_intensity: 0

@@ -30,9 +30,10 @@
   condition: []
   action:
   - data:
-      code: !secret alarm_code
+      code: 1234
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
+  - scene: scene.everything_off
 - id: '1572215956107'
   alias: Disarm alarm when someone is home
   description: ''
@@ -43,7 +44,7 @@
   condition: []
   action:
   - data:
-      code: !secret alarm_code
+      code: 1234
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
 - id: '1574464249876'
@@ -183,15 +184,3 @@
   - data:
       message: Fenster im Schlafzimmer schliessen.
     service: notify.mobile_app_iphonexr_olbrecht_net
-- id: '1574711251941'
-  alias: Switch off christmas lights at 11pm
-  description: ''
-  trigger:
-  - at: '23:00'
-    platform: time
-  condition: []
-  action:
-  - device_id: 952231df76c14da782cbc755912f5b9e
-    domain: switch
-    entity_id: switch.fibaro_plug_switch
-    type: turn_off

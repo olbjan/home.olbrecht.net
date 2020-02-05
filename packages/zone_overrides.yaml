@@ -1,8 +1,9 @@
-# Overrides default home zone to set radius different from default 100
+# Overrides default home zone to set 
+# radius different from default 100
 zone:
   - name: Home
     latitude: !secret latitude
     longitude: !secret longitude
-    elevation: !secret elevation
+    #elevation: !secret elevation
     radius: 20
     icon: mdi:home

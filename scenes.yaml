@@ -35,153 +35,371 @@
     climate.thermostat_living_room_energy_heat:
       preset_mode: none
       state: 'off'
-- id: '1575710863940'
-  name: Weihnachtslicht
+- id: '1577028048380'
+  name: Everything off
   entities:
+    fan.dyson_pure:
+      auto_mode: false
+      friendly_name: Dyson Pure Cool Link Tower
+      icon: mdi:fan
+      night_mode: false
+      oscillating: false
+      speed: 3
+      speed_list:
+      - AUTO
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      state: 'off'
+      supported_features: 3
+    light.bett:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Schlafzimmer Bett
+      icon: mdi:wall-sconce-variant
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
     light.couchtisch_oben:
-      brightness: 254
-      effect: none
       effect_list:
       - random
       friendly_name: Couchtisch (oben)
-      hs_color:
-      - 38.88
-      - 49.02
       max_mireds: 500
       min_mireds: 153
-      rgb_color:
-      - 255
-      - 210
-      - 129
-      state: 'on'
+      state: 'off'
       supported_features: 63
-      xy_color:
-      - 0.447
-      - 0.406
     light.couchtisch_unten:
-      brightness: 254
-      effect: none
       effect_list:
       - random
       friendly_name: Couchtisch (unten)
-      hs_color:
-      - 38.88
-      - 49.02
       max_mireds: 500
       min_mireds: 153
-      rgb_color:
-      - 255
-      - 210
-      - 129
-      state: 'on'
+      state: 'off'
       supported_features: 63
-      xy_color:
-      - 0.447
-      - 0.406
+    light.fibaro_master_bath_level_1:
+      friendly_name: Badezimmer
+      icon: mdi:lightbulb
+      node_id: 7
+      power_consumption: 0
+      state: 'off'
+      supported_features: 33
+      value_id: '72057594160185345'
+      value_index: 0
+      value_instance: 1
+    light.fibaro_master_bedroom_level_1:
+      friendly_name: Schlafzimmer
+      icon: mdi:ceiling-light
+      node_id: 6
+      power_consumption: 0
+      state: 'off'
+      supported_features: 33
+      value_id: '72057594143408129'
+      value_index: 0
+      value_instance: 1
+    light.fibaro_wc_level_1:
+      friendly_name: WC
+      icon: mdi:lightbulb
+      node_id: 3
+      power_consumption: 0
+      state: 'off'
+      supported_features: 33
+      value_id: '72057594093076481'
+      value_index: 0
+      value_instance: 1
+    light.hue_bloom:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Büro Hue Bloom
+      icon: mdi:wall-sconce-variant
+      state: 'off'
+      supported_features: 61
     light.hugo:
-      brightness: 254
-      effect: none
       effect_list:
       - colorloop
       - random
       friendly_name: Wohnzimmer Hugo
-      hs_color:
-      - 38.88
-      - 49.02
       icon: mdi:wall-sconce-variant
       max_mireds: 500
       min_mireds: 153
-      rgb_color:
-      - 255
-      - 210
-      - 129
-      state: 'on'
+      state: 'off'
       supported_features: 63
-      xy_color:
-      - 0.447
-      - 0.406
-    light.kitchen_fridge:
-      brightness: 254
-      effect: none
+    light.kueche_kuehlschrank:
       effect_list:
       - colorloop
       - random
       friendly_name: Küche Kühlschrank
-      hs_color:
-      - 38.88
-      - 49.02
       icon: mdi:track-light
       max_mireds: 500
       min_mireds: 153
-      rgb_color:
-      - 255
-      - 210
-      - 129
-      state: 'on'
+      state: 'off'
       supported_features: 63
-      xy_color:
-      - 0.447
-      - 0.406
-    light.kitchen_shelf:
-      brightness: 254
-      effect: none
+    light.kueche_oberschrank:
       effect_list:
       - colorloop
       - random
       friendly_name: Küche Oberschrank
-      hs_color:
-      - 38.88
-      - 49.02
       icon: mdi:track-light
       max_mireds: 500
       min_mireds: 153
-      rgb_color:
-      - 255
-      - 210
-      - 129
-      state: 'on'
+      state: 'off'
       supported_features: 63
-      xy_color:
-      - 0.447
-      - 0.406
-    switch.fibaro_plug_switch:
-      friendly_name: FIBARO Plug Switch
-      icon: mdi:pine-tree
-      node_id: 22
-      power_consumption: 3.9
-      state: 'on'
-      value_id: '72057594411827200'
+    light.schuhschrank:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Flur Schuhschrank
+      icon: mdi:wall-sconce-variant
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
+    media_player.philips_tv:
+      friendly_name: Philips TV
+      source_list:
+      - 📱 Amazon Alexa
+      - 📱 Apps verwalten
+      - 📱 ARD Mediathek
+      - 📱 ARTE
+      - 📱 Demo-Menü
+      - 📱 Developer Tools
+      - 📱 Einstellungen
+      - 📱 Fernsehen
+      - 📱 Hilfe
+      - 📱 Internet Browser
+      - 📱 Kabellos und Netzwerke
+      - 📱 Medien
+      - 📱 Netflix
+      - 📱 Notifications for Android TV
+      - 📱 Philips TV Collection
+      - 📱 Play Filme & Serien
+      - 📱 Play Musik
+      - 📱 Play Spiele
+      - 📱 Play Store
+      - 📱 Prime Video
+      - 📱 Sender installieren
+      - 📱 Software aktualisieren
+      - 📱 TED
+      - 📱 Top Auswahl
+      - 📱 TV-Guide
+      - 📱 Vimeo
+      - 📱 VLC
+      - 📱 Wie Sie...
+      - 📱 YouTube
+      - 📱 ZDFmediathek
+      - 📺 3sat HD
+      - 📺 ARD-alpha
+      - 📺 ARD-alpha HD
+      - 📺 BBC World News (eng)
+      - 📺 BR Fernsehen Süd HD
+      - 📺 CNN (eng)
+      - 📺 Comedy Central
+      - 📺 DMAX
+      - 📺 Das Erste HD
+      - 📺 Disney Channel
+      - 📺 Eurosport 1
+      - 📺 KiKA HD
+      - 📺 MDR Sachsen HD
+      - 📺 MTV
+      - 📺 N24 Doku
+      - 📺 NDR FS HH HD
+      - 📺 NITRO
+      - 📺 Nick
+      - 📺 OK Weinstrasse
+      - 📺 PHOENIX HD
+      - 📺 ProSieben
+      - 📺 ProSieben MAXX
+      - 📺 RTL
+      - 📺 RTL II
+      - 📺 RTLplus
+      - 📺 SAT.1
+      - 📺 SAT.1 Gold
+      - 📺 SPORT1
+      - 📺 SR Fernsehen
+      - 📺 SR Fernsehen HD
+      - 📺 SUPER RTL
+      - 📺 SWR RP HD
+      - 📺 TELE 5
+      - 📺 VOX
+      - 📺 WDR HD Köln
+      - 📺 WELT
+      - 📺 Welt der Wunder TV
+      - 📺 ZDF HD
+      - 📺 ZDFinfo HD
+      - 📺 arte HD
+      - 📺 euronews
+      - 📺 hr-fernsehen HD
+      - 📺 kabel eins
+      - 📺 kabel eins Doku
+      - 📺 n-tv
+      - 📺 rbb Berlin HD
+      - 📺 sixx
+      - 📺 tagesschau24 HD
+      - 📺 zdf_neo HD
+      state: 'off'
+      supported_features: 23997
+    media_player.sonos_bathroom:
+      entity_picture: /api/media_player_proxy/media_player.sonos_bathroom?token=d79cfaa5860ff1da00f1c78b1614639f1d57fabd85f3e9e9cf85b5defe95e501&cache=13531d21f78b28c8
+      friendly_name: Badezimmer
+      is_volume_muted: false
+      media_album_name: The Best of Generation Fernseh-Kult (Download Edition)
+      media_artist: Pippi Langstrumpf
+      media_content_type: music
+      media_duration: 189
+      media_position: 6
+      media_position_updated_at: '2020-01-20T12:49:40.419096+00:00'
+      media_title: Hei, Pippi Langstrumpf
+      shuffle: false
+      sonos_group:
+      - media_player.sonos_bathroom
+      source_list:
+      - '1'
+      - ANTENNE BAYERN Hits fuer Kids
+      - Deutschlandfunk
+      - I Can See Clearly Now
+      - Regenbogen 2
+      - Rock für den Flug
+      - SWR1 Rheinland-Pfalz
+      - SWR3
+      - Unterwegs im Auto
+      state: paused
+      supported_features: 64063
+      volume_level: 0.35
+    media_player.sonos_kids_room:
+      entity_picture: /api/media_player_proxy/media_player.sonos_kids_room?token=34242a69b0e5b0d677af46a44fe76368485261b03f3f98c8c95333b5107a84c1&cache=f9aaabdda2a3ea76
+      friendly_name: Kinderzimmer
+      is_volume_muted: false
+      media_album_name: Giraffenaffen
+      media_artist: The BossHoss
+      media_content_type: music
+      media_duration: 297
+      media_position: 181
+      media_position_updated_at: '2020-01-20T12:49:40.410164+00:00'
+      media_title: Old McDonald
+      shuffle: false
+      sonos_group:
+      - media_player.sonos_kids_room
+      source_list:
+      - '1'
+      - ANTENNE BAYERN Hits fuer Kids
+      - Deutschlandfunk
+      - I Can See Clearly Now
+      - Regenbogen 2
+      - Rock für den Flug
+      - SWR1 Rheinland-Pfalz
+      - SWR3
+      - Unterwegs im Auto
+      state: paused
+      supported_features: 64063
+      volume_level: 0.95
+    media_player.sonos_living_room:
+      entity_picture: /api/media_player_proxy/media_player.sonos_living_room?token=3188c17b28dc80e42eb5ee8fcf5cc22ea0194b41e36ac56ada2116eaf13cb304&cache=508c0767a7eab6c3
+      friendly_name: Sonos Wohnzimmer
+      is_volume_muted: false
+      media_album_name: Rock für den Flug
+      media_artist: U2
+      media_content_type: music
+      media_duration: 276
+      media_position: 0
+      media_position_updated_at: '2020-01-21T17:02:29.699630+00:00'
+      media_title: One
+      night_sound: false
+      shuffle: false
+      sonos_group:
+      - media_player.sonos_living_room
+      source_list:
+      - '1'
+      - ANTENNE BAYERN Hits fuer Kids
+      - Deutschlandfunk
+      - I Can See Clearly Now
+      - Regenbogen 2
+      - Rock für den Flug
+      - SWR1 Rheinland-Pfalz
+      - SWR3
+      - Unterwegs im Auto
+      - TV
+      speech_enhance: true
+      state: paused
+      supported_features: 64063
+      volume_level: 0.26
+    switch.fibaro_balcony_switch_1:
+      friendly_name: Balkon
+      icon: mdi:lightbulb
+      node_id: 10
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594210500608'
       value_index: 0
       value_instance: 1
-    zwave.fibaro_plug:
-      application_version: '3.02'
-      averageRequestRTT: 280
-      averageResponseRTT: 337
-      capabilities:
-      - zwave_plus
-      - routing
-      - beaming
-      - listening
-      friendly_name: FIBARO Plug
-      is_awake: true
-      is_failed: false
-      is_info_received: true
-      is_ready: true
-      is_zwave_plus: true
-      lastRequestRTT: 382
-      lastResponseRTT: 519
-      manufacturer_name: FIBARO System
-      max_baud_rate: 40000
-      node_id: 22
-      node_name: FIBARO Plug
-      product_name: FGWPE/F Wall Plug Gen5
-      query_stage: Complete
-      receivedCnt: 23
-      receivedDups: 1
-      receivedTS: '2019-12-07 11:17:32:853 '
-      receivedUnsolicited: 4
-      retries: 0
-      sentCnt: 21
-      sentFailed: 0
-      sentTS: '2019-12-07 11:17:31:616 '
-      state: ready
+    switch.fibaro_floor_switch_1:
+      friendly_name: Flur
+      icon: mdi:ceiling-light
+      node_id: 5
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594126614528'
+      value_index: 0
+      value_instance: 1
+    switch.fibaro_kids_room_switch_1:
+      friendly_name: Kinderzimmer
+      icon: mdi:ceiling-light
+      node_id: 4
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594109837312'
+      value_index: 0
+      value_instance: 1
+    switch.fibaro_living_room_1_switch_1:
+      friendly_name: Kochen
+      icon: mdi:ceiling-light
+      node_id: 8
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594176946176'
+      value_index: 0
+      value_instance: 1
+    switch.fibaro_living_room_1_switch_2:
+      friendly_name: Couch
+      icon: mdi:ceiling-light
+      node_id: 8
+      power_consumption: 0
+      state: 'off'
+      value_id: '144115188214874112'
+      value_index: 0
+      value_instance: 2
+    switch.fibaro_living_room_2_switch_1:
+      friendly_name: Essen
+      icon: mdi:ceiling-light
+      node_id: 9
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594193723392'
+      value_index: 0
+      value_instance: 1
+    switch.fibaro_office_switch_1:
+      friendly_name: Büro
+      icon: mdi:ceiling-light
+      node_id: 2
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594076282880'
+      value_index: 0
+      value_instance: 1
+    switch.fibaro_storage_switch_1:
+      friendly_name: Abstellraum
+      icon: mdi:ceiling-light
+      node_id: 11
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594227277824'
+      value_index: 0
+      value_instance: 1

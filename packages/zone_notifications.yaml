@@ -41,18 +41,40 @@ automation:
           type: tts
         target: media_player.alexa_sonos_beam
 
-# This automation triggers on a zone "work" exit, it then:
+  - alias: 'Notification: Enter Finanzamt Koblenz Alert'
+    initial_state: 'true'
+    trigger:
+    - platform: zone
+      zone: zone.finanzamt_koblenz
+      entity_id: person.kathrin
+      event: enter
+    action:
+    - service: notify.mobile_app_iphonexs_olbrecht_net
+      data_template:
+        message: Kathrin ist im Finanzamt Koblenz angekommen.
+    - condition: state
+      state: 'on'
+      entity_id: 'binary_sensor.someone_home'
+    - service: notify.alexa_media
+      data_template:
+        message: Kathrin ist im Finanzamt Koblenz angekommen.
+        data:
+          type: tts
+        target: media_player.alexa_sonos_beam
+
+
+# This automation triggers on a zone "b4" exit, it then:
 # - updates the Google Travel Distance
 # - sends a notification to people in my household with the estimated travel
 #   time
 # - Tells the estimated travel time via the Alexa Media TTS component on my 
 #   living room Sonos system.
 
-  - alias: 'Notification: Exit Work Alert'
+  - alias: 'Notification: Exit b4 Alert'
     initial_state: 'true'
     trigger:
     - platform: zone
-      zone: zone.work
+      zone: zone.b4
       entity_id: person.jan
       event: leave
     condition:
@@ -77,6 +99,38 @@ automation:
     - service: notify.alexa_media
       data_template:
         message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+        data:
+          type: tts
+        target: media_player.alexa_sonos_beam
+  - alias: 'Notification: Exit Koblenz Alert'
+    initial_state: 'true'
+    trigger:
+    - platform: zone
+      zone: zone.finanzamt_koblenz
+      entity_id: person.kathrin
+      event: leave
+    condition:
+      - condition: time
+        after: '14:00:00'
+        before: '22:00:00'
+    action:
+    - data:
+        entity_id: sensor.kathrin_to_home
+      service: homeassistant.update_entity
+    - service: notify.mobile_app_iphonexr_olbrecht_net
+      data_template:
+        message: Kathrin hat die Zone Finanzamt Koblenz verlassen. Bei aktuellem Verkehr braucht sie
+          etwa {{ states.sensor.kathrin_to_home.state }} Minuten nach Hause.
+    - service: notify.mobile_app_iphonexs_olbrecht_net
+      data_template:
+        message: Kathrin left work. The drive home will take approximately {{ states.sensor.kathrin_to_home.state
+          }} minutes.
+    - condition: state
+      state: 'on'
+      entity_id: 'binary_sensor.someone_home'
+    - service: notify.alexa_media
+      data_template:
+        message: Mama kommt in etwa {{ states.sensor.kathrin_to_home.state }} Minuten nach Hause.
         data:
           type: tts
         target: media_player.alexa_sonos_beam

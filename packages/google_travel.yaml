@@ -8,9 +8,15 @@ sensor:
     scan_interval: 86400
   - platform: google_travel_time
     api_key: !secret google_travel_time_key
-    origin: device_tracker.iphonexs_olbrecht_net
+    origin: person.jan
     destination: !secret home_address
     name: Jan to Home
+    scan_interval: 86400
+  - platform: google_travel_time
+    api_key: !secret google_travel_time_key
+    origin: person.kathrin
+    destination: !secret home_address
+    name: Kathrin to Home
     scan_interval: 86400
 
 automation:
