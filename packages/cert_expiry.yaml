@@ -1,16 +1,8 @@
 sensor:
   - platform: cert_expiry
-    host: cctv.olbrecht.net
-    port: 7443
-    name: SSL UniFi Video
-  - platform: cert_expiry
     host: home.olbrecht.net
     port: 8123
     name: SSL Home Assistant
-  - platform: cert_expiry
-    host: unifi.olbrecht.net
-    port: 443
-    name: SSL Unifi Controller
   - platform: cert_expiry
     host: datengrab.olbrecht.net
     port: 443

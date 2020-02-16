@@ -1,17 +1,8 @@
 device_tracker:
-#  - platform: unifi
-#    username: !secret unifi_user
-#    password: !secret unifi_password
-#    host: unifi.olbrecht.net
-#    track_new_devices: no
-#    detection_time: 180
-#    ssid_filter:
-#      - 'olbrecht.net'
   - platform: ping
     interval_seconds: 10
     hosts:
-      Ping_UniFi_Cloud_Key: 192.168.0.4
-      Ping_UniFi_Security_Gateway: 192.168.0.1
+      Ping_UniFi_Dream_Machine_Pro: 192.168.0.1
       Ping_UniFi_AP_LivingRoom: 192.168.0.5
       Ping_UniFi_AP_Office: 192.168.0.6
       Ping_UniFi_AP_Master_Bedroom: 192.168.0.7
@@ -24,9 +15,7 @@ device_tracker:
       Ping_Sonos_One_Bathroom: 192.168.0.46
       Ping_Bosch_HSG636XS6: 192.168.0.41
       Ping_Philips_Hue_Bridge: 192.168.0.13
-      Ping_RasPi_Observium: 192.168.0.10
       Ping_RasPi_HomeAssistant: 192.168.0.9
-      Ping_SW01: 192.168.0.2
       Ping_SW02: 192.168.0.3
       Ping_SNOM_D765: 192.168.2.2
       Ping_Philips_55POS9002_LAN: 192.168.0.15
@@ -52,8 +41,6 @@ sensor:
         value_template:  '{% if is_state("device_tracker.ping_philips_hue_bridge", "home") %} Online {% else %} Offline {%- endif %}'
       living_room_xbox_one:
         value_template:  '{% if is_state("device_tracker.ping_living_room_xbox_one", "home") %} Online {% else %} Offline {%- endif %}'
-      raspi_observium:
-        value_template:  '{% if is_state("device_tracker.ping_raspi_observium", "home") %} Online {% else %} Offline {%- endif %}'
       raspi_homeassistant:
         value_template:  '{% if is_state("device_tracker.ping_raspi_homeassistant", "home") %} Online {% else %} Offline {%- endif %}'
       raspi_btmonitor:
@@ -70,16 +57,12 @@ sensor:
         value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_1", "home") %} Online {% else %} Offline {%- endif %}'
       sonos_play1_living_room_2:
         value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_2", "home") %} Online {% else %} Offline {%- endif %}'
-      sw01:
-        value_template:  '{% if is_state("device_tracker.ping_sw01", "home") %} Online {% else %} Offline {%- endif %}'
       sw02:
         value_template:  '{% if is_state("device_tracker.ping_sw02", "home") %} Online {% else %} Offline {%- endif %}'
       tv_living_room:
         value_template:  '{% if is_state("device_tracker.ping_philips_55pos9002_lan", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_security_gateway:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_security_gateway", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_cloud_key:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_cloud_key", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_dream_machine_pro:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_dream_machine_pro", "home") %} Online {% else %} Offline {%- endif %}'
       unifi_ap_livingroom:
         value_template:  '{% if is_state("device_tracker.ping_unifi_ap_livingroom", "home") %} Online {% else %} Offline {%- endif %}'
       unifi_ap_office:
@@ -123,13 +106,10 @@ automation:
       entity_id: sensor.brother_mfc_l3770cdw
       to: 'Offline'
     - platform: state
-      entity_id: sensor.unifi_security_gateway
+      entity_id: sensor.unifi_dream_machine_pro
       to: 'Offline'
     - platform: state
       entity_id: sensor.raspi_btmonitor
-      to: 'Offline'
-    - platform: state
-      entity_id: sensor.raspi_observium
       to: 'Offline'
     action:
     - service: input_text.set_value
