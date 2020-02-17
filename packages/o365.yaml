@@ -1,0 +1,20 @@
+o365:
+  client_secret: !secret o365_secret
+  client_id: !secret o365_app_id
+  calendars:
+    - calendar_name: default_calendar
+      name: Office 365
+      start_offset: 0
+      end_offset: 168
+#  email_sensor:
+#    - name: inbox
+#      max_items: 2
+#      is_unread: True
+#  query_sensors:
+#    - name: "HA Notifications"
+#      folder: "Inbox/Test_Inbox"
+#      from: "mail@example.com"
+#      subject_contains: "Notifcation from home assistant"
+#      has_attachment: True
+#      max_items: 2
+#      is_unread: True

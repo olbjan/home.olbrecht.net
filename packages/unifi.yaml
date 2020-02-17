@@ -1,7 +1,0 @@
-unifi:
-  controllers:
-    - host: unifi.olbrecht.net
-      site: 'olbrecht.net NW'
-      dont_track_devices: true
-      ssid_filter:
-        - olbrecht.net
