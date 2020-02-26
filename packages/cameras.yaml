@@ -10,7 +10,7 @@ camera:
     name: Living Room
     still_image_url: !secret unifi_video_living_room_still
     verify_ssl: false
-    stream_source: rtsp://192.168.0.1:7447/DpLOR5IN9ndnqLBZ
+    stream_source: rtsp://192.168.0.1:7447/iwjOHc0pSo8Og8w7
   - platform: generic
     name: Kids Room
     still_image_url: !secret unifi_video_kids_room_still

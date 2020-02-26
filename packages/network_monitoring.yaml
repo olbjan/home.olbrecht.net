@@ -2,28 +2,28 @@ device_tracker:
   - platform: ping
     interval_seconds: 10
     hosts:
-      Ping_UniFi_Dream_Machine_Pro: 192.168.0.1
-      Ping_UniFi_AP_LivingRoom: 192.168.0.5
-      Ping_UniFi_AP_Office: 192.168.0.6
-      Ping_UniFi_AP_Master_Bedroom: 192.168.0.7
-      Ping_Unifi_G3_Flex_Living_Room: 192.168.0.51
-      Ping_Unifi_G3_Flex_Kids_Room: 192.168.0.52
-      Ping_Sonos_Beam_Living_Room: 192.168.0.45
-      Ping_Sonos_Play1_Living_Room_1: 192.168.0.44
-      Ping_Sonos_Play1_Living_Room_2: 192.168.0.43
-      Ping_Sonos_Play1_Kids_Room: 192.168.0.42
-      Ping_Sonos_One_Bathroom: 192.168.0.46
-      Ping_Bosch_HSG636XS6: 192.168.0.41
-      Ping_Philips_Hue_Bridge: 192.168.0.13
-      Ping_RasPi_HomeAssistant: 192.168.0.9
-      Ping_SW02: 192.168.0.3
-      Ping_SNOM_D765: 192.168.2.2
-      Ping_Philips_55POS9002_LAN: 192.168.0.15
-      Ping_Dyson_Pure_Cool_Link: 192.168.0.47
-      Ping_RasPi_BTMonitor: 192.168.0.18
-      Ping_FireTV_Office: 192.168.0.26
-      Ping_Brother_MFC_L3770CDW: 192.168.0.17
-      Ping_Living_Room_Xbox_One: 192.168.0.14
+      ping_unifi_dream_machine_pro: 192.168.0.1
+      ping_unifi_ap_livingroom: 192.168.0.5
+      ping_unifi_ap_office: 192.168.0.6
+      ping_unifi_ap_master_bedroom: 192.168.0.7
+      ping_unifi_g3_flex_living_room: 192.168.0.51
+      ping_unifi_g3_flex_kids_room: 192.168.0.52
+      ping_sonos_beam_living_room: 192.168.0.45
+      ping_sonos_play1_living_room_1: 192.168.0.44
+      ping_sonos_play1_living_room_2: 192.168.0.43
+      ping_sonos_play1_kids_room: 192.168.0.42
+      ping_sonos_one_bathroom: 192.168.0.46
+      ping_bosch_hsg636xs6: 192.168.0.41
+      ping_philips_hue_bridge: 192.168.0.13
+      ping_raspi_homeassistant: 192.168.0.9
+      ping_sw02: 192.168.0.3
+      ping_snom_d765: 192.168.2.2
+      ping_philips_55pos9002_lan: 192.168.0.15
+      ping_dyson_pure_cool_link: 192.168.0.47
+      ping_raspi_btmonitor: 192.168.0.18
+      ping_firetv_office: 192.168.0.26
+      ping_brother_mfc_l3770cdw: 192.168.0.17
+      ping_living_room_xbox_one: 192.168.0.14
       
 sensor:
 # Device tracker values are changed from home to Online/Offline
