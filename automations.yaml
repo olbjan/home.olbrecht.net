@@ -6,7 +6,7 @@
   action:
   - data_template:
       message: Home Assistant started {{now().strftime('%Y-%m-%d - %H:%M:%S')}}
-    service: notify.mobile_app_iphonexs_olbrecht_net
+    service: notify.mobile_app_iphone12pro_olbrecht_net
   - data:
       message: Home Assistant ist jetzt aktiv
     service: notify.mobile_app_ipad_olbrecht_net
@@ -19,7 +19,7 @@
   action:
   - data:
       message: Home assistant shutting down
-    service: notify.mobile_app_iphonexs_olbrecht_net
+    service: notify.mobile_app_iphone12pro_olbrecht_net
 - id: '1572215956106'
   alias: Arm alarm when no-one is home
   description: ''
@@ -67,7 +67,7 @@
   action:
   - data:
       message: SSL certificate expires soon
-    service: notify.mobile_app_iphonexs_olbrecht_net
+    service: notify.mobile_app_iphone12pro_olbrecht_net
 - id: '1574619325241'
   alias: Turn off fan at 0600
   description: ''
@@ -96,10 +96,10 @@
   action:
   - condition: state
     state: home
-    entity_id: device_tracker.iphonexs_olbrecht_net
+    entity_id: device_tracker.iphone12pro_olbrecht_net
   - data:
       message: Fenster im Kinderzimmer schliessen.
-    service: notify.mobile_app_iphonexs_olbrecht_net
+    service: notify.mobile_app_iphone12pro_olbrecht_net
   - condition: state
     state: home
     entity_id: device_tracker.iphonexr_olbrecht_net
@@ -122,10 +122,10 @@
   action:
   - condition: state
     state: home
-    entity_id: device_tracker.iphonexs_olbrecht_net
+    entity_id: device_tracker.iphone12pro_olbrecht_net
   - data:
       message: Fenster im Büro schliessen.
-    service: notify.mobile_app_iphonexs_olbrecht_net
+    service: notify.mobile_app_iphone12pro_olbrecht_net
   - condition: state
     state: home
     entity_id: device_tracker.iphonexr_olbrecht_net
@@ -148,10 +148,10 @@
   action:
   - condition: state
     state: home
-    entity_id: device_tracker.iphonexs_olbrecht_net
+    entity_id: device_tracker.iphone12pro_olbrecht_net
   - data:
       message: Fenster im Wohnzimmer schliessen.
-    service: notify.mobile_app_iphonexs_olbrecht_net
+    service: notify.mobile_app_iphone12pro_olbrecht_net
   - condition: state
     state: home
     entity_id: device_tracker.iphonexr_olbrecht_net
@@ -174,13 +174,37 @@
   action:
   - condition: state
     state: home
-    entity_id: device_tracker.iphonexs_olbrecht_net
+    entity_id: device_tracker.iphone12pro_olbrecht_net
   - data:
       message: Fenster im Schlafzimmer schliessen.
-    service: notify.mobile_app_iphonexs_olbrecht_net
+    service: notify.mobile_app_iphone12pro_olbrecht_net
   - condition: state
     state: home
     entity_id: device_tracker.iphonexr_olbrecht_net
   - data:
       message: Fenster im Schlafzimmer schliessen.
     service: notify.mobile_app_iphonexr_olbrecht_net
+- id: '1602238482677'
+  alias: Turn off Thermostat Master Bedroom
+  description: ''
+  trigger:
+  - platform: time
+    at: 05:00
+  condition: []
+  action:
+  - device_id: 4bdf56c1c1e548cf89939d3660ac3363
+    domain: climate
+    entity_id: climate.thermostat_master_bedroom_mode
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1606840653416'
+  alias: 'Test Tag '
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 04-F1-4A-EA-B3-6D-80
+  condition: []
+  action:
+  - scene: scene.lesen
+  mode: single

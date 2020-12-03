@@ -4,33 +4,35 @@ sensor:
     sensors:
       total_power_usage:
         value_template: >
-          {{ (states('sensor.fibaro_balcony_power')|float
-            + states('sensor.fibaro_floor_power')|float
-            + states('sensor.fibaro_kids_room_power')|float
-            + states('sensor.fibaro_living_room_1_power_1')|float
-            + states('sensor.fibaro_living_room_1_power_2')|float
-            + states('sensor.fibaro_living_room_2_power_1')|float
-            + states('sensor.fibaro_master_bath_power_1')|float
-            + states('sensor.fibaro_master_bedroom_power_1')|float
-            + states('sensor.fibaro_office_power')|float
-            + states('sensor.fibaro_storage_power')|float
-            + states('sensor.fibaro_wc_power_1')|float)|round(1) }}
+          {{ (states('sensor.fibaro_balcony_electric_w')|float
+            + states('sensor.fibaro_floor_electric_w')|float
+            + states('sensor.fibaro_kids_room_electric_w')|float
+            + states('sensor.fibaro_living_room_1_instance_1_electric_w')|float
+            + states('sensor.fibaro_living_room_1_instance_2_electric_w')|float
+            + states('sensor.fibaro_living_room_2_instance_1_electric_w')|float
+            + states('sensor.fibaro_master_bath_electric_w')|float
+            + states('sensor.fibaro_master_bedroom_electric_w')|float
+            + states('sensor.fibaro_office_electric_w')|float
+            + states('sensor.fibaro_plug_electric_w')|float
+            + states('sensor.fibaro_storage_electric_w')|float
+            + states('sensor.fibaro_wc_electric_w')|float)|round(1) }}
         friendly_name: 'Current power usage'
         unit_of_measurement: 'w'
   - platform: template
     sensors:
       total_energy:
         value_template: >
-          {{ (states('sensor.fibaro_balcony_energy')|float
-            + states('sensor.fibaro_floor_energy')|float
-            + states('sensor.fibaro_kids_room_energy')|float
-            + states('sensor.fibaro_living_room_1_energy_1')|float
-            + states('sensor.fibaro_living_room_1_energy_2')|float
-            + states('sensor.fibaro_living_room_2_energy_1')|float
-            + states('sensor.fibaro_master_bath_energy_1')|float
-            + states('sensor.fibaro_master_bedroom_energy_1')|float
-            + states('sensor.fibaro_office_energy')|float
-            + states('sensor.fibaro_storage_energy')|float
-            + states('sensor.fibaro_wc_energy_1')|float)|round(1) }}
+          {{ (states('sensor.fibaro_balcony_electric_kwh')|float
+            + states('sensor.fibaro_floor_electric_kwh')|float
+            + states('sensor.fibaro_kids_room_electric_kwh')|float
+            + states('sensor.fibaro_living_room_1_instance_1_electric_kwh')|float
+            + states('sensor.fibaro_living_room_1_instance_2_electric_kwh')|float
+            + states('sensor.fibaro_living_room_2_instance_1_electric_kwh')|float
+            + states('sensor.fibaro_master_bath_electric_kwh')|float
+            + states('sensor.fibaro_master_bedroom_electric_kwh')|float
+            + states('sensor.fibaro_office_electric_kwh')|float
+            + states('sensor.fibaro_plug_electric_kwh')|float
+            + states('sensor.fibaro_storage_electric_kwh')|float
+            + states('sensor.fibaro_wc_electric_kwh')|float)|round(1) }}
         friendly_name: 'Total energy usage'
         unit_of_measurement: 'kWh'

@@ -6,7 +6,7 @@ input_boolean:
   test_critical_notification:
     name: Test Critical Notification
     initial: false
-    icon: mdi:account-badge-alert
+    icon: mdi:badge-account-alert
   test_camera_notification:
     name: Test Camera Notification
     initial: false
@@ -15,16 +15,16 @@ input_boolean:
 
 automation:
   - alias: Catch iOS action notification
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - event_type: ios.action_fired
       platform: event
     action:
     - data_template:
         message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
-      service: notify.mobile_app_iphonexs_olbrecht_net
+      service: notify.mobile_app_iphone12pro_olbrecht_net
   - alias: 'Test Alarm Triggers'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: input_boolean.test_alert
@@ -49,13 +49,13 @@ automation:
 
 # iOS Critical Notification Test
   - alias: 'Test: iOS Critical Notification'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: input_boolean.test_critical_notification
       to: 'on'
     action:
-    - service: notify.mobile_app_iphonexs_olbrecht_net
+    - service: notify.mobile_app_iphone12pro_olbrecht_net
       data:
         message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:
@@ -71,13 +71,13 @@ automation:
 
 # iOS Camera Attachment Test
   - alias: 'Test: iOS Camera Attachment Notification'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: input_boolean.test_camera_notification
       to: 'on'
     action:
-    - service: notify.mobile_app_iphonexs_olbrecht_net
+    - service: notify.mobile_app_iphone12pro_olbrecht_net
       data:
         message: Motion detected in the Living Room
         data:
@@ -89,5 +89,3 @@ automation:
               name: Telegraph.caf
               volume: 1.0 # 0.0 to 1.0
           entity_id: camera.living_room
-
-      

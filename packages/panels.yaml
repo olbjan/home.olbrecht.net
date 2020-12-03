@@ -1,6 +1,0 @@
-#panel_iframe:
-#  sqlite:
-#    title: 'SQLite'
-#    icon: mdi:database
-#    url: !secret sqlite_url
-#    require_admin: true

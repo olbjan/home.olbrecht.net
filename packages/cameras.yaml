@@ -1,21 +1,14 @@
-# This package adds my UniFi Video G3 Flex cameras via their RTSP streams
-# as generic cameras.
-#ffmpeg:
-
-camera:
-  #- platform: ffmpeg
-  #  input: rtsp://192.168.0.11:7447/5b0c41d8e4b01eb859f05913_2
-    
-  - platform: generic
-    name: Living Room
-    still_image_url: !secret unifi_video_living_room_still
-    verify_ssl: false
-    stream_source: rtsp://192.168.0.1:7447/iwjOHc0pSo8Og8w7
-  - platform: generic
-    name: Kids Room
-    still_image_url: !secret unifi_video_kids_room_still
-    verify_ssl: false    
-    stream_source: rtsp://192.168.0.1:7447/b2c55QMk1ksRzRdS
+#camera:
+#  - platform: generic
+#    name: Living Room
+#    still_image_url: !secret unifi_video_living_room_still
+#    verify_ssl: false
+#    stream_source: rtsp://192.168.0.1:7447/8Ceyj5DsfmqaoZD7
+#  - platform: generic
+#    name: Kids Room
+#    still_image_url: !secret unifi_video_kids_room_still
+#    verify_ssl: false    
+#    stream_source: rtsp://192.168.0.1:7447/R9oUWzEdjdin4pxW
 # The following enables the Stream component which enables streaming the 
 # camera H.264 stream data to a Google Cast device (e.g. Android TV or Google
 # Home Hub).

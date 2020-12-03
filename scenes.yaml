@@ -403,3 +403,259 @@
       value_id: '72057594227277824'
       value_index: 0
       value_instance: 1
+- id: '1596787266893'
+  name: Lesen
+  entities:
+    light.couchtisch_oben:
+      brightness: 255
+      color_temp: 346
+      effect: none
+      effect_list:
+      - random
+      friendly_name: Couchtisch (oben)
+      max_mireds: 526
+      min_mireds: 133
+      state: 'on'
+      supported_features: 63
+    light.couchtisch_unten:
+      brightness: 255
+      color_temp: 346
+      effect: none
+      effect_list:
+      - random
+      friendly_name: Couchtisch (unten)
+      max_mireds: 526
+      min_mireds: 133
+      state: 'on'
+      supported_features: 63
+    light.hugo:
+      brightness: 255
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Wohnzimmer Hugo
+      hs_color:
+      - 38.88
+      - 49.02
+      icon: mdi:wall-sconce-round-variant
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    light.kueche_kuehlschrank:
+      brightness: 255
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Küche Kühlschrank
+      hs_color:
+      - 38.88
+      - 49.02
+      icon: mdi:track-light
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    light.kueche_oberschrank:
+      brightness: 255
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Küche Oberschrank
+      hs_color:
+      - 38.88
+      - 49.02
+      icon: mdi:track-light
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.447
+      - 0.406
+    switch.fibaro_living_room_1_switch_1:
+      friendly_name: Kochen
+      icon: mdi:ceiling-light
+      node_id: 8
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594176946176'
+      value_index: 0
+      value_instance: 1
+    switch.fibaro_living_room_1_switch_2:
+      friendly_name: Couch
+      icon: mdi:ceiling-light
+      node_id: 8
+      power_consumption: 0
+      state: 'off'
+      value_id: '144115188214874112'
+      value_index: 0
+      value_instance: 2
+    switch.fibaro_living_room_2_switch_1:
+      friendly_name: Essen
+      icon: mdi:ceiling-light
+      node_id: 9
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594193723392'
+      value_index: 0
+      value_instance: 1
+  icon: mdi:brightness-6
+- id: '1596787493817'
+  name: Releax
+  entities:
+    light.couchtisch_oben:
+      brightness: 145
+      effect: none
+      effect_list:
+      - random
+      friendly_name: Couchtisch (oben)
+      hs_color:
+      - 36.568
+      - 66.275
+      max_mireds: 526
+      min_mireds: 133
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.502
+      - 0.414
+    light.couchtisch_unten:
+      brightness: 145
+      effect: none
+      effect_list:
+      - random
+      friendly_name: Couchtisch (unten)
+      hs_color:
+      - 36.568
+      - 66.275
+      max_mireds: 526
+      min_mireds: 133
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.502
+      - 0.414
+    light.hugo:
+      brightness: 145
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Wohnzimmer Hugo
+      hs_color:
+      - 36.568
+      - 66.275
+      icon: mdi:wall-sconce-round-variant
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.502
+      - 0.414
+    light.kueche_kuehlschrank:
+      brightness: 145
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Küche Kühlschrank
+      hs_color:
+      - 36.568
+      - 66.275
+      icon: mdi:track-light
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.502
+      - 0.414
+    light.kueche_oberschrank:
+      brightness: 145
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Küche Oberschrank
+      hs_color:
+      - 36.568
+      - 66.275
+      icon: mdi:track-light
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.502
+      - 0.414
+    switch.fibaro_living_room_1_switch_1:
+      friendly_name: Kochen
+      icon: mdi:ceiling-light
+      node_id: 8
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594176946176'
+      value_index: 0
+      value_instance: 1
+    switch.fibaro_living_room_1_switch_2:
+      friendly_name: Couch
+      icon: mdi:ceiling-light
+      node_id: 8
+      power_consumption: 0
+      state: 'off'
+      value_id: '144115188214874112'
+      value_index: 0
+      value_instance: 2
+    switch.fibaro_living_room_2_switch_1:
+      friendly_name: Essen
+      icon: mdi:ceiling-light
+      node_id: 9
+      power_consumption: 0
+      state: 'off'
+      value_id: '72057594193723392'
+      value_index: 0
+      value_instance: 1
+  icon: mdi:brightness-4

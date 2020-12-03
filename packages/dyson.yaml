@@ -4,5 +4,5 @@ dyson:
   language: DE
   devices:
     - device_id: !secret dyson_device_id # eg: Pure Cool Link device
-      device_ip: 192.168.0.47
+      device_ip: 192.168.0.19
 

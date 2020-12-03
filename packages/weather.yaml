@@ -1,17 +1,26 @@
 # Weather Component
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api
-    name: Edenkoben
-    mode: daily
+#weather:
+#  - platform: darksky
+#    api_key: !secret darksky_api
+#    name: Edenkoben
+#    mode: daily
+
+#sensor:
+#  - platform: darksky
+#    api_key: !secret darksky_api
+#    forecast:
+#      - 0
+#    monitored_conditions:
+#      - temperature
 
 sensor:
-  - platform: darksky
-    api_key: !secret darksky_api
-    forecast:
-      - 0
-    monitored_conditions:
-      - temperature
+  - platform: template
+    sensors:
+      outside_temperature:
+        friendly_name: "Outside temperature"
+        unit_of_measurement: '°C'
+        value_template: "{{ state_attr('weather.home', 'temperature') }}"
+
 
 # Track the sun
 sun:

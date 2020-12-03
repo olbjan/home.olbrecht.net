@@ -53,18 +53,18 @@ light.fibaro_wc_level_2:
   emulated_hue_hidden: true
 light.bett:
   friendly_name: Schlafzimmer Bett
-  icon: mdi:wall-sconce-variant
+  icon: mdi:wall-sconce-round-variant
 light.schuhschrank:
   friendly_name: Flur Schuhschrank
-  icon: mdi:wall-sconce-variant
+  icon: mdi:wall-sconce-round-variant
 light.wohnzimmer:
   friendly_name: Wohnzimmer
 light.hugo:
   friendly_name: Wohnzimmer Hugo
-  icon: mdi:wall-sconce-variant
+  icon: mdi:wall-sconce-round-variant
 light.hue_bloom:
   friendly_name: Büro Hue Bloom
-  icon: mdi:wall-sconce-variant
+  icon: mdi:wall-sconce-round-variant
 light.kueche_kuehlschrank:
   friendly_name: Küche Kühlschrank
   icon: mdi:track-light
@@ -115,7 +115,7 @@ sensor.raspi_btmonitor:
   icon: mdi:raspberry-pi
 sensor.living_room_xbox_one:
   friendly_name: Xbox One
-  icon: mdi:xbox
+  icon: mdi:microsoft-xbox
 sensor.amazon_echo_dot:
   friendly_name: Amazon Echo Dot
   icon: mdi:amazon-alexa
@@ -165,10 +165,25 @@ sensor.total_power_usage:
   icon: mdi:speedometer
 sensor.total_energy:
   entity_picture: /local/electricity_meter.png
-zone.home:
-  beacon:
-    uuid: F7826DA6-4FA2-4E98-8024-BC5B71E0893E
-    major: 51019
-    minor: 48940
-switch.fibaro_plug_switch:
-  icon: mdi:pine-tree
+#zone.home:
+#  beacon:
+#    uuid: F7826DA6-4FA2-4E98-8024-BC5B71E0893E
+#    major: 51019
+#    minor: 48940
+switch.fibaro_plug_switch: {}
+sensor.mfc_l3770cdw_uptime:
+  icon: mdi:timer-outline
+scene.lesen:
+  background_color: '#afafaf'
+  icon_color: '#dec942'
+  text_color: '#ffffff'
+scene.relax:
+  text_color: '#ffffff'
+  background_color: '#8f8f8f'
+scene.gute_nacht:
+  text_color: '#ffffff'
+  background_color: '#4f4f4f'
+scene.everything_off:
+  text_color: '#ffffff'
+  icon_color: '#ffffff'
+  background_color: '#000000'

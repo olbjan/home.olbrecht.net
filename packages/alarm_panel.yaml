@@ -2,19 +2,18 @@ alarm_control_panel:
   - platform: manual
     name: Home Alarm
     code: !secret alarm_code
-    pending_time: 5
     delay_time: 20
     trigger_time: 15
     disarmed:
       trigger_time: 0
     armed_away:
-      pending_time: 0
+      arming_time: 0
       delay_time: 0
     armed_home:
-      pending_time: 0
+      arming_time: 0
       delay_time: 0
     armed_night:
-      pending_time: 0
+      arming_time: 0
       delay_time: 0
 
 # Automation based on community example by @RezzZ: 
@@ -57,7 +56,7 @@ automation:
       to: 'triggered'
     action:
 # iOS Critical Notification for 2.0 Beta
-    - service: notify.mobile_app_iphonexs_olbrecht_net
+    - service: notify.mobile_app_iphone12pro_olbrecht_net
       data:
         message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:
@@ -77,7 +76,7 @@ automation:
       entity_id: alarm_control_panel.home_alarm
       to: 'disarmed'
     action:
-    - service: notify.mobile_app_iphonexs_olbrecht_net
+    - service: notify.mobile_app_iphone12pro_olbrecht_net
       data:
         message: "Alarm disarmed (resetting trigger: {{ states.input_text.alarm_trigger.state }})"
     - service: input_text.set_value

@@ -26,6 +26,7 @@ www/snapshots
 ip_bans.yaml
 secrets.yaml
 google_calendars.yaml
+o365_calendars.yaml
 known_devices.yaml
 jan_olbrecht.jpg
 jan_olbrecht_old.jpg

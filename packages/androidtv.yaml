@@ -1,25 +1,10 @@
-# Package to add the Fire TV stick to Home Assistant. Note that this requires 
-# the ADB - Android Debug Bridge hass.io add-on.
 media_extractor: 
 
 media_player:
   - platform: androidtv
-    name: Fire TV
-    device_class: firetv
-    host: 192.168.0.26
-    adb_server_ip: localhost
-    adb_server_port: 5037
-    get_sources: true
-    apps:
-      com.amazon.tv.launcher: "Fire TV"
-      com.netflix.ninja: "Netflix"
-
-  - platform: androidtv
     name: Android TV
-    device_class: firetv
     host: 192.168.0.15
-    adb_server_ip: localhost
-    adb_server_port: 5037
+    adbkey: "/config/.androidkeys/adbkey"
     get_sources: true
     apps:
       com.netflix.ninja: "Netflix"
@@ -27,6 +12,7 @@ media_player:
       com.amazon.amazonvideo.livingroom: "Amazon Prime Video"
       org.droidtv.playtv: "TV"
       org.droidtv.channels: "Channels"
+ 
 
 # Lovelace Example:
 #  - entity: input_boolean.androidtv

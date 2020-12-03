@@ -1,3 +1,8 @@
+#hue:
+#  bridges:
+#    - host: 192.168.0.13
+#      allow_hue_groups: true
+
 # Scripts enable Hue Scenes. Scene names are from Hue app.
 script:
   living_room_read:

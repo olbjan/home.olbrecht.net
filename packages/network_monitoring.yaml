@@ -1,50 +1,43 @@
 device_tracker:
   - platform: ping
-    interval_seconds: 10
+    interval_seconds: 60
     hosts:
       ping_unifi_dream_machine_pro: 192.168.0.1
-      ping_unifi_ap_livingroom: 192.168.0.5
-      ping_unifi_ap_office: 192.168.0.6
-      ping_unifi_ap_master_bedroom: 192.168.0.7
-      ping_unifi_g3_flex_living_room: 192.168.0.51
-      ping_unifi_g3_flex_kids_room: 192.168.0.52
-      ping_sonos_beam_living_room: 192.168.0.45
-      ping_sonos_play1_living_room_1: 192.168.0.44
-      ping_sonos_play1_living_room_2: 192.168.0.43
-      ping_sonos_play1_kids_room: 192.168.0.42
-      ping_sonos_one_bathroom: 192.168.0.46
-      ping_bosch_hsg636xs6: 192.168.0.41
-      ping_philips_hue_bridge: 192.168.0.13
-      ping_raspi_homeassistant: 192.168.0.9
-      ping_sw02: 192.168.0.3
+      ping_unifi_switch_office: 192.168.0.3
+      ping_unifi_ap_livingroom: 192.168.0.6
+      ping_unifi_ap_master_bedroom: 192.168.0.4
+      ping_unifi_ap_office: 192.168.0.5
+      ping_unifi_ap_extender: 192.168.0.7
+      ping_unifi_g3_flex_living_room: 192.168.0.16
+      ping_unifi_g3_flex_kids_room: 192.168.0.17
+      ping_sonos_beam_living_room: 192.168.0.21
+      ping_sonos_play1_living_room_1: 192.168.0.22
+      ping_sonos_play1_living_room_2: 192.168.0.23
+      ping_sonos_play1_kids_room: 192.168.0.24
+      ping_sonos_one_bathroom: 192.168.0.25
+      ping_bosch_hsg636xs6: 192.168.0.18
+      ping_ikea_tradfri_hub: 192.168.0.13
+      ping_philips_hue_bridge: 192.168.0.14
+      ping_raspi_homeassistant: 192.168.0.10
+      ping_sw02: 192.168.0.2
       ping_snom_d765: 192.168.2.2
       ping_philips_55pos9002_lan: 192.168.0.15
-      ping_dyson_pure_cool_link: 192.168.0.47
-      ping_raspi_btmonitor: 192.168.0.18
-      ping_firetv_office: 192.168.0.26
-      ping_brother_mfc_l3770cdw: 192.168.0.17
-      ping_living_room_xbox_one: 192.168.0.14
+      ping_dyson_pure_cool_link: 192.168.0.19
       
 sensor:
 # Device tracker values are changed from home to Online/Offline
   - platform: template
     sensors:
-      brother_mfc_l3770cdw:
-        value_template:  '{% if is_state("device_tracker.ping_brother_mfc_l3770cdw", "home") %} Online {% else %} Offline {%- endif %}'
       bosch_hsg636xs6:
         value_template:  '{% if is_state("device_tracker.ping_bosch_hsg636xs6", "home") %} Online {% else %} Offline {%- endif %}'
       dyson_pure_cool_link:
         value_template:  '{% if is_state("device_tracker.ping_dyson_pure_cool_link", "home") %} Online {% else %} Offline {%- endif %}'
-      firetv_stick_office:
-        value_template:  '{% if is_state("device_tracker.ping_firetv_office", "home") %} Online {% else %} Offline {%- endif %}'
+      ikea_tradfri_hub:
+        value_template:  '{% if is_state("device_tracker.ping_ikea_tradfri_hub", "home") %} Online {% else %} Offline {%- endif %}'
       philips_hue_bridge:
         value_template:  '{% if is_state("device_tracker.ping_philips_hue_bridge", "home") %} Online {% else %} Offline {%- endif %}'
-      living_room_xbox_one:
-        value_template:  '{% if is_state("device_tracker.ping_living_room_xbox_one", "home") %} Online {% else %} Offline {%- endif %}'
       raspi_homeassistant:
         value_template:  '{% if is_state("device_tracker.ping_raspi_homeassistant", "home") %} Online {% else %} Offline {%- endif %}'
-      raspi_btmonitor:
-        value_template:  '{% if is_state("device_tracker.ping_raspi_btmonitor", "home") %} Online {% else %} Offline {%- endif %}'
       snom_d765_phone:
         value_template:  '{% if is_state("device_tracker.ping_snom_d765", "home") %} Online {% else %} Offline {%- endif %}'
       sonos_play1_kids_room:
@@ -69,6 +62,10 @@ sensor:
         value_template:  '{% if is_state("device_tracker.ping_unifi_ap_office", "home") %} Online {% else %} Offline {%- endif %}'
       unifi_ap_master_bedroom:
         value_template:  '{% if is_state("device_tracker.ping_unifi_ap_master_bedroom", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_ap_extender:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_extender", "home") %} Online {% else %} Offline {%- endif %}'
+      unifi_switch_office:
+        value_template:  '{% if is_state("device_tracker.ping_unifi_switch_office", "home") %} Online {% else %} Offline {%- endif %}'
 
 
 
@@ -108,9 +105,6 @@ automation:
     - platform: state
       entity_id: sensor.unifi_dream_machine_pro
       to: 'Offline'
-    - platform: state
-      entity_id: sensor.raspi_btmonitor
-      to: 'Offline'
     action:
     - service: input_text.set_value
       data_template:
@@ -123,7 +117,7 @@ automation:
           {% else %}
             {{ states.input_text.network_monitoring_trigger.state }}
           {% endif %}
-    - service: notify.mobile_app_iphonexs_olbrecht_net
+    - service: notify.mobile_app_iphone12pro_olbrecht_net
       data:
         title: "Network Monitoring Alert"
         message: "The device {{ states.input_text.network_monitoring_trigger.state }} is offline"

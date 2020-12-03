@@ -1,8 +1,16 @@
 
 - cal_id: AAMkADViOWM0YzMzLTA4NWEtNGQ3Ny04NDhhLTNmYmYyYWM4ZDc3OABGAAAAAAAeZkjeVGzVQp4xN8xAHzQ-BwBr83OZ_bmzRLDMvVlecsW4AAAAWUf4AAD6NFMgmuJ9Tb92Xai64vhjAAUBqbqyAAA=
   entities:
-  - device_id: calendar.o365_calendar
+  - device_id: Calendar
     end_offset: 24
     name: Calendar
+    start_offset: 0
+    track: true
+
+- cal_id: AAMkADViOWM0YzMzLTA4NWEtNGQ3Ny04NDhhLTNmYmYyYWM4ZDc3OABGAAAAAAAeZkjeVGzVQp4xN8xAHzQ-BwBr83OZ_bmzRLDMvVlecsW4AAAAWUf4AAD6NFMgmuJ9Tb92Xai64vhjAAa1Tx9bAAA=
+  entities:
+  - device_id: Family
+    end_offset: 24
+    name: Family
     start_offset: 0
     track: true
