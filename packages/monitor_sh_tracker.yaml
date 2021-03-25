@@ -40,7 +40,7 @@ binary_sensor:
         prob_given_false: 0.10
         platform: 'state'
         to_state: 'home'
-      - entity_id: 'device_tracker.iphonexs_olbrecht_net'
+      - entity_id: 'device_tracker.iphone12pro_olbrecht_net'
         prob_given_true: 0.80
         prob_given_false: 0.4
         platform: 'state'
@@ -91,9 +91,9 @@ automation:
   - alias: 'Depart Scan: Start when front door closes'
     initial_state: 'true'
     trigger:
-    - entity_id: sensor.fibaro_apartment_door_access_control
-      platform: numeric_state
-      above: 22
+    - entity_id: binary_sensor.front_door
+      platform: state
+      to: 'off'
     action:
     - entity_id: script.mqtt_depart
       service: script.turn_on
@@ -102,9 +102,9 @@ automation:
   - alias: 'Depart Scan: Cancel when front door opens'
     initial_state: 'true'
     trigger:
-    - entity_id: sensor.fibaro_apartment_door_access_control
-      platform: numeric_state
-      below: 23
+    - entity_id: binary_sensor.front_door
+      platform: state
+      to: 'on'
     action:
     - entity_id: script.mqtt_depart
       service: script.turn_off

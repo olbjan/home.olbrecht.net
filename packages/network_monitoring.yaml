@@ -1,74 +1,89 @@
-device_tracker:
+binary_sensor:
   - platform: ping
-    interval_seconds: 60
-    hosts:
-      ping_unifi_dream_machine_pro: 192.168.0.1
-      ping_unifi_switch_office: 192.168.0.3
-      ping_unifi_ap_livingroom: 192.168.0.6
-      ping_unifi_ap_master_bedroom: 192.168.0.4
-      ping_unifi_ap_office: 192.168.0.5
-      ping_unifi_ap_extender: 192.168.0.7
-      ping_unifi_g3_flex_living_room: 192.168.0.16
-      ping_unifi_g3_flex_kids_room: 192.168.0.17
-      ping_sonos_beam_living_room: 192.168.0.21
-      ping_sonos_play1_living_room_1: 192.168.0.22
-      ping_sonos_play1_living_room_2: 192.168.0.23
-      ping_sonos_play1_kids_room: 192.168.0.24
-      ping_sonos_one_bathroom: 192.168.0.25
-      ping_bosch_hsg636xs6: 192.168.0.18
-      ping_ikea_tradfri_hub: 192.168.0.13
-      ping_philips_hue_bridge: 192.168.0.14
-      ping_raspi_homeassistant: 192.168.0.10
-      ping_sw02: 192.168.0.2
-      ping_snom_d765: 192.168.2.2
-      ping_philips_55pos9002_lan: 192.168.0.15
-      ping_dyson_pure_cool_link: 192.168.0.19
+    scan_interval: 300
+    name: unifi_dream_machine_pro
+    host: 192.168.0.1
+  - platform: ping
+    scan_interval: 300
+    name: unifi_switch_office
+    host: 192.168.0.3
+  - platform: ping
+    scan_interval: 300
+    name: unifi_ap_livingroom
+    host: 192.168.0.6
+  - platform: ping
+    scan_interval: 300
+    name: unifi_ap_master_bedroom
+    host: 192.168.0.5
+  - platform: ping
+    scan_interval: 300
+    name: unifi_ap_extender
+    host: 192.168.0.7
+  - platform: ping
+    scan_interval: 300
+    name: unifi_g3_flex_living_room
+    host: 192.168.0.16
+  - platform: ping
+    scan_interval: 300
+    name: unifi_g3_flex_kids_room
+    host: 192.168.0.17
+  - platform: ping
+    scan_interval: 300
+    name: sonos_beam_living_room
+    host: 192.168.0.21
+  - platform: ping
+    scan_interval: 300
+    name: sonos_play1_living_room_1
+    host: 192.168.0.22
+  - platform: ping
+    scan_interval: 300
+    name: sonos_play1_living_room_2
+    host: 192.168.0.23
+  - platform: ping
+    scan_interval: 300
+    name: sonos_play1_kids_room
+    host: 192.168.0.24
+  - platform: ping
+    scan_interval: 300
+    name: sonos_one_bathroom
+    host: 192.168.0.25
+  - platform: ping
+    scan_interval: 300
+    name: bosch_hsg636xs6
+    host: 192.168.0.18
+  - platform: ping
+    scan_interval: 300
+    name: ikea_tradfri_hub
+    host: 192.168.0.13
+  - platform: ping
+    scan_interval: 300
+    name: philips_hue_bridge
+    host: 192.168.0.14
+  - platform: ping
+    scan_interval: 300
+    name: raspi_homeassistant
+    host: 192.168.0.10
+  - platform: ping
+    scan_interval: 300
+    name: sw02
+    host: 192.168.0.2
+  - platform: ping
+    scan_interval: 300
+    name: snom_d765
+    host: 192.168.2.2
+  - platform: ping
+    scan_interval: 300
+    name: philips_55pos9002_lan
+    host: 192.168.0.15
+  - platform: ping
+    scan_interval: 300
+    name: dyson_pure_cool_link
+    host: 192.168.0.39
+  - platform: ping
+    scan_interval: 300
+    name: dyson_pure_humidify_cool
+    host: 192.168.0.40
       
-sensor:
-# Device tracker values are changed from home to Online/Offline
-  - platform: template
-    sensors:
-      bosch_hsg636xs6:
-        value_template:  '{% if is_state("device_tracker.ping_bosch_hsg636xs6", "home") %} Online {% else %} Offline {%- endif %}'
-      dyson_pure_cool_link:
-        value_template:  '{% if is_state("device_tracker.ping_dyson_pure_cool_link", "home") %} Online {% else %} Offline {%- endif %}'
-      ikea_tradfri_hub:
-        value_template:  '{% if is_state("device_tracker.ping_ikea_tradfri_hub", "home") %} Online {% else %} Offline {%- endif %}'
-      philips_hue_bridge:
-        value_template:  '{% if is_state("device_tracker.ping_philips_hue_bridge", "home") %} Online {% else %} Offline {%- endif %}'
-      raspi_homeassistant:
-        value_template:  '{% if is_state("device_tracker.ping_raspi_homeassistant", "home") %} Online {% else %} Offline {%- endif %}'
-      snom_d765_phone:
-        value_template:  '{% if is_state("device_tracker.ping_snom_d765", "home") %} Online {% else %} Offline {%- endif %}'
-      sonos_play1_kids_room:
-        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_kids_room", "home") %} Online {% else %} Offline {%- endif %}'
-      sonos_one_bathroom:
-        value_template:  '{% if is_state("device_tracker.ping_sonos_one_bathroom", "home") %} Online {% else %} Offline {%- endif %}'
-      sonos_beam_living_room:
-        value_template:  '{% if is_state("device_tracker.ping_sonos_beam_living_room", "home") %} Online {% else %} Offline {%- endif %}'
-      sonos_play1_living_room_1:
-        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_1", "home") %} Online {% else %} Offline {%- endif %}'
-      sonos_play1_living_room_2:
-        value_template:  '{% if is_state("device_tracker.ping_sonos_play1_living_room_2", "home") %} Online {% else %} Offline {%- endif %}'
-      sw02:
-        value_template:  '{% if is_state("device_tracker.ping_sw02", "home") %} Online {% else %} Offline {%- endif %}'
-      tv_living_room:
-        value_template:  '{% if is_state("device_tracker.ping_philips_55pos9002_lan", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_dream_machine_pro:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_dream_machine_pro", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_ap_livingroom:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_livingroom", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_ap_office:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_office", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_ap_master_bedroom:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_master_bedroom", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_ap_extender:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_ap_extender", "home") %} Online {% else %} Offline {%- endif %}'
-      unifi_switch_office:
-        value_template:  '{% if is_state("device_tracker.ping_unifi_switch_office", "home") %} Online {% else %} Offline {%- endif %}'
-
-
-
 input_text:
   network_monitoring_trigger:
     name: Network Monitoring Trigger
@@ -79,32 +94,50 @@ automation:
     initial_state: 'true'
     trigger:
     - platform: state
-      entity_id: sensor.sonos_one_bathroom
-      to: 'Offline'
+      entity_id: binary_sensor.sonos_one_bathroom
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.sonos_play1_kids_room
-      to: 'Offline'
+      entity_id: binary_sensor.sonos_play1_kids_room
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.sonos_play1_living_room_1
-      to: 'Offline'
+      entity_id: binary_sensor.sonos_play1_living_room_1
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.sonos_play1_living_room_2
-      to: 'Offline'
+      entity_id: binary_sensor.sonos_play1_living_room_2
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.sonos_beam_living_room
-      to: 'Offline'
+      entity_id: binary_sensor.sonos_beam_living_room
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.snom_d765_phone
-      to: 'Offline'
+      entity_id: binary_sensor.snom_d765_phone
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.philips_hue_bridge
-      to: 'Offline'
+      entity_id: binary_sensor.philips_hue_bridge
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.brother_mfc_l3770cdw
-      to: 'Offline'
+      entity_id: binary_sensor.brother_mfc_l3770cdw
+      to: 'off'
+      for:
+        minutes: 10
     - platform: state
-      entity_id: sensor.unifi_dream_machine_pro
-      to: 'Offline'
+      entity_id: binary_sensor.unifi_dream_machine_pro
+      to: 'off'
+      for:
+        minutes: 10
     action:
     - service: input_text.set_value
       data_template:

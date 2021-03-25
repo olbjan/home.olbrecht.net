@@ -1,0 +1,26 @@
+automation:
+- id: handle_tag_scan
+  alias: "Handle Tag Scan"
+  mode: single
+  # Hide warnings when triggered while in delay.
+  max_exceeded: silent
+  variables:
+    # Map scanner device ID to media player entity ID
+    media_players:
+      22be5665fa1bdf927307d9d5d60152ef: media_player.sonos_kids_room
+  trigger:
+    platform: event
+    event_type: tag_scanned
+  condition:
+    # Test that we support this device and tag
+    - "{{ trigger.event.data.device_id in media_players }}"
+  action:
+    - variables:
+        media_player_entity_id: "{{ media_players[trigger.event.data.device_id] }}"
+    - service: media_player.play_media
+      target:
+        entity_id: "{{ media_player_entity_id }}"
+      data:
+        media_content_id: "{{ trigger.event.data.tag_id }}"
+        media_content_type: music
+    - delay: 2 # timeout before we allow processing next scan

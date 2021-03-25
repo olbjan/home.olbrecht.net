@@ -3,4 +3,8 @@ switch:
     mac: !secret readynas_mac
     name: "ReadyNAS 2304"
     host: 192.168.0.11
+  - platform: wake_on_lan
+    mac: !secret surface_dock_mac
+    name: "Surface Laptop"
+    host: 192.168.0.42
     

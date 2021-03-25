@@ -1,23 +1,53 @@
 - id: '1574113594912'
   name: Gute Nacht
   entities:
-    fan.dyson_pure:
-      speed: 3
-      state: 'on'
     light.bett:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
       brightness: 25
-      effect: none
       hs_color:
-      - 33.767
-      - 84.314
+      - 33.645
+      - 83.922
       rgb_color:
       - 255
-      - 160
-      - 39
-      state: 'on'
+      - 161
+      - 40
       xy_color:
-      - 0.561
-      - 0.404
+      - 0.559
+      - 0.405
+      effect: none
+      friendly_name: Schlafzimmer Bett
+      supported_features: 63
+      icon: mdi:wall-sconce-round-variant
+      state: 'on'
+    fan.dyson_pure:
+      speed_list:
+      - low
+      - medium
+      - high
+      oscillating: false
+      speed: low
+      night_mode: false
+      auto_mode: false
+      dyson_speed: 3
+      dyson_speed_list:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      friendly_name: Dyson Pure Cool Link Tower
+      supported_features: 3
+      icon: mdi:fan
+      state: 'on'
 - id: '1574113748274'
   name: Guten Morgen
   entities:
@@ -407,255 +437,478 @@
   name: Lesen
   entities:
     light.couchtisch_oben:
+      min_mireds: 133
+      max_mireds: 526
+      effect_list:
+      - random
       brightness: 255
       color_temp: 346
       effect: none
-      effect_list:
-      - random
       friendly_name: Couchtisch (oben)
-      max_mireds: 526
-      min_mireds: 133
-      state: 'on'
       supported_features: 63
+      state: 'on'
     light.couchtisch_unten:
-      brightness: 255
+      min_mireds: 133
+      max_mireds: 526
+      effect_list:
+      - random
+      brightness: 248
       color_temp: 346
       effect: none
-      effect_list:
-      - random
       friendly_name: Couchtisch (unten)
-      max_mireds: 526
-      min_mireds: 133
-      state: 'on'
       supported_features: 63
+      state: 'on'
     light.hugo:
-      brightness: 255
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
+      brightness: 255
+      hs_color:
+      - 38.88
+      - 49.02
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      xy_color:
+      - 0.447
+      - 0.406
+      effect: none
       friendly_name: Wohnzimmer Hugo
-      hs_color:
-      - 38.88
-      - 49.02
+      supported_features: 63
       icon: mdi:wall-sconce-round-variant
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 210
-      - 129
       state: 'on'
-      supported_features: 63
-      xy_color:
-      - 0.447
-      - 0.406
     light.kueche_kuehlschrank:
-      brightness: 255
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
+      brightness: 255
+      hs_color:
+      - 38.88
+      - 49.02
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      xy_color:
+      - 0.447
+      - 0.406
+      effect: none
       friendly_name: Küche Kühlschrank
-      hs_color:
-      - 38.88
-      - 49.02
-      icon: mdi:track-light
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 210
-      - 129
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.447
-      - 0.406
+      icon: mdi:track-light
+      state: 'on'
     light.kueche_oberschrank:
-      brightness: 255
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
-      friendly_name: Küche Oberschrank
+      brightness: 255
       hs_color:
       - 38.88
       - 49.02
-      icon: mdi:track-light
-      max_mireds: 500
-      min_mireds: 153
       rgb_color:
       - 255
       - 210
       - 129
-      state: 'on'
-      supported_features: 63
       xy_color:
       - 0.447
       - 0.406
-    switch.fibaro_living_room_1_switch_1:
-      friendly_name: Kochen
-      icon: mdi:ceiling-light
-      node_id: 8
-      power_consumption: 0
-      state: 'off'
-      value_id: '72057594176946176'
-      value_index: 0
-      value_instance: 1
-    switch.fibaro_living_room_1_switch_2:
-      friendly_name: Couch
-      icon: mdi:ceiling-light
-      node_id: 8
-      power_consumption: 0
-      state: 'off'
-      value_id: '144115188214874112'
-      value_index: 0
-      value_instance: 2
-    switch.fibaro_living_room_2_switch_1:
-      friendly_name: Essen
-      icon: mdi:ceiling-light
-      node_id: 9
-      power_consumption: 0
-      state: 'off'
-      value_id: '72057594193723392'
-      value_index: 0
-      value_instance: 1
+      effect: none
+      friendly_name: Küche Oberschrank
+      supported_features: 63
+      icon: mdi:track-light
+      state: 'on'
   icon: mdi:brightness-6
 - id: '1596787493817'
   name: Releax
   entities:
     light.couchtisch_oben:
+      min_mireds: 133
+      max_mireds: 526
+      effect_list:
+      - random
       brightness: 145
+      color_temp: 447
       effect: none
+      friendly_name: Couchtisch (oben)
+      supported_features: 63
+      state: 'on'
+    light.couchtisch_unten:
+      min_mireds: 133
+      max_mireds: 526
+      effect_list:
+      - random
+      brightness: 145
+      color_temp: 447
+      effect: none
+      friendly_name: Couchtisch (unten)
+      supported_features: 63
+      state: 'on'
+    light.hugo:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 145
+      hs_color:
+      - 36.568
+      - 66.275
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      xy_color:
+      - 0.502
+      - 0.414
+      effect: none
+      friendly_name: Wohnzimmer Hugo
+      supported_features: 63
+      icon: mdi:wall-sconce-round-variant
+      state: 'on'
+    light.kueche_kuehlschrank:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 145
+      hs_color:
+      - 36.568
+      - 66.275
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      xy_color:
+      - 0.502
+      - 0.414
+      effect: none
+      friendly_name: Küche Kühlschrank
+      supported_features: 63
+      icon: mdi:track-light
+      state: 'on'
+    light.kueche_oberschrank:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 145
+      hs_color:
+      - 36.568
+      - 66.275
+      rgb_color:
+      - 255
+      - 188
+      - 85
+      xy_color:
+      - 0.502
+      - 0.414
+      effect: none
+      friendly_name: Küche Oberschrank
+      supported_features: 63
+      icon: mdi:track-light
+      state: 'on'
+  icon: mdi:brightness-4
+- id: '1612730801765'
+  name: Work
+  entities:
+    light.elgato_key_light:
+      min_mireds: 143
+      max_mireds: 344
+      friendly_name: Elgato Key Light
+      supported_features: 3
+      state: 'off'
+    light.hue_go_office_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 38.88
+      - 49.02
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      xy_color:
+      - 0.447
+      - 0.406
+      effect: none
+      friendly_name: Hue go Office links
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 63
+      state: 'on'
+    light.hue_go_office_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 38.88
+      - 49.02
+      rgb_color:
+      - 255
+      - 210
+      - 129
+      xy_color:
+      - 0.447
+      - 0.406
+      effect: none
+      friendly_name: Hue go Office rechts
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 63
+      state: 'on'
+    switch.fibaro_plug_switch:
+      friendly_name: 'FIBARO Plug: Current value'
+      state: 'on'
+    light.hue_bloom:
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 39.36
+      - 49.02
+      rgb_color:
+      - 255
+      - 211
+      - 129
+      xy_color:
+      - 0.446
+      - 0.407
+      effect: none
+      friendly_name: Büro Hue Bloom
+      supported_features: 61
+      icon: mdi:wall-sconce-round-variant
+      state: 'on'
+- id: '1612730803133'
+  name: Work - Teleconference
+  entities:
+    light.elgato_key_light:
+      min_mireds: 143
+      max_mireds: 344
+      brightness: 64
+      color_temp: 167
+      friendly_name: Elgato Key Light
+      supported_features: 3
+      state: 'on'
+    light.hue_go_office_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 38.571
+      - 49.412
+      rgb_color:
+      - 255
+      - 209
+      - 128
+      xy_color:
+      - 0.449
+      - 0.405
+      effect: none
+      friendly_name: Hue go Office links
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 63
+      state: 'on'
+    light.hue_go_office_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 38.571
+      - 49.412
+      rgb_color:
+      - 255
+      - 209
+      - 128
+      xy_color:
+      - 0.449
+      - 0.405
+      effect: none
+      friendly_name: Hue go Office rechts
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 63
+      state: 'on'
+    switch.fibaro_plug_switch:
+      friendly_name: 'FIBARO Plug: Current value'
+      state: 'on'
+    light.hue_bloom:
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 39.048
+      - 49.412
+      rgb_color:
+      - 255
+      - 211
+      - 128
+      xy_color:
+      - 0.447
+      - 0.408
+      effect: none
+      friendly_name: Büro Hue Bloom
+      supported_features: 61
+      icon: mdi:wall-sconce-round-variant
+      state: 'on'
+  icon: mdi:message-video
+- id: '1612731177679'
+  name: Sleep
+  entities:
+    switch.fibaro_floor_switch_1:
+      friendly_name: Flur
+      icon: mdi:ceiling-light
+      state: 'off'
+    switch.fibaro_kids_room_switch_1:
+      friendly_name: Kinderzimmer
+      icon: mdi:ceiling-light
+      state: 'off'
+    switch.fibaro_living_room_1_switch_1:
+      friendly_name: Kochen
+      icon: mdi:ceiling-light
+      state: 'off'
+    switch.fibaro_living_room_1_switch_2:
+      friendly_name: Couch
+      icon: mdi:ceiling-light
+      state: 'off'
+    switch.fibaro_living_room_2_switch_1:
+      friendly_name: Essen
+      icon: mdi:ceiling-light
+      state: 'off'
+    switch.fibaro_office_switch_1:
+      friendly_name: Büro
+      icon: mdi:ceiling-light
+      state: 'off'
+    switch.fibaro_plug_switch:
+      friendly_name: 'FIBARO Plug: Current value'
+      state: 'off'
+    switch.fibaro_storage_switch_1:
+      friendly_name: Abstellraum
+      icon: mdi:ceiling-light
+      state: 'off'
+    light.couchtisch_oben:
+      min_mireds: 133
+      max_mireds: 526
       effect_list:
       - random
       friendly_name: Couchtisch (oben)
-      hs_color:
-      - 36.568
-      - 66.275
-      max_mireds: 526
-      min_mireds: 133
-      rgb_color:
-      - 255
-      - 188
-      - 85
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.502
-      - 0.414
+      state: 'off'
     light.couchtisch_unten:
-      brightness: 145
-      effect: none
+      min_mireds: 133
+      max_mireds: 526
       effect_list:
       - random
       friendly_name: Couchtisch (unten)
-      hs_color:
-      - 36.568
-      - 66.275
-      max_mireds: 526
-      min_mireds: 133
-      rgb_color:
-      - 255
-      - 188
-      - 85
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.502
-      - 0.414
+      state: 'off'
+    light.elgato_key_light:
+      min_mireds: 143
+      max_mireds: 344
+      friendly_name: Elgato Key Light
+      supported_features: 3
+      state: 'off'
+    light.fibaro_master_bath_level_1:
+      friendly_name: Badezimmer
+      supported_features: 33
+      icon: mdi:lightbulb
+      state: 'off'
+    light.fibaro_master_bedroom_level_1:
+      friendly_name: Schlafzimmer
+      supported_features: 33
+      icon: mdi:ceiling-light
+      state: 'off'
+    light.fibaro_wc_level_1:
+      friendly_name: WC
+      supported_features: 33
+      icon: mdi:lightbulb
+      state: 'off'
+    light.flur:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      is_hue_group: true
+      friendly_name: Flur
+      supported_features: 63
+      state: 'off'
+    light.hue_bloom:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Büro Hue Bloom
+      supported_features: 61
+      icon: mdi:wall-sconce-round-variant
+      state: 'off'
+    light.hue_go_office_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Hue go Office links
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 63
+      state: 'off'
+    light.hue_go_office_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Hue go Office rechts
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 63
+      state: 'off'
     light.hugo:
-      brightness: 145
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
       friendly_name: Wohnzimmer Hugo
-      hs_color:
-      - 36.568
-      - 66.275
-      icon: mdi:wall-sconce-round-variant
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 188
-      - 85
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.502
-      - 0.414
+      icon: mdi:wall-sconce-round-variant
+      state: 'off'
     light.kueche_kuehlschrank:
-      brightness: 145
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
       friendly_name: Küche Kühlschrank
-      hs_color:
-      - 36.568
-      - 66.275
-      icon: mdi:track-light
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 188
-      - 85
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.502
-      - 0.414
+      icon: mdi:track-light
+      state: 'off'
     light.kueche_oberschrank:
-      brightness: 145
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
       friendly_name: Küche Oberschrank
-      hs_color:
-      - 36.568
-      - 66.275
-      icon: mdi:track-light
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 188
-      - 85
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.502
-      - 0.414
-    switch.fibaro_living_room_1_switch_1:
-      friendly_name: Kochen
-      icon: mdi:ceiling-light
-      node_id: 8
-      power_consumption: 0
+      icon: mdi:track-light
       state: 'off'
-      value_id: '72057594176946176'
-      value_index: 0
-      value_instance: 1
-    switch.fibaro_living_room_1_switch_2:
-      friendly_name: Couch
-      icon: mdi:ceiling-light
-      node_id: 8
-      power_consumption: 0
-      state: 'off'
-      value_id: '144115188214874112'
-      value_index: 0
-      value_instance: 2
-    switch.fibaro_living_room_2_switch_1:
-      friendly_name: Essen
-      icon: mdi:ceiling-light
-      node_id: 9
-      power_consumption: 0
-      state: 'off'
-      value_id: '72057594193723392'
-      value_index: 0
-      value_instance: 1
-  icon: mdi:brightness-4
+  icon: mdi:sleep

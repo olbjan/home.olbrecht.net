@@ -8,5 +8,4 @@ sensor:
       - sensor.fibaro_living_room_balcony_temperature
       - sensor.fibaro_master_bedroom_window_temperature
       - sensor.fibaro_office_balcony_temperature
-      - sensor.flur_sensor_temperature
     round_digits: 2

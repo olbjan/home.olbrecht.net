@@ -31,7 +31,6 @@ history:
       - sensor.fibaro_office_balcony_temperature
       - sensor.fibaro_kids_room_window_temperature
       - sensor.fibaro_master_bedroom_window_temperature
-      - device_tracker.iphonexs_olbrecht_net
       - sensor.fibaro_balcony_power
       - sensor.fibaro_floor_power
       - sensor.fibaro_kids_room_power
@@ -52,7 +51,7 @@ history:
 
 # Configures recorder component     
 recorder:
-  db_url: mysql://homeassistant:mariadb@core-mariadb/homeassistant?charset=utf8
+  db_url: !secret mariadb
   purge_keep_days: 90
 #  include:
 #    entities:

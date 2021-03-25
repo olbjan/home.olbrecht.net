@@ -47,27 +47,6 @@
       code: 1234
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
-- id: '1574464249876'
-  alias: Notify on ssl expiry within 30 days
-  description: ''
-  trigger:
-  - below: '30'
-    entity_id: sensor.ssl_datengrab
-    platform: numeric_state
-  - below: '30'
-    entity_id: sensor.ssl_home_assistant
-    platform: numeric_state
-  - below: '30'
-    entity_id: sensor.ssl_unifi_controller
-    platform: numeric_state
-  - below: '30'
-    entity_id: sensor.ssl_unifi_video
-    platform: numeric_state
-  condition: []
-  action:
-  - data:
-      message: SSL certificate expires soon
-    service: notify.mobile_app_iphone12pro_olbrecht_net
 - id: '1574619325241'
   alias: Turn off fan at 0600
   description: ''
@@ -197,14 +176,4 @@
     entity_id: climate.thermostat_master_bedroom_mode
     type: set_hvac_mode
     hvac_mode: 'off'
-  mode: single
-- id: '1606840653416'
-  alias: 'Test Tag '
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: 04-F1-4A-EA-B3-6D-80
-  condition: []
-  action:
-  - scene: scene.lesen
   mode: single

@@ -165,11 +165,6 @@ sensor.total_power_usage:
   icon: mdi:speedometer
 sensor.total_energy:
   entity_picture: /local/electricity_meter.png
-#zone.home:
-#  beacon:
-#    uuid: F7826DA6-4FA2-4E98-8024-BC5B71E0893E
-#    major: 51019
-#    minor: 48940
 switch.fibaro_plug_switch: {}
 sensor.mfc_l3770cdw_uptime:
   icon: mdi:timer-outline
@@ -187,3 +182,12 @@ scene.everything_off:
   text_color: '#ffffff'
   icon_color: '#ffffff'
   background_color: '#000000'
+scene.work:
+  text_color: '#ffffff'
+  background_color: '#463fff'
+scene.work_2:
+  text_color: '#ffffff'
+  background_color: '#00a1ff'
+scene.sleep:
+  text_color: '#ffffff'
+  background_color: '#5a5a5a'
