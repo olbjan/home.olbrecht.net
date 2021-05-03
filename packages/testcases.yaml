@@ -11,18 +11,31 @@ input_boolean:
     name: Test Camera Notification
     initial: false
     icon: mdi:home-alert
-
+  test_clear_notification:
+    name: Test Clear Notification
+    initial: false
+    icon: mdi:wiper-wash
 
 automation:
   - alias: Catch iOS action notification
     initial_state: true
+    variables:
+      users:
+        9059d56edb994871b864f8e00b7e60eb: Jan
+        a3b063519bbc4e99bef379addc72cef9: Kathrin
+      custom_data:
+        testing:
     trigger:
-    - event_type: ios.action_fired
+      event_type: mobile_app_notification_action
       platform: event
+    condition:
+      - "{{ trigger.event.data.action_data.my_custom_data in custom_data }}"
     action:
-    - data_template:
-        message: 'Received action named {{ trigger.event.data.actionName }} from device {{ trigger.event.data.sourceDeviceID }} triggered from {{ trigger.event.data.triggerSource }}'
-      service: notify.mobile_app_iphone12pro_olbrecht_net
+      - variables:
+          user_name: "{{ users[trigger.event.context.user_id] }}"      
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message: 'Received notification action named {{ trigger.event.data.action }} from user {{ user_name }}'
   - alias: 'Test Alarm Triggers'
     initial_state: true
     trigger:
@@ -60,14 +73,17 @@ automation:
         message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:
           push:
-            category: alarm
             sound:
               critical: 1
               name: Telegraph.caf
               volume: 1.0 # 0.0 to 1.0
+          tag: "test"
           action_data:
-            entity_id: light.test
-            my_custom_data: foo_bar
+            my_custom_data: testing
+          actions:
+            - action: "URI"
+              title: "Open Recordings"
+              uri: "/media-browser"
 
 # iOS Camera Attachment Test
   - alias: 'Test: iOS Camera Attachment Notification'
@@ -84,8 +100,28 @@ automation:
           attachment:
             content-type: jpeg
           push:
-            category: camera
             sound:
               name: Telegraph.caf
-              volume: 1.0 # 0.0 to 1.0
+              volume: 0.1 # 0.0 to 1.0
           entity_id: camera.living_room
+          tag: "test"
+          action_data:
+            my_custom_data: testing
+          actions:
+            - action: "URI"
+              title: "Open Recordings"
+              uri: "/media-browser"
+          
+# iOS Clear Attachment Test
+  - alias: 'Test: iOS Clear Notification'
+    initial_state: true
+    trigger:
+    - platform: state
+      entity_id: input_boolean.test_clear_notification
+      to: 'on'
+    action:
+    - service: notify.mobile_app_iphone12pro_olbrecht_net
+      data:
+        message: "clear_notification"
+        data:
+          tag: "test"          

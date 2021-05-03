@@ -2,21 +2,6 @@
 ios:
   push:
     categories:
-      - name: Alarm
-        identifier: 'ALARM'
-        actions:
-          - identifier: 'DISABLE_ALARM'
-            title: 'Disable Alarm'
-            activationMode: 'background'
-            authenticationRequired: true
-            destructive: true
-            behavior: 'default'
-          - identifier: 'IGNORE_ALARM'
-            title: 'Ignore Alarm'
-            activationMode: 'background'
-            authenticationRequired: false
-            destructive: false
-            behavior: 'default'
       - name: Camera With Actions
         identifier: 'CAMERA'
         actions:
@@ -30,19 +15,6 @@ ios:
             activationMode: 'background'
             authenticationRequired: false
             destructive: false
-      - name: Monitoring
-        identifier: 'MONITORING'
-        actions:
-          - identifier: 'ACK_MONITORING'
-            title: 'Acknowledge Alert'
-            activationMode: 'background'
-            authenticationRequired: false
-            destructive: false
-          - identifier: 'RESET_MONITORING'
-            title: 'Reset Alert'
-            activationMode: 'background'
-            authenticationRequired: false
-            destructive: true
   actions:
     - name: Arm Alarm
       background_color: "#ea3323"
@@ -77,32 +49,8 @@ script:
 
 
 automation:
-  - alias: 'iOS Action: Dismiss Alarm'
-    initial_state: 'true'
-    trigger:
-    - event_data:
-        actionName: IGNORE_ALARM
-      event_type: ios.notification_action_fired
-      platform: event
-    action:
-    - data:
-        message: Alarm dismissed from Phone notification
-        title: Alarm ignored
-      service: persistent_notification.create
-  - alias: 'iOS Action: Disable Alarm'
-    initial_state: 'true'
-    trigger:
-    - event_data:
-        actionName: DISABLE_ALARM
-      event_type: ios.notification_action_fired
-      platform: event
-    action:
-    - data:
-        code: !secret alarm_code
-        entity_id: alarm_control_panel.home_alarm
-      service: alarm_control_panel.alarm_disarm
   - alias: 'iOS Widget: Arm Alarm'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - event_data:
         actionName: Arm Alarm
@@ -115,7 +63,7 @@ automation:
         entity_id: alarm_control_panel.home_alarm
       service: alarm_control_panel.alarm_arm_away
   - alias: 'iOS Widget: Disarm Alarm'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - event_data:
         actionName: Disarm Alarm
@@ -127,15 +75,3 @@ automation:
         code: !secret alarm_code
         entity_id: alarm_control_panel.home_alarm
       service: alarm_control_panel.alarm_disarm
-  - alias: 'iOS Action: Reset Monitoring'
-    initial_state: 'true'
-    trigger:
-    - event_data:
-        actionName: RESET_MONITORING
-      event_type: ios.notification_action_fired
-      platform: event
-    action:
-    - data:
-        value: ''
-        entity_id: input_text.network_monitoring_trigger
-      service: input_text.set_value

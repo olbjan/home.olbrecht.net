@@ -5,6 +5,10 @@ binary_sensor:
     host: 192.168.0.1
   - platform: ping
     scan_interval: 300
+    name: cisco_switch
+    host: 192.168.0.2
+  - platform: ping
+    scan_interval: 300
     name: unifi_switch_office
     host: 192.168.0.3
   - platform: ping
@@ -17,8 +21,12 @@ binary_sensor:
     host: 192.168.0.5
   - platform: ping
     scan_interval: 300
-    name: unifi_ap_extender
+    name: unifi_ap_office
     host: 192.168.0.7
+  - platform: ping
+    scan_interval: 300
+    name: unifi_ap_extender
+    host: 192.168.0.8
   - platform: ping
     scan_interval: 300
     name: unifi_g3_flex_living_room
@@ -27,6 +35,22 @@ binary_sensor:
     scan_interval: 300
     name: unifi_g3_flex_kids_room
     host: 192.168.0.17
+  - platform: ping
+    scan_interval: 300
+    name: unifi_g3_instant_office
+    host: 192.168.0.18
+  - platform: ping
+    scan_interval: 300
+    name: tagreader_kids_room
+    host: 192.168.0.20
+  - platform: ping
+    scan_interval: 300
+    name: tagreader_living_room
+    host: 192.168.0.47
+  - platform: ping
+    scan_interval: 300
+    name: tagreader_office
+    host: 192.168.0.48
   - platform: ping
     scan_interval: 300
     name: sonos_beam_living_room
@@ -50,7 +74,7 @@ binary_sensor:
   - platform: ping
     scan_interval: 300
     name: bosch_hsg636xs6
-    host: 192.168.0.18
+    host: 192.168.0.19
   - platform: ping
     scan_interval: 300
     name: ikea_tradfri_hub
@@ -59,14 +83,6 @@ binary_sensor:
     scan_interval: 300
     name: philips_hue_bridge
     host: 192.168.0.14
-  - platform: ping
-    scan_interval: 300
-    name: raspi_homeassistant
-    host: 192.168.0.10
-  - platform: ping
-    scan_interval: 300
-    name: sw02
-    host: 192.168.0.2
   - platform: ping
     scan_interval: 300
     name: snom_d765
@@ -83,6 +99,10 @@ binary_sensor:
     scan_interval: 300
     name: dyson_pure_humidify_cool
     host: 192.168.0.40
+  - platform: ping
+    scan_interval: 300
+    name: raspi_btmonitor
+    host: 192.168.0.9
       
 input_text:
   network_monitoring_trigger:
@@ -91,7 +111,7 @@ input_text:
     
 automation:
   - alias: 'Network Monitoring Triggers'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: binary_sensor.sonos_one_bathroom
@@ -129,12 +149,102 @@ automation:
       for:
         minutes: 10
     - platform: state
+      entity_id: binary_sensor.ikea_tradfri_hub
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
       entity_id: binary_sensor.brother_mfc_l3770cdw
       to: 'off'
       for:
         minutes: 10
     - platform: state
       entity_id: binary_sensor.unifi_dream_machine_pro
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.dyson_pure_cool_link
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.dyson_pure_humidify_cool
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.tagreader_kids_room
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.tagreader_living_room
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.tagreader_office
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.cisco_switch
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.unifi_g3_flex_living_room
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.unifi_g3_flex_kids_room
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.unifi_g3_instant_office
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.bosch_hsg636xs6
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.unifi_ap_livingroom
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.unifi_ap_master_bedroom
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.unifi_ap_office
+      to: 'off'
+      for:
+        minutes: 10
+#    - platform: state
+#      entity_id: binary_sensor.unifi_ap_extender
+#      to: 'off'
+#      for:
+#        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.unifi_switch_office
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.cisco_switch
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.raspi_btmonitor
       to: 'off'
       for:
         minutes: 10
@@ -156,8 +266,35 @@ automation:
         message: "The device {{ states.input_text.network_monitoring_trigger.state }} is offline"
         data:
           push:
-            category: monitoring
             sound:
               name: default
-            thread-id: "monitoring"
-            
+          tag: "monitoring"
+          actions:
+            - action: 'ACK_MONITORING'
+              title: 'Acknowledge Alert'
+              activationMode: 'background'
+              authenticationRequired: false
+              destructive: false
+            - action: 'RESET_MONITORING'
+              title: 'Reset Alert'
+              activationMode: 'background'
+              authenticationRequired: false
+              destructive: true
+# Catch automation for notification actions
+  - alias: 'iOS Action: Reset Monitoring'
+    initial_state: true
+    trigger:
+    - event_data:
+        action: RESET_MONITORING
+      event_type: mobile_app_notification_action
+      platform: event
+    action:
+    - service: input_text.set_value            
+      data:
+        value: ''
+        entity_id: input_text.network_monitoring_trigger
+    - service: notify.parents
+      data:
+        message: "clear_notification"
+        data:
+          tag: "monitoring"

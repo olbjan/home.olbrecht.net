@@ -89,7 +89,7 @@ automation:
 
 # This starts the BT Monitor scan when the apartment front door closes
   - alias: 'Depart Scan: Start when front door closes'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - entity_id: binary_sensor.front_door
       platform: state
@@ -100,7 +100,7 @@ automation:
 
 # This cancels any runnign scans when the apartment door opens
   - alias: 'Depart Scan: Cancel when front door opens'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - entity_id: binary_sensor.front_door
       platform: state
@@ -112,7 +112,7 @@ automation:
 # To avoid unknown device_tracker states after HA restart we always tell 
 # Monitor to restart as well.
   - alias: Restart MQTT Monitor on HA restart
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - event: start
       platform: homeassistant

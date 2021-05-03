@@ -25,8 +25,9 @@ input_text:
     initial: ""
     
 automation:
+# Trigger alarm on motion detected
   - alias: 'Alarm Triggers'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: binary_sensor.flur_sensor_motion
@@ -48,29 +49,59 @@ automation:
           {% endif %}
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
+# Notify when alarm is triggered
   - alias: 'Alarm Triggered Notification'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
       to: 'triggered'
     action:
-# iOS Critical Notification for 2.0 Beta
+    - service: camera.record
+      target:
+        entity_id: camera.living_room
+      data:
+        filename: '/media/Alarms/Living_Room_{{ now().strftime("%Y%m%d-%H%M%S") }}.mp4'
+    - service: camera.record
+      target:
+        entity_id: camera.kids_room
+      data:
+        filename: '/media/Alarms/Kids_Room_{{ now().strftime("%Y%m%d-%H%M%S") }}.mp4'
+    - service: camera.record
+      target:
+        entity_id: camera.office
+      data:
+        filename: '/media/Alarms/Office_{{ now().strftime("%Y%m%d-%H%M%S") }}.mp4'
     - service: notify.mobile_app_iphone12pro_olbrecht_net
       data:
-        message: "ALARM! Trigger: {{ states.input_text.alarm_trigger.state }}"
+        title: "Home Alarm triggered"
+        message: "Trigger: {{ states.input_text.alarm_trigger.state }}"
         data:
-          attachment:
-            content-type: jpeg
           push:
-            category: "camera"
             sound:
+              # iOS Critical Notification
               critical: 1
               name: default
               volume: 0.1 # 0.0 to 1.0
           entity_id: camera.living_room
+          actions:
+            - action: "DISABLE_ALARM"
+              title: 'Disable Alarm'
+              activationMode: 'background'
+              authenticationRequired: true
+              destructive: true
+            - action: "IGNORE_ALARM"
+              title: 'Ignore Alarm'
+              activationMode: 'background'
+              authenticationRequired: false
+              destructive: false
+            - action: "URI"
+              title: "Open Recordings"
+              uri: "/media-browser"
+          tag: "alarm-notification"
+# Notify when Home Alarm gets disabled
   - alias: 'Alarm Disarmed Notification'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
@@ -79,8 +110,42 @@ automation:
     - service: notify.mobile_app_iphone12pro_olbrecht_net
       data:
         message: "Alarm disarmed (resetting trigger: {{ states.input_text.alarm_trigger.state }})"
+        data:
+          tag: "alarm-notification"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.alarm_trigger
         value: ''
-        
+
+## Catch automations for notification actions
+# Dismiss alert and cancel notification on all devices
+  - alias: 'Dismiss Alarm'
+    initial_state: true
+    trigger:
+    - event_data:
+        action: IGNORE_ALARM
+      event_type: mobile_app_notification_action
+      platform: event
+    action:
+    - data:
+        message: Alarm dismissed from Phone notification
+        title: Alarm ignored
+      service: persistent_notification.create
+    - service: notify.parents
+      data:
+        message: "clear_notification"
+        data:
+          tag: "alarm-notification"
+# Disable Alarm
+  - alias: 'Disable Alarm'
+    initial_state: true
+    trigger:
+    - event_data:
+        action: DISABLE_ALARM
+      event_type: mobile_app_notification_action
+      platform: event
+    action:
+    - data:
+        code: !secret alarm_code
+        entity_id: alarm_control_panel.home_alarm
+      service: alarm_control_panel.alarm_disarm

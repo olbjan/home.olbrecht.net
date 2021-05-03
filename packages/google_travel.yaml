@@ -25,7 +25,7 @@ automation:
 # every workday, using the workday binary sensor.
 
   - alias: 'Notification: Travel estimate to work'
-    initial_state: 'true'
+    initial_state: true
     trigger:
     - at: 07:45:00
       platform: time
@@ -39,4 +39,4 @@ automation:
     - data_template:
         message: The drive to work will take approximately {{ states.sensor.time_to_work.state
           }} minutes.
-      service: notify.mobile_app_iphonexs_olbrecht_net
+      service: notify.mobile_app_iphone12pro_olbrecht_net

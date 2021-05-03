@@ -11,3 +11,5 @@ media_player:
     username: !secret philips_tv_user
     password: !secret philips_tv_password    
     favorite_channels_only: true
+
+    

@@ -23,7 +23,7 @@ system_log:
 zeroconf:
 
 # Enables configuration UI
-config:
+#config:
 
 # Enable Home Assistant Cloud
 cloud:
@@ -31,23 +31,23 @@ cloud:
   alexa:
 # Override entity domains
     entity_config:
-      switch.fibaro_storage_switch_1:
+      switch.fibaro_storage:
         display_categories: LIGHT
-      switch.fibaro_balcony_switch_1:
+      switch.fibaro_balcony:
         display_categories: LIGHT      
-      switch.fibaro_office_switch_1:
+      switch.fibaro_office:
         display_categories: LIGHT
-      switch.fibaro_living_room_1_switch_2:
+      switch.fibaro_living_room_1_2:
         display_categories: LIGHT
-      switch.fibaro_living_room_2_switch_1:
+      switch.fibaro_living_room_2:
         display_categories: LIGHT
-      switch.fibaro_living_room_1_switch_1:
+      switch.fibaro_living_room_1:
         display_categories: LIGHT
-      switch.fibaro_kids_room_switch_1:
+      switch.fibaro_kids_room:
         display_categories: LIGHT
-      switch.fibaro_floor_switch_1:
+      switch.fibaro_floor:
         display_categories: LIGHT
-      switch.fibaro_plug_switch:
+      switch.fibaro_plug:
         display_categories: LIGHT      
 # Enable the Mobile App Integration
 mobile_app:
@@ -72,8 +72,6 @@ http:
 # For more information, please see:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  include_used_components: true
 
 # Discover some devices automatically
 discovery:
@@ -114,7 +112,7 @@ system_health:
 #  device_config: !include zwave_device_config.yaml
   
 # Enable debug logging
-#logger:
-#  default: info
-#  logs:
-#    homeassistant.components.dyson: debug
+logger:
+  default: info
+  logs:
+    homeassistant.components.analytics: info

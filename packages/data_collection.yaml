@@ -19,35 +19,46 @@ logbook:
       - weather
       - sensor
       - sun
+    entities:
+      - media_player.spotify_jan_olbrecht
+      - media_player.everywhere
+      - person.marita
+      
       
 
 # Enables support for tracking state changes over time
 history:
   include:
     entities:
-      - binary_sensor.front_door
-      - sensor.fibaro_apartment_door_temperature
-      - sensor.fibaro_living_room_balcony_temperature
-      - sensor.fibaro_office_balcony_temperature
-      - sensor.fibaro_kids_room_window_temperature
-      - sensor.fibaro_master_bedroom_window_temperature
-      - sensor.fibaro_balcony_power
-      - sensor.fibaro_floor_power
-      - sensor.fibaro_kids_room_power
-      - sensor.fibaro_living_room_1_power_1
-      - sensor.fibaro_living_room_1_power_2
-      - sensor.fibaro_living_room_2_power_1
-      - sensor.fibaro_master_bath_power_1
-      - sensor.fibaro_master_bedroom_power_1
-      - sensor.fibaro_office_power
-      - sensor.fibaro_storage_power
-      - sensor.fibaro_wc_power_1
-      - sensor.fibaro_plug_power
+      - binary_sensor.fibaro_apartment_door_access_control_window_door_is_open
+      - sensor.fibaro_apartment_door_air_temperature
+      - sensor.fibaro_living_room_balcony_air_temperature
+      - sensor.fibaro_office_balcony_air_temperature
+      - sensor.fibaro_kids_room_window_air_temperature
+      - sensor.fibaro_master_bedroom_window_air_temperature
+      - sensor.fibaro_balcony_electric_consumed_w
+      - sensor.fibaro_floor_electric_consumed_w
+      - sensor.fibaro_kids_room_electric_consumed_w
+      - sensor.fibaro_living_room_1_electric_consumed_w
+      - sensor.fibaro_living_room_1_electric_consumed_w_2
+      - sensor.fibaro_living_room_2_electric_consumed_w
+      - sensor.fibaro_master_bath_electric_consumed_w
+      - sensor.fibaro_master_bedroom_electric_consumed_w
+      - sensor.fibaro_office_electric_consumed_w
+      - sensor.fibaro_storage_electric_consumed_w
+      - sensor.fibaro_wc_electric_consumed_w
+      - sensor.fibaro_plug_electric_consumed_w
       - sensor.total_power_usage
       - sensor.total_energy
     domains:
       - media_player
       - person
+  exclude:
+    entities:
+      - media_player.spotify_jan_olbrecht
+      - media_player.everywhere
+      - person.marita
+
 
 # Configures recorder component     
 recorder:

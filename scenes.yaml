@@ -23,7 +23,7 @@
       supported_features: 63
       icon: mdi:wall-sconce-round-variant
       state: 'on'
-    fan.dyson_pure:
+    fan.dyson_pure_cool:
       speed_list:
       - low
       - medium
@@ -59,16 +59,16 @@
 - id: '1574463729376'
   name: Heizung aus
   entities:
-    climate.thermostat_kids_room_energy_heat:
+    climate.thermostat_master_bedroom:
       preset_mode: none
       state: 'off'
-    climate.thermostat_living_room_energy_heat:
+    climate.thermostat_living_room:
       preset_mode: none
       state: 'off'
 - id: '1577028048380'
   name: Everything off
   entities:
-    fan.dyson_pure:
+    fan.dyson_pure_cool:
       auto_mode: false
       friendly_name: Dyson Pure Cool Link Tower
       icon: mdi:fan
@@ -115,7 +115,7 @@
       min_mireds: 153
       state: 'off'
       supported_features: 63
-    light.fibaro_master_bath_level_1:
+    light.fibaro_master_bath:
       friendly_name: Badezimmer
       icon: mdi:lightbulb
       node_id: 7
@@ -125,7 +125,7 @@
       value_id: '72057594160185345'
       value_index: 0
       value_instance: 1
-    light.fibaro_master_bedroom_level_1:
+    light.fibaro_master_bedroom:
       friendly_name: Schlafzimmer
       icon: mdi:ceiling-light
       node_id: 6
@@ -135,7 +135,7 @@
       value_id: '72057594143408129'
       value_index: 0
       value_instance: 1
-    light.fibaro_wc_level_1:
+    light.fibaro_wc:
       friendly_name: WC
       icon: mdi:lightbulb
       node_id: 3
@@ -361,7 +361,7 @@
       state: paused
       supported_features: 64063
       volume_level: 0.26
-    switch.fibaro_balcony_switch_1:
+    switch.fibaro_balcony:
       friendly_name: Balkon
       icon: mdi:lightbulb
       node_id: 10
@@ -370,7 +370,7 @@
       value_id: '72057594210500608'
       value_index: 0
       value_instance: 1
-    switch.fibaro_floor_switch_1:
+    switch.fibaro_floor:
       friendly_name: Flur
       icon: mdi:ceiling-light
       node_id: 5
@@ -379,7 +379,7 @@
       value_id: '72057594126614528'
       value_index: 0
       value_instance: 1
-    switch.fibaro_kids_room_switch_1:
+    switch.fibaro_kids_room:
       friendly_name: Kinderzimmer
       icon: mdi:ceiling-light
       node_id: 4
@@ -388,7 +388,7 @@
       value_id: '72057594109837312'
       value_index: 0
       value_instance: 1
-    switch.fibaro_living_room_1_switch_1:
+    switch.fibaro_living_room_1:
       friendly_name: Kochen
       icon: mdi:ceiling-light
       node_id: 8
@@ -397,7 +397,7 @@
       value_id: '72057594176946176'
       value_index: 0
       value_instance: 1
-    switch.fibaro_living_room_1_switch_2:
+    switch.fibaro_living_room_1_2:
       friendly_name: Couch
       icon: mdi:ceiling-light
       node_id: 8
@@ -406,7 +406,7 @@
       value_id: '144115188214874112'
       value_index: 0
       value_instance: 2
-    switch.fibaro_living_room_2_switch_1:
+    switch.fibaro_living_room_2:
       friendly_name: Essen
       icon: mdi:ceiling-light
       node_id: 9
@@ -415,7 +415,7 @@
       value_id: '72057594193723392'
       value_index: 0
       value_instance: 1
-    switch.fibaro_office_switch_1:
+    switch.fibaro_office:
       friendly_name: Büro
       icon: mdi:ceiling-light
       node_id: 2
@@ -424,7 +424,7 @@
       value_id: '72057594076282880'
       value_index: 0
       value_instance: 1
-    switch.fibaro_storage_switch_1:
+    switch.fibaro_storage:
       friendly_name: Abstellraum
       icon: mdi:ceiling-light
       node_id: 11
@@ -670,7 +670,7 @@
       icon: mdi:wall-sconce-round-variant
       supported_features: 63
       state: 'on'
-    switch.fibaro_plug_switch:
+    switch.fibaro_plug:
       friendly_name: 'FIBARO Plug: Current value'
       state: 'on'
     light.hue_bloom:
@@ -748,7 +748,7 @@
       icon: mdi:wall-sconce-round-variant
       supported_features: 63
       state: 'on'
-    switch.fibaro_plug_switch:
+    switch.fibaro_plug:
       friendly_name: 'FIBARO Plug: Current value'
       state: 'on'
     light.hue_bloom:
@@ -775,34 +775,34 @@
 - id: '1612731177679'
   name: Sleep
   entities:
-    switch.fibaro_floor_switch_1:
+    switch.fibaro_floor:
       friendly_name: Flur
       icon: mdi:ceiling-light
       state: 'off'
-    switch.fibaro_kids_room_switch_1:
+    switch.fibaro_kids_room:
       friendly_name: Kinderzimmer
       icon: mdi:ceiling-light
       state: 'off'
-    switch.fibaro_living_room_1_switch_1:
+    switch.fibaro_living_room_1:
       friendly_name: Kochen
       icon: mdi:ceiling-light
       state: 'off'
-    switch.fibaro_living_room_1_switch_2:
+    switch.fibaro_living_room_1_2:
       friendly_name: Couch
       icon: mdi:ceiling-light
       state: 'off'
-    switch.fibaro_living_room_2_switch_1:
+    switch.fibaro_living_room_2:
       friendly_name: Essen
       icon: mdi:ceiling-light
       state: 'off'
-    switch.fibaro_office_switch_1:
+    switch.fibaro_office:
       friendly_name: Büro
       icon: mdi:ceiling-light
       state: 'off'
     switch.fibaro_plug_switch:
       friendly_name: 'FIBARO Plug: Current value'
       state: 'off'
-    switch.fibaro_storage_switch_1:
+    switch.fibaro_storage:
       friendly_name: Abstellraum
       icon: mdi:ceiling-light
       state: 'off'
@@ -828,17 +828,17 @@
       friendly_name: Elgato Key Light
       supported_features: 3
       state: 'off'
-    light.fibaro_master_bath_level_1:
+    light.fibaro_master_bath:
       friendly_name: Badezimmer
       supported_features: 33
       icon: mdi:lightbulb
       state: 'off'
-    light.fibaro_master_bedroom_level_1:
+    light.fibaro_master_bedroom:
       friendly_name: Schlafzimmer
       supported_features: 33
       icon: mdi:ceiling-light
       state: 'off'
-    light.fibaro_wc_level_1:
+    light.fibaro_wc:
       friendly_name: WC
       supported_features: 33
       icon: mdi:lightbulb

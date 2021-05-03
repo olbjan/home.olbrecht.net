@@ -7,4 +7,7 @@ switch:
     mac: !secret surface_dock_mac
     name: "Surface Laptop"
     host: 192.168.0.42
-    
+  - platform: wake_on_lan
+    mac: !secret whitestar_mac
+    name: "WhiteStar"
+    host: 192.168.0.45

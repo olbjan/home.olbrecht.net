@@ -3,9 +3,9 @@ sensor:
     name: Avg. home temperature
     type: mean
     entity_ids:
-      - sensor.fibaro_apartment_door_temperature
-      - sensor.fibaro_kids_room_window_temperature
-      - sensor.fibaro_living_room_balcony_temperature
-      - sensor.fibaro_master_bedroom_window_temperature
-      - sensor.fibaro_office_balcony_temperature
+      - sensor.fibaro_apartment_door_air_temperature
+      - sensor.fibaro_kids_room_window_air_temperature
+      - sensor.fibaro_living_room_balcony_air_temperature
+      - sensor.fibaro_master_bedroom_window_air_temperature
+      - sensor.fibaro_office_balcony_air_temperature
     round_digits: 2

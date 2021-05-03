@@ -1,177 +1,195 @@
 automation:
-  - alias: 'Notification: Enter Studio Alert'
-    initial_state: 'true'
+  - alias: "Zone Notification: Exit Finanzschule Alert"
+    initial_state: true
     trigger:
-    - platform: zone
-      zone: zone.fitnessstudio
-      entity_id: person.kathrin
-      event: enter
+      - platform: zone
+        zone: zone.finanzschule
+        entity_id: person.kathrin
+        event: leave
     action:
-    - service: notify.mobile_app_iphone12pro_olbrecht_net
-      data_template:
-        message: Kathrin ist im Fitnessstudio angekommen.
-    - condition: state
-      state: 'on'
-      entity_id: 'binary_sensor.someone_home'
-    - service: notify.alexa_media
-      data_template:
-        message: Kathrin ist im Fitnessstudio angekommen.
-        data:
-          type: announce
-        target: media_player.echo_buro
-
-  - alias: 'Notification: Exit Studio Alert'
-    initial_state: 'true'
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message: Kathrin hat die Finanzschule verlassen.
+          data:
+            group: "zone-notification"
+      - condition: state
+        state: "on"
+        entity_id: "binary_sensor.someone_home"
+      - service: notify.alexa_media
+        data_template:
+          message: Kathrin hat die Finanzschule verlassen.
+          data:
+            type: announce
+          target: media_player.echo_buro
+  - alias: "Zone Notification: Exit Tante Christine"
+    initial_state: true
     trigger:
-    - platform: zone
-      zone: zone.fitnessstudio
-      entity_id: person.kathrin
-      event: leave
+      - platform: zone
+        zone: zone.tante_christine
+        entity_id: person.kathrin
+        event: leave
     action:
-    - service: notify.mobile_app_iphone12pro_olbrecht_net
-      data_template:
-        message: Kathrin hat das Fitnesstudio verlassen.
-    - condition: state
-      state: 'on'
-      entity_id: 'binary_sensor.someone_home'
-    - service: notify.alexa_media
-      data_template:
-        message: Kathrin hat das Fitnessstudio verlassen.
-        data:
-          type: announce
-        target: media_player.echo_buro
-
-  - alias: 'Notification: Exit Finanzschule Alert'
-    initial_state: 'true'
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message: Kathrin hat die Zone Tante Christine verlassen.
+          data:
+            group: "zone-notification"
+      - condition: state
+        state: "on"
+        entity_id: "binary_sensor.someone_home"
+      - service: notify.alexa_media
+        data_template:
+          message: Kathrin hat die Zone Tante Christine verlassen.
+          data:
+            type: announce
+          target: media_player.echo_buro
+  - alias: "Zone Notification: Exit Freibad Edesheim"
+    initial_state: true
     trigger:
-    - platform: zone
-      zone: zone.finanzschule
-      entity_id: person.kathrin
-      event: leave
+      - platform: zone
+        zone: zone.freibad_edesheim
+        entity_id: person.kathrin
+        event: leave
     action:
-    - service: notify.mobile_app_iphone12pro_olbrecht_net
-      data_template:
-        message: Kathrin hat die Finanzschule verlassen.
-    - condition: state
-      state: 'on'
-      entity_id: 'binary_sensor.someone_home'
-    - service: notify.alexa_media
-      data_template:
-        message: Kathrin hat die Finanzschule verlassen.
-        data:
-          type: announce
-        target: media_player.echo_buro
-
-  - alias: 'Notification: Enter Finanzamt Koblenz Alert'
-    initial_state: 'true'
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message: Kathrin hat das Freibad Edesheim verlassen.
+          data:
+            group: "zone-notification"
+      - condition: state
+        state: "on"
+        entity_id: "binary_sensor.someone_home"
+      - service: notify.alexa_media
+        data_template:
+          message: Kathrin hat das Freibad Edesheim verlassen.
+          data:
+            type: announce
+          target: media_player.echo_buro
+  - alias: "Zone Notification: Exit Kalmitbad Maikammer"
+    initial_state: true
     trigger:
-    - platform: zone
-      zone: zone.finanzamt_koblenz
-      entity_id: person.kathrin
-      event: enter
+      - platform: zone
+        zone: zone.kalmitbad_maikammer
+        entity_id: person.kathrin
+        event: leave
     action:
-    - service: notify.mobile_app_iphone12pro_olbrecht_net
-      data_template:
-        message: Kathrin ist im Finanzamt Koblenz angekommen.
-    - condition: state
-      state: 'on'
-      entity_id: 'binary_sensor.someone_home'
-    - service: notify.alexa_media
-      data_template:
-        message: Kathrin ist im Finanzamt Koblenz angekommen.
-        data:
-          type: announce
-        target: media_player.everywhere
-
-  - alias: 'Notification: Exit Schwimmbad Alert'
-    initial_state: 'true'
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message: Kathrin hat das Kalmitbad Maikammer verlassen.
+          data:
+            group: "zone-notification"
+      - condition: state
+        state: "on"
+        entity_id: "binary_sensor.someone_home"
+      - service: notify.alexa_media
+        data_template:
+          message: Kathrin hat das Kalmitbad Maikammer verlassen.
+          data:
+            type: announce
+          target: media_player.echo_buro
+  - alias: "Zone Notification: Enter Finanzamt Koblenz Alert"
+    initial_state: true
     trigger:
-    - platform: zone
-      zone: zone.kalmitbad_maikammer
-      entity_id: person.kathrin
-      event: leave
+      - platform: zone
+        zone: zone.finanzamt_koblenz
+        entity_id: person.kathrin
+        event: enter
     action:
-    - service: notify.mobile_app_iphone12pro_olbrecht_net
-      data_template:
-        message: Kathrin hat das Schwimmbad verlassen.
-    - condition: state
-      state: 'on'
-      entity_id: 'binary_sensor.someone_home'
-    - service: notify.alexa_media
-      data_template:
-        message: Kathrin hat das Schwimmbad verlassen.
-        data:
-          type: announce
-        target: media_player.everywhere
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message: Kathrin ist im Finanzamt Koblenz angekommen.
+          data:
+            group: "zone-notification"
+      - condition: state
+        state: "on"
+        entity_id: "binary_sensor.someone_home"
+      - service: notify.alexa_media
+        data_template:
+          message: Kathrin ist im Finanzamt Koblenz angekommen.
+          data:
+            type: announce
+          target: media_player.echo_buro
 
-# This automation triggers on a zone "b4" exit, it then:
-# - updates the Google Travel Distance
-# - sends a notification to people in my household with the estimated travel
-#   time
-# - Tells the estimated travel time via the Alexa Media TTS component on my 
-#   living room Sonos system.
+  # This automation triggers on a zone "b4" exit, it then:
+  # - updates the Google Travel Distance
+  # - sends a notification to people in my household with the estimated travel
+  #   time
+  # - Tells the estimated travel time via the Alexa Media TTS component on my
+  #   living room Sonos system.
 
-  - alias: 'Notification: Exit b4 Alert'
-    initial_state: 'true'
+  - alias: "Zone Notification: Exit b4 Alert"
+    initial_state: true
     trigger:
-    - platform: zone
-      zone: zone.b4
-      entity_id: person.jan
-      event: leave
+      - platform: zone
+        zone: zone.b4
+        entity_id: person.jan
+        event: leave
     condition:
       - condition: time
-        after: '14:00:00'
-        before: '18:30:00'
+        after: "14:00:00"
+        before: "18:30:00"
     action:
-    - data:
-        entity_id: sensor.jan_to_home
-      service: homeassistant.update_entity
-    - service: notify.mobile_app_iphonexr_olbrecht_net
-      data_template:
-        message: Jan hat die Zone Arbeit verlassen. Bei aktuellem Verkehr braucht er
-          etwa {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
-    - service: notify.mobile_app_iphone12pro_olbrecht_net
-      data_template:
-        message: Jan left work. The drive home will take approximately {{ states.sensor.jan_to_home.state
-          }} minutes.
-    - condition: state
-      state: 'on'
-      entity_id: 'binary_sensor.someone_home'
-    - service: notify.alexa_media
-      data_template:
-        message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
-        data:
-          type: announce
-        target: media_player.everywhere
-  - alias: 'Notification: Exit Koblenz Alert'
-    initial_state: 'true'
+      - data:
+          entity_id: sensor.jan_to_home
+        service: homeassistant.update_entity
+      - service: notify.mobile_app_iphonexr_olbrecht_net
+        data_template:
+          message:
+            Jan hat die Zone Arbeit verlassen. Bei aktuellem Verkehr braucht er
+            etwa {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+          data:
+            group: "zone-notification"
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message:
+            Jan left work. The drive home will take approximately {{ states.sensor.jan_to_home.state
+            }} minutes.
+          data:
+            group: "zone-notification"
+      - condition: state
+        state: "on"
+        entity_id: "binary_sensor.someone_home"
+      - service: notify.alexa_media
+        data_template:
+          message: Papa kommt in {{ states.sensor.jan_to_home.state }} Minuten nach Hause.
+          data:
+            type: announce
+          target: media_player.everywhere
+  - alias: "Zone Notification: Exit Koblenz Alert"
+    initial_state: true
     trigger:
-    - platform: zone
-      zone: zone.finanzamt_koblenz
-      entity_id: person.kathrin
-      event: leave
+      - platform: zone
+        zone: zone.finanzamt_koblenz
+        entity_id: person.kathrin
+        event: leave
     condition:
       - condition: time
-        after: '14:00:00'
-        before: '22:00:00'
+        after: "14:00:00"
+        before: "22:00:00"
     action:
-    - data:
-        entity_id: sensor.kathrin_to_home
-      service: homeassistant.update_entity
-    - service: notify.mobile_app_iphonexr_olbrecht_net
-      data_template:
-        message: Kathrin hat die Zone Finanzamt Koblenz verlassen. Bei aktuellem Verkehr braucht sie
-          etwa {{ states.sensor.kathrin_to_home.state }} Minuten nach Hause.
-    - service: notify.mobile_app_iphone12pro_olbrecht_net
-      data_template:
-        message: Kathrin left work. The drive home will take approximately {{ states.sensor.kathrin_to_home.state
-          }} minutes.
-    - condition: state
-      state: 'on'
-      entity_id: 'binary_sensor.someone_home'
-    - service: notify.alexa_media
-      data_template:
-        message: Mama kommt in etwa {{ states.sensor.kathrin_to_home.state }} Minuten nach Hause.
-        data:
-          type: announce
-        target: media_player.everywhere
+      - data:
+          entity_id: sensor.kathrin_to_home
+        service: homeassistant.update_entity
+      - service: notify.mobile_app_iphonexr_olbrecht_net
+        data_template:
+          message:
+            Kathrin hat die Zone Finanzamt Koblenz verlassen. Bei aktuellem Verkehr braucht sie
+            etwa {{ states.sensor.kathrin_to_home.state }} Minuten nach Hause.
+          data:
+            group: "zone-notification"
+      - service: notify.mobile_app_iphone12pro_olbrecht_net
+        data_template:
+          message:
+            Kathrin left work. The drive home will take approximately {{ states.sensor.kathrin_to_home.state
+            }} minutes.
+          data:
+            group: "zone-notification"
+      - condition: state
+        state: "on"
+        entity_id: "binary_sensor.someone_home"
+      - service: notify.alexa_media
+        data_template:
+          message: Mama kommt in etwa {{ states.sensor.kathrin_to_home.state }} Minuten nach Hause.
+          data:
+            type: announce
+          target: media_player.everywhere

@@ -5,7 +5,7 @@ automation:
   - platform: webhook
     webhook_id: !secret webhook_streamdeck_1
   action:
-  - service_template: '{{ trigger.json.service }}'
+  - service: '{{ trigger.json.service }}'
     data_template:
       entity_id: '{{ trigger.json.entities }}'
 - id: streamdeck_webhook_opt
@@ -14,7 +14,7 @@ automation:
   - platform: webhook
     webhook_id: !secret webhook_streamdeck_2
   action:
-  - service_template: '{{ trigger.json.service }}'
+  - service: '{{ trigger.json.service }}'
     data_template:
       entity_id: '{{ trigger.json.entities }}'
       brightness_pct: '{{ trigger.json.parameter }}'      

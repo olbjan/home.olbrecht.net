@@ -10,46 +10,49 @@ person.marita:
 switch.readynas_2304:
   friendly_name: ReadyNAS 2304
   icon: mdi:server
-device_tracker.iphonexs_olbrecht_net:
+device_tracker.iphone12pro_olbrecht_net:
   friendly_name: Jan's Phone
 device_tracker.iphonexr_olbrecht_net:
   friendly_name: Kathrin's Phone
-switch.fibaro_office_switch_1:
+switch.fibaro_office:
   friendly_name: Büro
   icon: mdi:ceiling-light
-switch.fibaro_kids_room_switch_1:
+switch.fibaro_plug:
+  friendly_name: Bücherregal
+  icon: mdi:spotlight-beam
+switch.fibaro_kids_room:
   friendly_name: Kinderzimmer
   icon: mdi:ceiling-light
-switch.fibaro_balcony_switch_1:
+switch.fibaro_balcony:
   friendly_name: Balkon
   icon: mdi:lightbulb
-switch.fibaro_living_room_1_switch_1:
+switch.fibaro_living_room_1:
   friendly_name: Kochen
   icon: mdi:ceiling-light
-switch.fibaro_living_room_1_switch_2:
+switch.fibaro_living_room_1_2:
   friendly_name: Couch
   icon: mdi:ceiling-light
-switch.fibaro_living_room_2_switch_1:
+switch.fibaro_living_room_2:
   friendly_name: Essen
   icon: mdi:ceiling-light
-switch.fibaro_floor_switch_1:
+switch.fibaro_floor:
   friendly_name: Flur
   icon: mdi:ceiling-light
-switch.fibaro_storage_switch_1:
+switch.fibaro_storage:
   friendly_name: Abstellraum
   icon: mdi:ceiling-light
-light.fibaro_master_bedroom_level_1:
+light.fibaro_master_bedroom:
   friendly_name: Schlafzimmer
   icon: mdi:ceiling-light
-light.fibaro_master_bedroom_level_2:
+light.fibaro_master_bedroom_2:
   emulated_hue_hidden: true
-light.fibaro_master_bath_level_1:
+light.fibaro_master_bath:
   friendly_name: Badezimmer
   icon: mdi:lightbulb
-light.fibaro_wc_level_1:
+light.fibaro_wc:
   friendly_name: WC
   icon: mdi:lightbulb
-light.fibaro_wc_level_2:
+light.fibaro_wc_2:
   emulated_hue_hidden: true
 light.bett:
   friendly_name: Schlafzimmer Bett
@@ -71,7 +74,7 @@ light.kueche_kuehlschrank:
 light.kueche_oberschrank:
   friendly_name: Küche Oberschrank
   icon: mdi:track-light
-fan.dyson_pure:
+fan.dyson_pure_cool:
   friendly_name: Dyson Pure Cool Link Tower
   icon: mdi:fan
 media_player.kinderzimmer:
@@ -86,9 +89,6 @@ media_player.badezimmer:
 sensor.unifi_security_gateway:
   friendly_name: UniFi Security Gateway
   icon: mdi:router-wireless
-sensor.unifi_cloud_key:
-  friendly_name: UniFi Cloud Key
-  icon: mdi:server
 sensor.unifi_ap_livingroom:
   friendly_name: UniFi AP Wohnzimmer
   icon: mdi:access-point
@@ -98,24 +98,12 @@ sensor.unifi_ap_office:
 sensor.unifi_ap_master_bedroom:
   friendly_name: UniFi AP Schlafzimmer
   icon: mdi:access-point
-sensor.unifi_ap_storage:
-  friendly_name: UniFi AP Abstellraum
-  icon: mdi:access-point
 sensor.philips_hue_bridge:
   friendly_name: Philips Hue Bridge
   icon: mdi:bridge
-sensor.raspi_observium:
-  friendly_name: Raspberry Pi Observium
-  icon: mdi:raspberry-pi
-sensor.raspi_homeassistant:
-  friendly_name: Raspberry Pi Home Assistant
-  icon: mdi:raspberry-pi
 sensor.raspi_btmonitor:
   friendly_name: Raspberry Pi Zero W Bluetooth Monitor
   icon: mdi:raspberry-pi
-sensor.living_room_xbox_one:
-  friendly_name: Xbox One
-  icon: mdi:microsoft-xbox
 sensor.amazon_echo_dot:
   friendly_name: Amazon Echo Dot
   icon: mdi:amazon-alexa
@@ -191,3 +179,17 @@ scene.work_2:
 scene.sleep:
   text_color: '#ffffff'
   background_color: '#5a5a5a'
+binary_sensor.fibaro_apartment_door_access_control_window_door_is_open:
+  friendly_name: Wohnungstür
+binary_sensor.fibaro_kids_room_window_access_control_window_door_is_open:
+  friendly_name: Fenster Kinderzimmer
+  device_class: window
+binary_sensor.fibaro_living_room_balcony_access_control_window_door_is_open:
+  friendly_name: Balkontür Wohnzimmer
+binary_sensor.fibaro_master_bedroom_window_access_control_window_door_is_open:
+  friendly_name: Fenster Schlafzimmer
+  device_class: window
+binary_sensor.fibaro_office_balcony_access_control_window_door_is_open:
+  friendly_name: Balkontür Büro
+switch.whitestar:
+  icon: mdi:desktop-classic

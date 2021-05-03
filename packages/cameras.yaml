@@ -28,7 +28,7 @@ input_boolean:
     
 automation:
 - alias: Stream Baby Monitor
-  initial_state: 'true'
+  initial_state: true
   trigger:
   - entity_id: input_boolean.baby_monitor
     platform: state
@@ -40,7 +40,7 @@ automation:
       media_player: media_player.55pos9002
     service: camera.play_stream
 - alias: Stop Baby Monitor
-  initial_state: 'true'
+  initial_state: true
   trigger:
   - entity_id: input_boolean.baby_monitor
     platform: state

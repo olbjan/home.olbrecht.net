@@ -8,6 +8,8 @@ automation:
     # Map scanner device ID to media player entity ID
     media_players:
       22be5665fa1bdf927307d9d5d60152ef: media_player.sonos_kids_room
+      32e86129cb87fe87bd3a57c4bdfc9bec: media_player.sonos_living_room
+      79e8a49a2efaeb2c3d813b2f43ecd0d9: media_player.sonos_living_room
   trigger:
     platform: event
     event_type: tag_scanned

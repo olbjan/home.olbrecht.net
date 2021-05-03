@@ -10,4 +10,16 @@ notify:
     platform: group
     services:
       - service: notify_mobile_app_iphone12pro_olbrecht_net
+      - service: notify_mobile_app_ipad_olbrecht_net
+      - service: notify_mobile_app_iphonexr_olbrecht_net
+      
+  - name: Jan
+    platform: group
+    services:
+      - service: notify_mobile_app_iphone12pro_olbrecht_net
+      - service: notify_mobile_app_ipad_olbrecht_net
+
+  - name: Kathrin
+    platform: group
+    services:
       - service: notify_mobile_app_iphonexr_olbrecht_net
