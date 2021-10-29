@@ -5,12 +5,16 @@ binary_sensor:
     host: 192.168.0.1
   - platform: ping
     scan_interval: 300
-    name: cisco_switch
+    name: unifi_switch_storage
     host: 192.168.0.2
   - platform: ping
     scan_interval: 300
     name: unifi_switch_office
     host: 192.168.0.3
+  - platform: ping
+    scan_interval: 300
+    name: unifi_switch_basement
+    host: 192.168.0.4
   - platform: ping
     scan_interval: 300
     name: unifi_ap_livingroom
@@ -29,6 +33,14 @@ binary_sensor:
     host: 192.168.0.8
   - platform: ping
     scan_interval: 300
+    name: unifi_ap_driveway
+    host: 192.168.0.9
+  - platform: ping
+    scan_interval: 300
+    name: homeassistant_glow
+    host: 192.168.0.15
+  - platform: ping
+    scan_interval: 300
     name: unifi_g3_flex_living_room
     host: 192.168.0.16
   - platform: ping
@@ -42,7 +54,7 @@ binary_sensor:
   - platform: ping
     scan_interval: 300
     name: tagreader_kids_room
-    host: 192.168.0.20
+    host: 192.168.0.49
   - platform: ping
     scan_interval: 300
     name: tagreader_living_room
@@ -90,7 +102,7 @@ binary_sensor:
   - platform: ping
     scan_interval: 300
     name: philips_55pos9002_lan
-    host: 192.168.0.15
+    host: 192.168.0.52
   - platform: ping
     scan_interval: 300
     name: dyson_pure_cool_link
@@ -102,7 +114,7 @@ binary_sensor:
   - platform: ping
     scan_interval: 300
     name: raspi_btmonitor
-    host: 192.168.0.9
+    host: 192.168.0.50
       
 input_text:
   network_monitoring_trigger:
@@ -174,6 +186,11 @@ automation:
       for:
         minutes: 10
     - platform: state
+      entity_id: binary_sensor.homeassistant_glow
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
       entity_id: binary_sensor.tagreader_kids_room
       to: 'off'
       for:
@@ -189,7 +206,7 @@ automation:
       for:
         minutes: 10
     - platform: state
-      entity_id: binary_sensor.cisco_switch
+      entity_id: binary_sensor.unifi_switch_storage
       to: 'off'
       for:
         minutes: 10
@@ -234,20 +251,30 @@ automation:
 #      for:
 #        minutes: 10
     - platform: state
+      entity_id: binary_sensor.unifi_ap_driveway
+      to: 'off'
+      for:
+        minutes: 10
+    - platform: state
       entity_id: binary_sensor.unifi_switch_office
       to: 'off'
       for:
         minutes: 10
     - platform: state
-      entity_id: binary_sensor.cisco_switch
+      entity_id: binary_sensor.unifi_switch_storage
       to: 'off'
       for:
         minutes: 10
     - platform: state
-      entity_id: binary_sensor.raspi_btmonitor
+      entity_id: binary_sensor.unifi_switch_basement
       to: 'off'
       for:
         minutes: 10
+#    - platform: state
+#      entity_id: binary_sensor.raspi_btmonitor
+#      to: 'off'
+#      for:
+#        minutes: 10
     action:
     - service: input_text.set_value
       data_template:

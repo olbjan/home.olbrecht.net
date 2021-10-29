@@ -6,3 +6,15 @@
       media_content_id: https://youtu.be/7FrKOzhtwfM
       media_content_type: video
     service: media_extractor.play_media
+zone_helper_script_finanzschule:
+  alias: Zone Helper Script Finanzschule
+  sequence:
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - service: homeassistant.turn_on
+    target:
+      entity_id: input_boolean.zone_helper_finanzschule
+  mode: single

@@ -3,7 +3,7 @@ media_extractor:
 media_player:
   - platform: androidtv
     name: Android TV
-    host: 192.168.0.15
+    host: 192.168.0.52
     adbkey: "/config/.androidkeys/adbkey"
     get_sources: true
     apps:

@@ -1,20 +1,20 @@
 # Enables Apple iOS Support
 ios:
-  push:
-    categories:
-      - name: Camera With Actions
-        identifier: 'CAMERA'
-        actions:
-          - identifier: 'DISABLE_ALARM'
-            title: 'Disable Alarm'
-            activationMode: 'background'
-            authenticationRequired: true
-            destructive: true
-          - identifier: 'IGNORE_ALARM'
-            title: 'Ignore Alarm'
-            activationMode: 'background'
-            authenticationRequired: false
-            destructive: false
+#  push:
+#    categories:
+#      - name: Camera With Actions
+#        identifier: 'CAMERA'
+#        actions:
+#          - identifier: 'DISABLE_ALARM'
+#            title: 'Disable Alarm'
+#            activationMode: 'background'
+#            authenticationRequired: true
+#            destructive: true
+#          - identifier: 'IGNORE_ALARM'
+#            title: 'Ignore Alarm'
+#            activationMode: 'background'
+#            authenticationRequired: false
+#            destructive: false
   actions:
     - name: Arm Alarm
       background_color: "#ea3323"

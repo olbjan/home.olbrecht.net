@@ -1,31 +1,9 @@
-sensor:
-# Google Travel Time
-  - platform: google_travel_time
-    api_key: !secret google_travel_time_key
-    origin: !secret home_address
-    destination: !secret work_address
-    name: Time to Work
-    scan_interval: 86400
-  - platform: google_travel_time
-    api_key: !secret google_travel_time_key
-    origin: person.jan
-    destination: !secret home_address
-    name: Jan to Home
-    scan_interval: 86400
-  - platform: google_travel_time
-    api_key: !secret google_travel_time_key
-    origin: person.kathrin
-    destination: !secret home_address
-    name: Kathrin to Home
-    scan_interval: 86400
-
 automation:
 
 # This automation sends me a notification with the estimated travel time to work
 # every workday, using the workday binary sensor.
 
   - alias: 'Notification: Travel estimate to work'
-    initial_state: true
     trigger:
     - at: 07:45:00
       platform: time

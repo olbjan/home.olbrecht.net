@@ -1,26 +1,26 @@
 automation:
-  - alias: "Zone Notification: Exit Finanzschule Alert"
-    initial_state: true
-    trigger:
-      - platform: zone
-        zone: zone.finanzschule
-        entity_id: person.kathrin
-        event: leave
-    action:
-      - service: notify.mobile_app_iphone12pro_olbrecht_net
-        data_template:
-          message: Kathrin hat die Finanzschule verlassen.
-          data:
-            group: "zone-notification"
-      - condition: state
-        state: "on"
-        entity_id: "binary_sensor.someone_home"
-      - service: notify.alexa_media
-        data_template:
-          message: Kathrin hat die Finanzschule verlassen.
-          data:
-            type: announce
-          target: media_player.echo_buro
+#  - alias: "Zone Notification: Exit Finanzschule Alert"
+#    initial_state: true
+#    trigger:
+#      - platform: zone
+#        zone: zone.finanzschule
+#        entity_id: person.kathrin
+#        event: leave
+#    action:
+#      - service: notify.mobile_app_iphone12pro_olbrecht_net
+#        data_template:
+#          message: Kathrin hat die Finanzschule verlassen.
+#          data:
+#            group: "zone-notification"
+#      - condition: state
+#        state: "on"
+#        entity_id: "binary_sensor.someone_home"
+#      - service: notify.alexa_media
+#        data_template:
+#          message: Kathrin hat die Finanzschule verlassen.
+#          data:
+#            type: announce
+#          target: media_player.echo_buro
   - alias: "Zone Notification: Exit Tante Christine"
     initial_state: true
     trigger:

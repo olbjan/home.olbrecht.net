@@ -193,3 +193,10 @@ binary_sensor.fibaro_office_balcony_access_control_window_door_is_open:
   friendly_name: Balkontür Büro
 switch.whitestar:
   icon: mdi:desktop-classic
+zone.home:
+  beacon:
+    uuid: F7826DA6-4FA2-4E98-8024-BC5B71E0893E
+    major: 51019
+    minor: 48940
+binary_sensor.fibaro_master_bathroom_window_access_control_window_door_is_open:
+  device_class: window

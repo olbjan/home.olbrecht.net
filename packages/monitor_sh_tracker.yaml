@@ -91,7 +91,7 @@ automation:
   - alias: 'Depart Scan: Start when front door closes'
     initial_state: true
     trigger:
-    - entity_id: binary_sensor.front_door
+    - entity_id: binary_sensor.fibaro_apartment_door_access_control_window_door_is_open
       platform: state
       to: 'off'
     action:
@@ -102,7 +102,7 @@ automation:
   - alias: 'Depart Scan: Cancel when front door opens'
     initial_state: true
     trigger:
-    - entity_id: binary_sensor.front_door
+    - entity_id: binary_sensor.fibaro_apartment_door_access_control_window_door_is_open
       platform: state
       to: 'on'
     action:

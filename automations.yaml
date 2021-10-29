@@ -38,10 +38,18 @@
   condition: []
   action:
   - data:
-      code: 1234
-      entity_id: alarm_control_panel.home_alarm
+      code: '1234'
     service: alarm_control_panel.alarm_arm_away
+    target:
+      entity_id: alarm_control_panel.home_alarm
   - scene: scene.everything_off
+  - service: homeassistant.turn_on
+    target:
+      entity_id:
+      - switch.record_always_kids_room
+      - switch.record_always_office
+      - switch.record_always_living_room
+  mode: single
 - id: '1572215956107'
   alias: Disarm alarm when someone is home
   description: ''
@@ -52,9 +60,17 @@
   condition: []
   action:
   - data:
-      code: 1234
-      entity_id: alarm_control_panel.home_alarm
+      code: '1234'
     service: alarm_control_panel.alarm_disarm
+    target:
+      entity_id: alarm_control_panel.home_alarm
+  - service: homeassistant.turn_off
+    target:
+      entity_id:
+      - switch.record_always_office
+      - switch.record_always_kids_room
+      - switch.record_always_living_room
+  mode: single
 - id: '1574619325241'
   alias: Turn off fan at 0600
   description: ''
@@ -118,4 +134,255 @@
     entity_id: climate.thermostat_master_bedroom
     type: set_hvac_mode
     hvac_mode: 'off'
+  mode: single
+- id: '1620675576405'
+  alias: 'Zone Enter: Finanzschule'
+  description: ''
+  trigger:
+  - platform: geo_location
+    zone: zone.finanzschule
+    event: enter
+    source: device_tracker.iphonexr_olbrecht_net
+  condition: []
+  action:
+  - service: script.turn_off
+    target:
+      entity_id: script.zone_helper_script_finanzschule
+  - wait_template: ''
+    continue_on_timeout: true
+    timeout: '2'
+  - service: script.turn_on
+    target:
+      entity_id: script.zone_helper_script_finanzschule
+  mode: single
+- id: '1620675862714'
+  alias: 'Zone Notification: Exit Finanzschule (checked) Alert'
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.iphonexr_olbrecht_net
+    zone: zone.finanzschule
+    event: leave
+  condition:
+  - condition: state
+    entity_id: input_boolean.zone_helper_finanzschule
+    state: 'on'
+  action:
+  - service: script.turn_off
+    target:
+      entity_id: script.zone_helper_script_finanzschule
+  - condition: state
+    entity_id: input_boolean.zone_helper_finanzschule
+    state: 'on'
+  - service: notify.mobile_app_iphone12pro_olbrecht_net
+    data:
+      message: Kathrin hat die Finanzschule verlassen.
+      data:
+        group: zone-notification
+  - condition: state
+    entity_id: binary_sensor.someone_home
+    state: 'on'
+  - service: notify.alexa_media_echo_buro
+    data:
+      message: Kathrin hat die Finanzschule verlassen.
+      data:
+        type: announce
+  - service: homeassistant.turn_off
+    target:
+      entity_id: input_boolean.zone_helper_finanzschule
+  mode: single
+- id: '1620740998526'
+  alias: 'Scene: Turn On Lesen im Wohnzimmer'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_lesen_im_wohnzimmer
+    to: 'on'
+  condition: []
+  action:
+  - service: hue.hue_activate_scene
+    data:
+      group_name: Wohnzimmer
+      scene_name: Lesen
+  - service: homeassistant.turn_off
+    target:
+      entity_id: input_boolean.scene_relax_im_wohnzimmer
+  mode: single
+- id: '1620741127855'
+  alias: 'Scene: Turn On Relax im Wohnzimmer'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_relax_im_wohnzimmer
+    to: 'on'
+  condition: []
+  action:
+  - service: hue.hue_activate_scene
+    data:
+      group_name: Wohnzimmer
+      scene_name: Relax
+  - service: homeassistant.turn_off
+    target:
+      entity_id: input_boolean.scene_lesen_im_wohnzimmer
+  mode: single
+- id: '1620741515246'
+  alias: 'Scene: Turn Off Lesen'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_lesen_im_wohnzimmer
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.scene_relax_im_wohnzimmer
+    state: 'off'
+  action:
+  - service: light.turn_off
+    target:
+      entity_id: light.wohnzimmer
+  mode: single
+- id: '1620741558416'
+  alias: 'Scene: Turn Off Relax'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_relax_im_wohnzimmer
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.scene_lesen_im_wohnzimmer
+    state: 'off'
+  action:
+  - service: light.turn_off
+    target:
+      entity_id: light.wohnzimmer
+  mode: single
+- id: '1620751390130'
+  alias: 'Scene: Turn On Work'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_work
+    to: 'on'
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.work
+  - service: homeassistant.turn_off
+    target:
+      entity_id: input_boolean.scene_telco
+  mode: single
+- id: '1620751420236'
+  alias: 'Scene: Turn On Telco'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_telco
+    to: 'on'
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.teleconference
+  - service: homeassistant.turn_off
+    target:
+      entity_id: input_boolean.scene_work
+  mode: single
+- id: '1620751560976'
+  alias: 'Scene: Turn Off Work'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_work
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.scene_telco
+    state: 'off'
+  action:
+  - service: homeassistant.turn_off
+    target:
+      entity_id:
+      - switch.fibaro_plug
+      - light.hue_bloom
+      - light.hue_go_office_left
+      - light.hue_go_office_right
+  mode: single
+- id: '1620751591248'
+  alias: 'Scene: Turn Off Telco'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.scene_telco
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.scene_work
+    state: 'off'
+  action:
+  - service: homeassistant.turn_off
+    target:
+      entity_id:
+      - switch.fibaro_plug
+      - light.hue_bloom
+      - light.hue_go_office_left
+      - light.hue_go_office_right
+      - light.elgato_key_light
+  mode: single
+- id: '1631967991451'
+  alias: Fibaro KeyFob
+  description: ''
+  use_blueprint:
+    path: homeassistant/keyfob.yaml
+    input:
+      keyfob_device: de6ac9d8c856a0287b83ae2a4e9c1d90
+      button_3_pressed:
+      - service: cover.close_cover
+        target:
+          entity_id: cover.markise_sud
+      button_4_pressed:
+      - service: cover.open_cover
+        target:
+          entity_id: cover.markise_sud
+      button_5_pressed:
+      - service: cover.close_cover
+        target:
+          entity_id: cover.markise_west
+      button_6_pressed:
+      - service: cover.open_cover
+        target:
+          entity_id: cover.markise_west
+- id: '1633123917903'
+  alias: Turn off scene helper with Hue group
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.wohnzimmer
+    to: 'off'
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    target:
+      entity_id:
+      - input_boolean.scene_lesen_im_wohnzimmer
+      - input_boolean.scene_relax_im_wohnzimmer
+  mode: single
+- id: '1633270182398'
+  alias: Open Marquee on strong winds
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: weather.home
+    attribute: wind_speed
+    above: '38'
+  condition: []
+  action:
+  - service: cover.open_cover
+    target:
+      area_id: 6af6b12f8bed4892bd3a209aa8647f21
   mode: single

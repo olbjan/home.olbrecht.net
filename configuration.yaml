@@ -88,15 +88,6 @@ scene: !include scenes.yaml
 # Enable Map in Frontend
 #map:
 
-# Enable WoL Switch - cannot be merged via Package
-#wake_on_lan: 
-#  - mac: !secret readynas_mac
-#    broadcast_address: 192.168.0.255
-
-# Enable Home Assistant Community Store
-hacs:
-  token: !secret hacs
-  
 # Workday binary sensor
 binary_sensor:
   - platform: workday
@@ -106,11 +97,6 @@ binary_sensor:
 # Enable host system health   
 system_health:
 
-#zwave: 
-#  usb_path: /dev/ttyACM0
-#  network_key: !secret zwave_network_key
-#  device_config: !include zwave_device_config.yaml
-  
 # Enable debug logging
 logger:
   default: info
